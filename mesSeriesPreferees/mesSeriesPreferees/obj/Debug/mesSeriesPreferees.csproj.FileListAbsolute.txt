@@ -1,9 +1,0 @@
-C:\Users\Arnaud\git\mesSeriesPref\mesSeriesPreferees\mesSeriesPreferees\bin\Debug\mesSeriesPreferees.exe.config
-C:\Users\Arnaud\git\mesSeriesPref\mesSeriesPreferees\mesSeriesPreferees\bin\Debug\mesSeriesPreferees.exe
-C:\Users\Arnaud\git\mesSeriesPref\mesSeriesPreferees\mesSeriesPreferees\bin\Debug\mesSeriesPreferees.pdb
-C:\Users\Arnaud\git\mesSeriesPref\mesSeriesPreferees\mesSeriesPreferees\obj\Debug\mesSeriesPreferees.csprojResolveAssemblyReference.cache
-C:\Users\Arnaud\git\mesSeriesPref\mesSeriesPreferees\mesSeriesPreferees\obj\Debug\mesSeriesPreferees.Properties.Resources.resources
-C:\Users\Arnaud\git\mesSeriesPref\mesSeriesPreferees\mesSeriesPreferees\obj\Debug\mesSeriesPreferees.csproj.GenerateResource.Cache
-C:\Users\Arnaud\git\mesSeriesPref\mesSeriesPreferees\mesSeriesPreferees\obj\Debug\mesSeriesPreferees.csproj.CoreCompileInputs.cache
-C:\Users\Arnaud\git\mesSeriesPref\mesSeriesPreferees\mesSeriesPreferees\obj\Debug\mesSeriesPreferees.exe
-C:\Users\Arnaud\git\mesSeriesPref\mesSeriesPreferees\mesSeriesPreferees\obj\Debug\mesSeriesPreferees.pdb
