@@ -1,3 +1,0 @@
-site1 : http://thetvdb.com/ 
-Api : https://api.thetvdb.com/swagger#/
-
