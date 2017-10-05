@@ -15,4 +15,4 @@
 ..* 
 
 - lister solutions disponibles pour l'envoi de notifs
-- 
+- interface graphique
