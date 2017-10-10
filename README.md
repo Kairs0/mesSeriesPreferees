@@ -10,6 +10,5 @@ http://api.tvmaze.com/singlesearch/shows?q=girls
 ..* relations entre objets
 ..* 
 
-- lister solutions disponibles pour l'envoi de notifs
 - interface graphique
 - relation avec l'api
