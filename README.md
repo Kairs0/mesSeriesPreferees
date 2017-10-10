@@ -1,14 +1,10 @@
 # Mes séries préférées
 
 
-## Api disponibles :
-- http://docs.trakt.apiary.io/#introduction/third-party-libraries
-- http://thetvdb.com/ 
-- https://api.thetvdb.com/swagger#/
-- https://api.tvshowtime.com/doc
+## Api choisie:
+http://api.tvmaze.com/singlesearch/shows?q=girls
 
 ## Travail à faire:
-- liste API -> choix =  f(fonctionnalités, documentation, ...)
 - chosir structure objets (POO)
 ..* lister objet : Réalisateurs, Acteurs, Série, Episodes, ..
 ..* relations entre objets
@@ -16,3 +12,4 @@
 
 - lister solutions disponibles pour l'envoi de notifs
 - interface graphique
+- relation avec l'api
