@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-C:\Users\Arnaud\git\mesSeriesPref\Series\Series.csproj;x86
-=======
-C:\Users\basti\Desktop\Projet POOA\Series\Series.csproj;x86
->>>>>>> 26f90e7150e1b28ea8368fa4d21ce0a306b19f2b
+C:\Users\Arnaud\Documents\Sandbox\Series\Series.csproj;x86
