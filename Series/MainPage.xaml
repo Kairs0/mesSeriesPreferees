@@ -7,7 +7,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
+        <Button Content="Recherche" HorizontalAlignment="Left" Margin="49,104,0,0" VerticalAlignment="Top" Height="44" Width="100" Click="Button_Search"/>
+        <Button Content="Favoris" HorizontalAlignment="Left" Margin="49,175,0,0" VerticalAlignment="Top" Width="100" Height="44" Click="Button_Favorites"/>
+        <TextBlock x:Name="AppTitle" HorizontalAlignment="Left" Margin="49,17,0,0" TextWrapping="Wrap" Text="Mes séries préférées" VerticalAlignment="Top" Height="65" Width="439" FontSize="36" FontWeight="Bold"/>
+        <GridView x:Name="ImageGridView"
+                  Margin="202,13,407,-325"
+                  RelativePanel.AlignLeftWithPanel="True"
+                  RelativePanel.AlignRightWithPanel="True"
+                  RelativePanel.Below="AppTitle"
+                  >
+            <Image Height="200" Width="200" Source="{x:Bind ImageSource, Mode=OneWay}"></Image>
+        </GridView>
+        
 
-    </Grid>
+    </RelativePanel>
 </Page>
+
