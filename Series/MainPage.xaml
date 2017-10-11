@@ -7,8 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="710" Margin="10,10,0,0" VerticalAlignment="Top" Width="1260"/>
     </Grid>
 </Page>
