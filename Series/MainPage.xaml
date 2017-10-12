@@ -8,19 +8,22 @@
     mc:Ignorable="d">
 
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
-        <Button Content="Recherche" HorizontalAlignment="Left" Margin="49,104,0,0" VerticalAlignment="Top" Height="44" Width="100" Click="Button_Search"/>
-        <Button Content="Favoris" HorizontalAlignment="Left" Margin="49,175,0,0" VerticalAlignment="Top" Width="100" Height="44" Click="Button_Favorites"/>
+
+        <Button x:Name="Recherche" Content="Recherche" HorizontalAlignment="Left" Margin="49,104,0,0" VerticalAlignment="Top" Height="44" Width="100" Click="Button_Search"/>
+        <Button x:Name="Favoris" Content="Favoris" HorizontalAlignment="Left" Margin="49,175,0,0" VerticalAlignment="Top" Width="100" Height="44" Click="Button_Favorites"/>
         <TextBlock x:Name="AppTitle" HorizontalAlignment="Left" Margin="49,17,0,0" TextWrapping="Wrap" Text="Mes séries préférées" VerticalAlignment="Top" Height="65" Width="439" FontSize="36" FontWeight="Bold"/>
         <GridView x:Name="ImageGridView"
-                  Margin="202,13,407,-325"
+                  Margin="200,60,330,-372"
                   RelativePanel.AlignLeftWithPanel="True"
                   RelativePanel.AlignRightWithPanel="True"
                   RelativePanel.Below="AppTitle"
                   >
-            <Image Height="200" Width="200" Source="{x:Bind ImageSource, Mode=OneWay}"></Image>
+            <Image Height="150" Width="150" Source="{x:Bind ImageSource[0], Mode=OneWay}"></Image>
+            <!--<Image Height="150" Width="150" Source="{x:Bind ImageSource, Mode=OneWay}"></Image>
+            <Image Height="150" Width="150" Source="{x:Bind ImageSource, Mode=OneWay}"></Image>-->
         </GridView>
-        
+        <TextBox x:Name="BarreRecherche" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="500" Margin="200,73,-629,-73"/>
+
 
     </RelativePanel>
 </Page>

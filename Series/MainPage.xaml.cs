@@ -31,29 +31,35 @@ namespace Series
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private string ImageSource { get; set; }
+        private readonly List<string> ImageSource = new List<string>(); /*{ get; set; }*/
 
         public MainPage()
         {
             this.InitializeComponent();
-            ImageSource = @"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg";
+            ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg");
+            BarreRecherche.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Search(object sender, RoutedEventArgs e)
         {
-            // do nothing yet
+            //Displays search box
+            BarreRecherche.Visibility = BarreRecherche.Visibility == Visibility.Visible
+                ? Visibility.Collapsed
+                : Visibility.Visible;
+            
+            //Hide previous results of search Or hide list from welcome view
+            //TODO
+            ImageGridView.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Favorites(object sender, RoutedEventArgs e)
         {
-            // do nothing yet either
+            // Displays list of series from user's favorite
         }
 
         private void ImageGridView_ItemClick(object sender, RoutedEventArgs e)
         {
             
         }
-
-
     }
 }
