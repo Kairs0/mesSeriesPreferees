@@ -36,14 +36,19 @@ namespace Series
         public MainPage()
         {
             this.InitializeComponent();
+            //todo: change sources of image source (get all last 15 episodes by time, and add an url to image)
             ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg");
             BarreRecherche.Visibility = Visibility.Collapsed;
+            TriggerSearch.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Search(object sender, RoutedEventArgs e)
         {
-            //Displays search box
+            //Displays search box + button
             BarreRecherche.Visibility = BarreRecherche.Visibility == Visibility.Visible
+                ? Visibility.Collapsed
+                : Visibility.Visible;
+            TriggerSearch.Visibility = TriggerSearch.Visibility == Visibility.Visible
                 ? Visibility.Collapsed
                 : Visibility.Visible;
             
@@ -60,6 +65,17 @@ namespace Series
         private void ImageGridView_ItemClick(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void TriggerSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string textToSearch = BarreRecherche.Text;
+
+        }
+
+        private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

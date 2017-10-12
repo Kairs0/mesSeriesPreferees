@@ -22,7 +22,8 @@
             <!--<Image Height="150" Width="150" Source="{x:Bind ImageSource, Mode=OneWay}"></Image>
             <Image Height="150" Width="150" Source="{x:Bind ImageSource, Mode=OneWay}"></Image>-->
         </GridView>
-        <TextBox x:Name="BarreRecherche" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="500" Margin="200,73,-629,-73"/>
+        <TextBox x:Name="BarreRecherche" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="500" Margin="200,73,-629,-73" TextChanged="BarreRecherche_TextChanged"/>
+        <Button x:Name="TriggerSearch" Content="Rechercher" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="95" Margin="733,73,-763,-73" Click="TriggerSearch_Click"/>
 
 
     </RelativePanel>
