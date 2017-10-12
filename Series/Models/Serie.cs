@@ -12,10 +12,27 @@ namespace Series.Models
     {
         public Serie(string json)
         {
-            JObject jObject = JObject.Parse(json);
-            JToken jSerie = jObject["show"];
-            id = (int) jSerie["id"];
 
+            JToken jObjectSerie = JToken.Parse(json);
+            
+            id = (int)jObjectSerie["id"];
+            url = (string)jObjectSerie["url"];
+            name = (string)jObjectSerie["name"];
+            type = (string)jObjectSerie["type"];
+            language = (string)jObjectSerie["language"];
+            genres = jObjectSerie["genres"].ToObject<string[]>();
+            status = (string)jObjectSerie["status"];
+            //runtime = (int)jObjectSerie["runtime"]; // TODO Gérer cas null
+            premiered = (string)jObjectSerie["premiered"];
+            officialSite = (string)jObjectSerie["officialSite"];
+            schedule = jObjectSerie["schedule"].ToObject<Schedule>();
+            //rating = jObjectSerie["rating"] != null ? jObjectSerie["rating"].ToObject<Rating>() : null; // TODO gérer le cas average null
+            weight = (int)jObjectSerie["weight"];
+            network = jObjectSerie["network"].ToObject<Network>();
+            image = jObjectSerie["image"].ToObject<Image>();
+            summary = (string)jObjectSerie["summary"];
+            updated = (int)jObjectSerie["updated"];
+            _links = jObjectSerie["_links"].ToObject<_Links>();
         }
 
         public int id { get; set; }
@@ -32,8 +49,8 @@ namespace Series.Models
         public Rating rating { get; set; }
         public int weight { get; set; }
         public Network network { get; set; }
-        public object webChannel { get; set; }
-        public Externals externals { get; set; }
+        //public object webChannel { get; set; }
+        //public Externals externals { get; set; }
         public Image image { get; set; }
         public string summary { get; set; }
         public int updated { get; set; }

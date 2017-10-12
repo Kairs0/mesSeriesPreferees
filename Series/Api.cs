@@ -14,14 +14,28 @@ namespace Series
     static class Api
     {
         // https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client
-        // En chantier - choix de la techno microsoft (voir readme)
+        // En chantier 
 
         private static HttpClient client = new HttpClient();
 
         private static string BaseUrl = "http://api.tvmaze.com/";
         private static string ShowSearchArg = "search/shows?q=";
+        private static string SingleShearchArg = "singlesearch/shows?q=";
 
+        public static Serie GetShowByName(string arg)
+        {
+            //TODO: deal with empty string case
 
+            Serie show = null;
+            var response = client.GetAsync(BaseUrl + SingleShearchArg + arg).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                var stringContent = responseContent.ReadAsStringAsync().Result;
+                show = new Serie(stringContent);
+            }
+            return show;
+        }
 
         public static List<Serie> ShowSearch(string arg)
         {
@@ -34,35 +48,19 @@ namespace Series
             {
                 var responseContent = response.Content;
                 var stringContent = responseContent.ReadAsStringAsync().Result;
-                //TODO : faire le lien list<Serie> avec show
-                //resultSearch = JArray.Parse(stringContent);
-            }
-            //HttpWebRequest request = (HttpWebRequest) WebRequest.Create(BaseUrl+ShowSearchArg+arg);
-            //request.Method = "GET";
-            
 
-            //HttpWebResponse response = (HttpWebResponse)(await request.GetResponseAsync());
+                var jArraySeries = JArray.Parse(stringContent);
+                foreach (JToken jSearchResultUnit in jArraySeries)
+                {
+                    JToken jSerie = jSearchResultUnit["show"];
+                    resultSearch.Add(
+                        new Serie(jSerie.ToString())
+                        );
+                }
+            }
             return resultSearch;
         }
 
-        //static async Task<List<Serie>> GetProductAsync(string path)
-        //{
-        //    List<Serie> product = new List<Serie>();
-        //    HttpResponseMessage response = await client.GetAsync(path);
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        product = await response.Content.ReadAsAsync<List<Serie>>();
-        //    }
-        //    return product;
-        //}
-
-        //static async Task RunAsync()
-        //{
-        //    client.BaseAddress = new Uri(BaseUrl);
-        //    client.DefaultRequestHeaders.Accept.Clear();
-        //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-        //}
-
+        
     }
 }

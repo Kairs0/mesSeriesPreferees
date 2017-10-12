@@ -26,9 +26,6 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace Series
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         private readonly List<string> ImageSource = new List<string>(); /*{ get; set; }*/
@@ -64,14 +61,26 @@ namespace Series
 
         private void ImageGridView_ItemClick(object sender, RoutedEventArgs e)
         {
-            
+            // Will display element on a serie when user clicks on an item
         }
 
         private void TriggerSearch_Click(object sender, RoutedEventArgs e)
         {
+            // idée : cherche à l'aide de la recheche exact (ShowByName), si ne retourne pas de résultat chercher avec ShowSearch
             string textToSearch = BarreRecherche.Text;
             var result = Api.ShowSearch(textToSearch);
-
+            //var result = Api.GetShowByName(textToSearch);
+            if (result.Count != 0)
+            {
+                ImageSource.Clear();
+                foreach (var serie in result)
+                {
+                    string urlImage = serie.image.medium;
+                    ImageSource.Add(@urlImage);
+                }
+                //TODO trouver le moyen de reload l'image gridview depuis son initialisation
+                ImageGridView.Visibility = Visibility.Visible;
+            }
         }
 
         private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
