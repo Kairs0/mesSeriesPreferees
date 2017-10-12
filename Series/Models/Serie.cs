@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace Series.Models
 {
-
+    // https://stackoverflow.com/questions/2246694/how-to-convert-json-object-to-custom-c-sharp-object
     public class Serie
     {
+        public Serie(string json)
+        {
+            JObject jObject = JObject.Parse(json);
+            JToken jSerie = jObject["show"];
+            id = (int) jSerie["id"];
+
+        }
+
         public int id { get; set; }
         public string url { get; set; }
         public string name { get; set; }

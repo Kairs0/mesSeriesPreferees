@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace Series
 {
@@ -20,17 +21,28 @@ namespace Series
         private static string BaseUrl = "http://api.tvmaze.com/";
         private static string ShowSearchArg = "search/shows?q=";
 
+
+
         public static List<Serie> ShowSearch(string arg)
         {
             //TODO: deal with empty string case
 
-            var result = new List<Serie>();
+            var resultSearch = new List<Serie>();
+            var response = client.GetAsync(BaseUrl + ShowSearchArg + arg).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                var stringContent = responseContent.ReadAsStringAsync().Result;
+                //TODO : faire le lien list<Serie> avec show
+                //resultSearch = JArray.Parse(stringContent);
+            }
             //HttpWebRequest request = (HttpWebRequest) WebRequest.Create(BaseUrl+ShowSearchArg+arg);
             //request.Method = "GET";
             
 
             //HttpWebResponse response = (HttpWebResponse)(await request.GetResponseAsync());
-            return result;
+            return resultSearch;
         }
 
         //static async Task<List<Serie>> GetProductAsync(string path)

@@ -70,6 +70,7 @@ namespace Series
         private void TriggerSearch_Click(object sender, RoutedEventArgs e)
         {
             string textToSearch = BarreRecherche.Text;
+            var result = Api.ShowSearch(textToSearch);
 
         }
 
