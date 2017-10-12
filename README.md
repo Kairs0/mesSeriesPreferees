@@ -10,11 +10,10 @@ http://api.tvmaze.com/
 - Tous les champs ne sont pas forcéments nécessaires
 
 ## Interface graphique:
-- chosir structure objets (POO)
--- lister objet : Réalisateurs, Acteurs .. -> Utiliser les modèles de API Maze
---relations entre objets
-- interface graphique : mon idée est d'afficher lors du démarrage de l'appli les deux boutons + une liste d'images des séries récentes. Lors du click sur favoris, les icones des séries favorites de l'utilisateur sont displayées, lors du click sur la recherche le champ recherche est déployé. 
-- relation avec l'api: à voir
+(Arnaud) mon idée est d'afficher lors du démarrage de l'appli les deux boutons + une liste d'images des séries récentes. Lors du click sur favoris, les icones des séries favorites de l'utilisateur sont displayées, lors du click sur la recherche le champ recherche est déployé. 
+
+## Modèle de branchement avec l'API
+à voir
 
 ## Problèmes de références System lors d'un pull:
 [StackOverFlow](https://stackoverflow.com/questions/32607616/visual-studio-2015-c-sharp-windows-universal-app-missing-assembly-reference/32607617#32607617)
