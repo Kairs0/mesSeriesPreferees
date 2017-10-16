@@ -23,6 +23,8 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Media.Animation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// GridView - https://www.tutorialspoint.com/xaml/xaml_gridview.htm
+// https://stackoverflow.com/questions/17056989/windows-8-xaml-displaying-a-list-of-images-in-a-gridview-through-data-binding
 
 namespace Series
 {
@@ -35,6 +37,7 @@ namespace Series
             this.InitializeComponent();
             //todo: change sources of image source (get all last 15 episodes by time, and add an url to image)
             ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg");
+            ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/72/181728.jpg");
             BarreRecherche.Visibility = Visibility.Collapsed;
             TriggerSearch.Visibility = Visibility.Collapsed;
         }
@@ -48,7 +51,10 @@ namespace Series
             TriggerSearch.Visibility = TriggerSearch.Visibility == Visibility.Visible
                 ? Visibility.Collapsed
                 : Visibility.Visible;
-            
+
+            //Hide last episodes text
+            LastEpisodes.Visibility = Visibility.Collapsed; 
+
             //Hide previous results of search Or hide list from welcome view
             //TODO
             ImageGridView.Visibility = Visibility.Collapsed;
@@ -75,15 +81,33 @@ namespace Series
                 ImageSource.Clear();
                 foreach (var serie in result)
                 {
-                    string urlImage = serie.image.medium;
-                    ImageSource.Add(@urlImage);
+                    //! L'objet image peut être nul
+                    if (serie.image != null)
+                    {
+                        string urlImage = serie.image.medium;
+                        ImageSource.Add(@urlImage);
+                    }
+                    else
+                    {
+                        //TODO add an empty image
+
+                    }
+                    
                 }
                 //TODO trouver le moyen de reload l'image gridview depuis son initialisation
+
+                ImageGridView.ItemsSource = null;
+                ImageGridView.ItemsSource = ImageSource;
                 ImageGridView.Visibility = Visibility.Visible;
             }
         }
 
         private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
         }

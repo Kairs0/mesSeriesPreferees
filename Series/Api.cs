@@ -42,6 +42,7 @@ namespace Series
             //TODO: deal with empty string case
 
             var resultSearch = new List<Serie>();
+            //todo gérer cas serveur innaccessible
             var response = client.GetAsync(BaseUrl + ShowSearchArg + arg).Result;
 
             if (response.IsSuccessStatusCode)

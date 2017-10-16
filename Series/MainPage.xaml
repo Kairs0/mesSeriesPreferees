@@ -18,12 +18,16 @@
                   RelativePanel.AlignRightWithPanel="True"
                   RelativePanel.Below="AppTitle"
                   >
-            <Image Height="150" Width="150" Source="{x:Bind ImageSource[0], Mode=OneWay}"></Image>
-            <!--<Image Height="150" Width="150" Source="{x:Bind ImageSource, Mode=OneWay}"></Image>
-            <Image Height="150" Width="150" Source="{x:Bind ImageSource, Mode=OneWay}"></Image>-->
+            <Image x:Name="firstImage" Height="150" Width="150" Source="{x:Bind ImageSource[0], Mode=TwoWay}"></Image>
+            <Image Height="150" Width="150" Source="{x:Bind ImageSource[1], Mode=TwoWay}"></Image>
+            <!--<Image Height="150" Width="150" Source="{x:Bind ImageSource[2], Mode=OneWay}"></Image>
+            <Image Height="150" Width="150" Source="{x:Bind ImageSource[3], Mode=OneWay}"></Image>
+            <Image Height="150" Width="150" Source="{x:Bind ImageSource[4], Mode=OneWay}"></Image>-->
+
         </GridView>
-        <TextBox x:Name="BarreRecherche" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="500" Margin="200,73,-629,-73" TextChanged="BarreRecherche_TextChanged"/>
-        <Button x:Name="TriggerSearch" Content="Rechercher" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="95" Margin="733,73,-763,-73" Click="TriggerSearch_Click"/>
+        <TextBox x:Name="BarreRecherche" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="500" Margin="206,104,-635,-104" TextChanged="BarreRecherche_TextChanged"/>
+        <Button x:Name="TriggerSearch" Content="Rechercher" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="95" Margin="739,104,-769,-104" Click="TriggerSearch_Click"/>
+        <TextBlock x:Name="LastEpisodes" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Dernières sorties" VerticalAlignment="Top" Width="127" Margin="188,97,-253,-97" SelectionChanged="TextBlock_SelectionChanged"/>
 
 
     </RelativePanel>
