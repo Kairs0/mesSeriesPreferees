@@ -36,7 +36,7 @@ namespace Series
         public MainPage()
         {
             this.InitializeComponent();
-            //todo: change sources of image source (get all last 15 episodes by time, and add an url to image)
+            // use 
             ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg");
             ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/72/181728.jpg");
          //   BarreRecherche.Visibility = Visibility.Collapsed;
@@ -99,16 +99,20 @@ namespace Series
                     
                 }
                 //TODO trouver le moyen de reload l'image gridview depuis son initialisation
+                //TEST
+                ImageGridView.Items.Clear();
+                ImageGridView.Items.Add(@ImageSource[0]);
+                //END TEST
 
-                ImageGridView.ItemsSource = null;
-                ImageGridView.ItemsSource = ImageSource;
+                //ImageGridView.ItemsSource = null;
+                //ImageGridView.ItemsSource = ImageSource;
                 ImageGridView.Visibility = Visibility.Visible;
             }
         }
 
         private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            
         }
         */
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)

@@ -18,9 +18,11 @@ namespace Series
 
         private static HttpClient client = new HttpClient();
 
-        private static string BaseUrl = "http://api.tvmaze.com/";
-        private static string ShowSearchArg = "search/shows?q=";
-        private static string SingleShearchArg = "singlesearch/shows?q=";
+        private const string BaseUrl = "http://api.tvmaze.com/";
+        private const string ShowSearchArg = "search/shows?q=";
+        private const string SingleShearchArg = "singlesearch/shows?q=";
+        private const string PeopleSearch = "search/people?q=";
+        private const string Schedule = "/schedule?country=";
 
         public static Serie GetShowByName(string arg)
         {
@@ -62,6 +64,47 @@ namespace Series
             return resultSearch;
         }
 
-        
+        //TODO à tester
+        public static List<Models.People> SearchByPeople(string arg)
+        {
+            var resultSearch = new List<People>();
+            var response = client.GetAsync(BaseUrl + PeopleSearch + arg).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                var stringContent = responseContent.ReadAsStringAsync().Result;
+                var jArrayPeople = JArray.Parse(stringContent);
+                foreach (var jSearchResultUnit in jArrayPeople)
+                {
+                    JToken jPeople = jSearchResultUnit["person"];
+                    resultSearch.Add(
+                        new People(jPeople.ToString())
+                    );
+                }
+            }
+            return resultSearch;
+        }
+
+        //Todo tester 
+        public static List<Episode> GetEpisodesToNight(string codePays)
+        {
+            //codePays = "FR" pour france
+            var resultSearch = new List<Episode>();
+            var response = client.GetAsync(BaseUrl + Schedule + codePays).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+                var stringContent = responseContent.ReadAsStringAsync().Result;
+                var jArrayEpisodes = JArray.Parse(stringContent);
+                foreach (var jSearchResultUnit in jArrayEpisodes)
+                {
+                    resultSearch.Add(
+                        new Episode(jSearchResultUnit.ToString())
+                    );
+                }
+            }
+            return resultSearch;
+        }
+
     }
 }
