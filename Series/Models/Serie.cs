@@ -110,15 +110,4 @@ namespace Series.Models
     {
         public string href { get; set; }
     }
-
-
-
-    //enum Genres { Action, Adult, Adventure, Anime, Children, Comedy, Crime, DIY, Drama, Espionage, Family, Fantasy, Food, History, Horror, Legal, Medical, Music, Mystery, Nature, Romance, Science-Fiction, Sports, Supernatural, Thriller, Travel, War, Western }
-
-
-    //class Serie
-    //{
-    //    public Genres Genre { get; set; }
-
-    //}
 }
