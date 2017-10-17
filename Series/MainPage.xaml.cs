@@ -38,10 +38,11 @@ namespace Series
             //todo: change sources of image source (get all last 15 episodes by time, and add an url to image)
             ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg");
             ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/72/181728.jpg");
-            BarreRecherche.Visibility = Visibility.Collapsed;
-            TriggerSearch.Visibility = Visibility.Collapsed;
+         //   BarreRecherche.Visibility = Visibility.Collapsed;
+         //   TriggerSearch.Visibility = Visibility.Collapsed;
         }
 
+        /*
         private void Button_Search(object sender, RoutedEventArgs e)
         {
             //Displays search box + button
@@ -59,18 +60,20 @@ namespace Series
             //TODO
             ImageGridView.Visibility = Visibility.Collapsed;
         }
-
+        */
         private void Button_Favorites(object sender, RoutedEventArgs e)
         {
             // Displays list of series from user's favorite
         }
+        
 
         private void ImageGridView_ItemClick(object sender, RoutedEventArgs e)
         {
             // Will display element on a serie when user clicks on an item
         }
 
-        private void TriggerSearch_Click(object sender, RoutedEventArgs e)
+
+      /*  private void TriggerSearch_Click(object sender, RoutedEventArgs e)
         {
             // idée : cherche à l'aide de la recheche exact (ShowByName), si ne retourne pas de résultat chercher avec ShowSearch
             string textToSearch = BarreRecherche.Text;
@@ -110,10 +113,40 @@ namespace Series
         {
             
         }
-
+        */
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+        
+
+        private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            string texteSaisi = BarreRechercheAuto.Text;
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                //Set the ItemsSource to be your filtered dataset
+                //sender.ItemsSource = dataset;
+            }
+        }
+
+
+        private void BarreRechercheAuto_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            // Set sender.Text. You can use args.SelectedItem to build your text string.
+        }
+
+
+        private void BarreRechercheAuto_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            if (args.ChosenSuggestion != null)
+            {
+                // User selected an item from the suggestion list, take an action on it here.
+            }
+            else
+            {
+                // Use args.QueryText to determine what to do.
+            }
         }
     }
 }
