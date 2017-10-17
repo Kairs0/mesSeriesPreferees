@@ -95,16 +95,20 @@ namespace Series
                     
                 }
                 //TODO trouver le moyen de reload l'image gridview depuis son initialisation
+                //TEST
+                ImageGridView.Items.Clear();
+                ImageGridView.Items.Add(@ImageSource[0]);
+                //END TEST
 
-                ImageGridView.ItemsSource = null;
-                ImageGridView.ItemsSource = ImageSource;
+                //ImageGridView.ItemsSource = null;
+                //ImageGridView.ItemsSource = ImageSource;
                 ImageGridView.Visibility = Visibility.Visible;
             }
         }
 
         private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
