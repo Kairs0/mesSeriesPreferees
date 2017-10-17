@@ -31,6 +31,7 @@ namespace Series
     public sealed partial class MainPage : Page
     {
         private readonly List<string> ImageSource = new List<string>(); /*{ get; set; }*/
+        private List<string> listeSeries;
 
         public MainPage()
         {
@@ -125,8 +126,8 @@ namespace Series
             string texteSaisi = BarreRechercheAuto.Text;
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
-                //Set the ItemsSource to be your filtered dataset
-                //sender.ItemsSource = dataset;
+                var listeSuggestions = listeSeries.Where(i => i.StartsWith(texteSaisi)).ToList(); // /!\ listeSeries à créer avec l'API index
+                BarreRechercheAuto.ItemsSource = listeSuggestions;
             }
         }
 
@@ -134,6 +135,8 @@ namespace Series
         private void BarreRechercheAuto_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             // Set sender.Text. You can use args.SelectedItem to build your text string.
+            BarreRechercheAuto.Text = args.SelectedItem as string;
+
         }
 
 
@@ -141,12 +144,17 @@ namespace Series
         {
             if (args.ChosenSuggestion != null)
             {
-                // User selected an item from the suggestion list, take an action on it here.
+                // Serie choisie depuis la liste, utiliser la recherche ciblée par ID (ou nom ?).
             }
             else
             {
-                // Use args.QueryText to determine what to do.
+                // Série non reconnue, utiliser la recherche large par texte.
             }
+        }
+
+        private void ClickBouttonNav(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DetailsSerie));
         }
     }
 }

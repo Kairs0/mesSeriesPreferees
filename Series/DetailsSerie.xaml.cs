@@ -26,6 +26,13 @@ namespace Series
         public DetailsSerie()
         {
             this.InitializeComponent();
+            Nom_Serie.Text = "Test";
+
+        }
+
+        private void ClickBouttonRetour(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }
