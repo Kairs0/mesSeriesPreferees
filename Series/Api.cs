@@ -18,11 +18,11 @@ namespace Series
 
         private static HttpClient client = new HttpClient();
 
-        private static string BaseUrl = "http://api.tvmaze.com/";
-        private static string ShowSearchArg = "search/shows?q=";
-        private static string SingleShearchArg = "singlesearch/shows?q=";
-        private static string PeopleSearch = "search/people?q=";
-        private static string Schedule = "/schedule?country=";
+        private const string BaseUrl = "http://api.tvmaze.com/";
+        private const string ShowSearchArg = "search/shows?q=";
+        private const string SingleShearchArg = "singlesearch/shows?q=";
+        private const string PeopleSearch = "search/people?q=";
+        private const string Schedule = "/schedule?country=";
 
         public static Serie GetShowByName(string arg)
         {

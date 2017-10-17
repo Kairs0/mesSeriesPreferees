@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+// https://docs.microsoft.com/en-us/windows/uwp/layout/navigate-between-two-pages
 
 namespace Series
 {

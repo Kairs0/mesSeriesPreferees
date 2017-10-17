@@ -35,7 +35,7 @@ namespace Series
         public MainPage()
         {
             this.InitializeComponent();
-            //todo: change sources of image source (get all last 15 episodes by time, and add an url to image)
+            // use 
             ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg");
             ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/72/181728.jpg");
          //   BarreRecherche.Visibility = Visibility.Collapsed;
