@@ -151,5 +151,10 @@ namespace Series
                 // Série non reconnue, utiliser la recherche large par texte.
             }
         }
+
+        private void ClickBouttonNav(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DetailsSerie));
+        }
     }
 }
