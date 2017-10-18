@@ -23,10 +23,20 @@ namespace Series
     /// </summary>
     public sealed partial class DetailsSerie : Page
     {
+
+        public string NomSerie { get; set; }
+       // public Image ImageSerie { get; set; }
+       public string ImageUrl { get; set; }
+
         public DetailsSerie()
         {
             this.InitializeComponent();
-            Nom_Serie.Text = "Test";
+
+            //           Serie InfosSerie = Api.GetShowByName(NomSerie);
+            //           Nom_Serie = InfosSerie.name;
+            //           ImageSerie = InfosSerie.image;
+            TitrePage.Text = "Nom de la série"; // a remplacer par Nom_Serie quand fonctionnera
+            ImageUrl = "http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg";
 
         }
 

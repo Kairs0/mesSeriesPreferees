@@ -106,6 +106,7 @@
     <Compile Include="Models\People.cs" />
     <Compile Include="Models\Saison.cs" />
     <Compile Include="Models\Serie.cs" />
+    <Compile Include="Vignette.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
