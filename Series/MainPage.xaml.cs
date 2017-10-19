@@ -154,7 +154,8 @@ namespace Series
 
         private void ClickBouttonNav(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DetailsSerie));
+            string NomSerie = "NomSerie donné par MainPage";
+            this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
         }
     }
 }

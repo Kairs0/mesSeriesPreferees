@@ -24,18 +24,25 @@ namespace Series
     public sealed partial class DetailsSerie : Page
     {
 
-        public string NomSerie { get; set; }
+        public string NomSerie;
        // public Image ImageSerie { get; set; }
        public string ImageUrl { get; set; }
 
-        public DetailsSerie()
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            NomSerie = (string)e.Parameter;
+            TitrePage.Text = NomSerie;
+            base.OnNavigatedTo(e);
+        }
+
+          public DetailsSerie()
         {
             this.InitializeComponent();
 
-            //           Serie InfosSerie = Api.GetShowByName(NomSerie);
+             //         Serie InfosSerie = Api.GetShowByName(NomSerieRecherche);
             //           Nom_Serie = InfosSerie.name;
             //           ImageSerie = InfosSerie.image;
-            TitrePage.Text = "Nom de la série"; // a remplacer par Nom_Serie quand fonctionnera
+
             ImageUrl = "http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg";
 
         }
