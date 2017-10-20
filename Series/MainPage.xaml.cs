@@ -51,7 +51,7 @@ namespace Series
 
         private void ImageGridView_ItemClick(object sender, RoutedEventArgs e)
         {
-            //Montre la page DetailSeries lors d'un click sur une Image de série
+            //Montre la page DetailSeries lors d'un click sur une image de série
         }
 
         private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
@@ -76,7 +76,7 @@ namespace Series
                 String[] listeSuggestions = new String[seriesList.Count];
                 for (int i = 0; i < seriesList.Count; i++)
                 {
-                    listeSuggestions[i] = seriesList[i].Name;
+                    listeSuggestions[i] = seriesList[i].name;
                 }
                 BarreRechercheAuto.ItemsSource = listeSuggestions;
             }
@@ -103,25 +103,13 @@ namespace Series
             {
                 // Série non reconnue, utiliser la recherche large par texte.
                 //on affiche les vignettes
-
             }
         }
 
-        //Arnaud : j'utilise cette fonction pour tester les appels à l'api
-        //private void Button_Click(object sender, RoutedEventArgs e)
-
-        //{
-        //    string test = "dexter";
-        //    string test2 = "ddzadza2AAA";
-        //    var a = Api.GetShowByName(test);
-        //    var b = Api.GetShowByName(test2);
-        //    var c = Api.GetCastSerie(a.Id.ToString());
-        //    var d = Api.ShowSearch(test);
-        //    var f = Api.ShowSearch(test2);
-        //    var g = Api.GetEpisodesToNight("FR");
-        //    var i = Api.SearchByPeople("john");
-        //    var br = "";
-        //}
-
+        private void ClickBouttonNav(object sender, RoutedEventArgs e)
+        {
+            string NomSerie = "Friends";
+            this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
+        }
     }
 }

@@ -7,18 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
         <!--<Button x:Name="Recherche" Content="Recherche" HorizontalAlignment="Left" Margin="49,104,0,0" VerticalAlignment="Top" Height="44" Width="100" Click="Button_Search"/>-->
         <Button x:Name="Favoris" Content="Favoris" HorizontalAlignment="Left" Margin="61,77,-12,0" VerticalAlignment="Top" Width="100" Height="44" Click="Button_Favorites" FontWeight="Bold">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFE60707" Offset="0"/>
-                    <GradientStop Color="#FF874949" Offset="1"/>
+                    <GradientStop Color="#FFB88484" Offset="1"/>
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
         <TextBlock x:Name="AppTitle" TextWrapping="Wrap" Text="Mes séries préférées" Width="352" FontSize="36" FontWeight="Bold" Height="48" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         <GridView x:Name="ImageGridView"
-                  Margin="200,218,768,-530"
+                  Margin="200,218,200,-530"
                   RelativePanel.AlignLeftWithPanel="True"
                   RelativePanel.AlignRightWithPanel="True"
                   RelativePanel.Below="AppTitle" RelativePanel.AlignHorizontalCenterWithPanel="True"
@@ -32,12 +34,7 @@
         </GridView>
         <TextBlock x:Name="LastEpisodes" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Dernières sorties" VerticalAlignment="Bottom" Width="246" Margin="220,256,-404,-276" SelectionChanged="TextBlock_SelectionChanged" FontSize="22"/>
         <AutoSuggestBox x:Name="BarreRechercheAuto" TextChanged="BarreRechercheAuto_TextChanged" QuerySubmitted="BarreRechercheAuto_QuerySubmitted" SuggestionChosen="BarreRechercheAuto_SuggestionChosen" PlaceholderText="Recherche de série" QueryIcon="Find" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="465" Margin="0,92,0,-92" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-
         <HyperlinkButton x:Name="NavVersSerie" Content="Vers Serie (PH)" Click="ClickBouttonNav" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="108" Margin="200,167,-200,-167"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="65" Margin="983,47,-983,-47" Click="Button_Click"/>
-
-        <!--<ScrollBar HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="16"/>-->
-
 
 
     </RelativePanel>

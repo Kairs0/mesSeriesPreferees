@@ -29,7 +29,7 @@
 
   <Applications>
     <Application Id="App"
-      Executable="$targetNametoken$.exe"
+      Executable="$targetnametoken$.exe"
       EntryPoint="Series.App">
       <uap:VisualElements
         DisplayName="Series"
@@ -37,7 +37,7 @@
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="Series"
         BackgroundColor="transparent">
-        <uap:DefaultTile WIde310x150Logo="Assets\WIde310x150Logo.png"/>
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
     </Application>
