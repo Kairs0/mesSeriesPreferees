@@ -119,18 +119,6 @@ namespace Series
         {
 
         }
-        
-
-        private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            string texteSaisi = BarreRechercheAuto.Text;
-            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
-            {
-                //TODO arnaud
-                var listeSuggestions = listeSeries.Where(i => i.StartsWith(texteSaisi)).ToList(); // /!\ listeSeries à créer avec l'API index
-                BarreRechercheAuto.ItemsSource = listeSuggestions;
-            }
-        }
 
 
         private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -148,6 +136,14 @@ namespace Series
                 }
                 BarreRechercheAuto.ItemsSource = listeSuggestions;
             }
+        }
+
+
+        private void BarreRechercheAuto_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            // Set sender.Text. You can use args.SelectedItem to build your text string.
+            BarreRechercheAuto.Text = args.SelectedItem as string;
+
         }
 
 
