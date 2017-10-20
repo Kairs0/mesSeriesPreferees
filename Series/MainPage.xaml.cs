@@ -103,31 +103,25 @@ namespace Series
             {
                 // Série non reconnue, utiliser la recherche large par texte.
                 //on affiche les vignettes
+
             }
         }
 
-
-        private void ClickBouttonNav(object sender, RoutedEventArgs e)
-        {
-            string NomSerie = "Friends";
-            this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
-        }
-
         //Arnaud : j'utilise cette fonction pour tester les appels à l'api
-        private void Button_Click(object sender, RoutedEventArgs e)
+        //private void Button_Click(object sender, RoutedEventArgs e)
 
-        {
-            string test = "dexter";
-            string test2 = "ddzadza2AAA";
-            var a = Api.GetShowByName(test);
-            var b = Api.GetShowByName(test2);
-            var c = Api.GetCastSerie(a.Id.ToString());
-            var d = Api.ShowSearch(test);
-            var f = Api.ShowSearch(test2);
-            var g = Api.GetEpisodesToNight("FR");
-            var i = Api.SearchByPeople("john");
-            var br = "";
-        }
+        //{
+        //    string test = "dexter";
+        //    string test2 = "ddzadza2AAA";
+        //    var a = Api.GetShowByName(test);
+        //    var b = Api.GetShowByName(test2);
+        //    var c = Api.GetCastSerie(a.Id.ToString());
+        //    var d = Api.ShowSearch(test);
+        //    var f = Api.ShowSearch(test2);
+        //    var g = Api.GetEpisodesToNight("FR");
+        //    var i = Api.SearchByPeople("john");
+        //    var br = "";
+        //}
 
     }
 }
