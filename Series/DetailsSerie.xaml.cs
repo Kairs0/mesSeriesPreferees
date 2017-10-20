@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Series.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 // https://docs.microsoft.com/en-us/windows/uwp/layout/navigate-between-two-pages
@@ -25,13 +26,17 @@ namespace Series
     {
 
         public string NomSerie;
-       // public Image ImageSerie { get; set; }
-       public string ImageUrl { get; set; }
+       public Models.Image ImageSerie { get; set; }
+        public string ImageUrl;
+        public string Nom_Serie;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             NomSerie = (string)e.Parameter;
-            TitrePage.Text = NomSerie;
+            Serie InfosSerie = Api.GetShowByName(NomSerie);
+            Nom_Serie = InfosSerie.name;
+            TitrePage.Text = Nom_Serie;
+            ImageUrl = InfosSerie.image.medium;
             base.OnNavigatedTo(e);
         }
 
@@ -39,11 +44,8 @@ namespace Series
         {
             this.InitializeComponent();
 
-             //         Serie InfosSerie = Api.GetShowByName(NomSerieRecherche);
-            //           Nom_Serie = InfosSerie.name;
-            //           ImageSerie = InfosSerie.image;
+                   
 
-            ImageUrl = "http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg";
 
         }
 
