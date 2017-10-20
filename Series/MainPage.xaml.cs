@@ -106,6 +106,7 @@ namespace Series
             }
         }
 
+<<<<<<< HEAD
         private void ClickBouttonNav(object sender, RoutedEventArgs e)
         {
             string NomSerie = "Friends";
@@ -127,5 +128,7 @@ namespace Series
         //    var i = Api.SearchByPeople("john");
         //    var br = "";
         //}
+=======
+>>>>>>> ec7d3cc93125877543937e6a053e895aa7e118d4
     }
 }
