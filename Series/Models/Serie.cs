@@ -35,79 +35,79 @@ namespace Series.Models
             _links = jObjectSerie["_links"].ToObject<_Links>();
         }
 
-        public int id { get; set; }
-        public string url { get; set; }
-        public string name { get; set; }
-        public string type { get; set; }
-        public string language { get; set; }
-        public string[] genres { get; set; }
-        public string status { get; set; }
-        public int runtime { get; set; }
-        public string premiered { get; set; }
-        public string officialSite { get; set; }
-        public Schedule schedule { get; set; }
-        public Rating rating { get; set; }
-        public int weight { get; set; }
-        public Network network { get; set; }
-        //public object webChannel { get; set; }
-        //public Externals externals { get; set; }
-        public Image image { get; set; }
-        public string summary { get; set; }
-        public int updated { get; set; }
-        public _Links _links { get; set; }
+        public int id { get; }
+        public string url { get; }
+        public string name { get; }
+        public string type { get; }
+        public string language { get; }
+        public string[] genres { get; }
+        public string status { get; }
+        public int runtime { get; }
+        public string premiered { get; }
+        public string officialSite { get; }
+        public Schedule schedule { get; }
+        public Rating rating { get; }
+        public int weight { get; }
+        public Network network { get; }
+        //public object webChannel { get; }
+        //public Externals externals { get; }
+        public Image image { get; }
+        public string summary { get; }
+        public int updated { get; }
+        public _Links _links { get; }
     }
 
     public class Schedule
     {
-        public string time { get; set; }
-        public string[] days { get; set; }
+        public string time { get; }
+        public string[] days { get; }
     }
 
     public class Rating
     {
-        public float average { get; set; }
+        public float average { get; }
     }
 
     public class Network
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public Country country { get; set; }
+        public int id { get; }
+        public string name { get; }
+        public Country country { get; }
     }
 
     public class Country
     {
-        public string name { get; set; }
-        public string code { get; set; }
-        public string timezone { get; set; }
+        public string name { get; }
+        public string code { get; }
+        public string timezone { get; }
     }
 
     public class Externals
     {
-        public int tvrage { get; set; }
-        public int thetvdb { get; set; }
-        public string imdb { get; set; }
+        public int tvrage { get; }
+        public int thetvdb { get; }
+        public string imdb { get; }
     }
 
     public class Image
     {
-        public string medium { get; set; }
-        public string original { get; set; }
+        public string medium { get; }
+        public string original { get; }
     }
 
     public class _Links
     {
-        public Self self { get; set; }
-        public Previousepisode previousepisode { get; set; }
+        public Self self { get; }
+        public Previousepisode previousepisode { get; }
     }
 
     public class Self
     {
-        public string href { get; set; }
+        public string href { get; }
     }
 
     public class Previousepisode
     {
-        public string href { get; set; }
+        public string href { get; }
     }
 }

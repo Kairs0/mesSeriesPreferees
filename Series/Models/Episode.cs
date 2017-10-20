@@ -26,22 +26,22 @@ namespace Series.Models
             show = jObjectEpisode["show"].ToObject<Serie>();
         }
 
-        public int id { get; set; }
-        public string url { get; set; }
-        public string name { get; set; }
-        public int season { get; set; }
-        public int number { get; set; }
-        public string airdate { get; set; }
-        public string airtime { get; set; }
-        public DateTime airstamp { get; set; }
-        public int runtime { get; set; }
-        public Image image { get; set; }
-        public string summary { get; set; }
-        public Serie show { get; set; }
+        public int id { get; }
+        public string url { get; }
+        public string name { get; }
+        public int season { get; }
+        public int number { get; }
+        public string airdate { get; }
+        public string airtime { get; }
+        public DateTime airstamp { get; }
+        public int runtime { get; }
+        public Image image { get; }
+        public string summary { get; }
+        public Serie show { get; }
     }
 
     public class Nextepisode
     {
-        public string href { get; set; }
+        public string href { get; }
     }
 }

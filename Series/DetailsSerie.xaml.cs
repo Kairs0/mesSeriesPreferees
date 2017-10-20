@@ -29,19 +29,21 @@ namespace Series
        public Models.Image ImageSerie { get; set; }
         public string ImageUrl;
         public string Nom_Serie;
+        public string ID_Serie;
 
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             NomSerie = (string)e.Parameter;
             Serie InfosSerie = Api.GetShowByName(NomSerie);
+            ID_Serie = InfosSerie.id.ToString();
 
             Nom_Serie = InfosSerie.name;
             TitrePage.Text = Nom_Serie;
 
             ImageUrl = InfosSerie.image.medium;
             Resume.Text = InfosSerie.summary;
-            // Acteurs.Text = InfosSerie.;
+            //ListeActeurs.Items = Api.GetCastSerie(ID_Serie);
             base.OnNavigatedTo(e);
         }
 

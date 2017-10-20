@@ -102,6 +102,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\BindPersonToCharacter.cs" />
     <Compile Include="Models\Episode.cs" />
     <Compile Include="Models\People.cs" />
     <Compile Include="Models\Saison.cs" />

@@ -15,5 +15,10 @@
         <TextBlock x:Name="Resume" HorizontalAlignment="Left" Height="151" Margin="511,230,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" Width="625"/>
         <TextBlock x:Name="Acteurs" HorizontalAlignment="Left" Height="188" Margin="511,388,0,0" TextWrapping="Wrap" Text="Acteurs" VerticalAlignment="Top" Width="469"/>
         <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="46" Margin="52,149,0,0" VerticalAlignment="Top" Width="185" Background="#338B2F04"/>
+        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="247" VerticalAlignment="Top" Width="616" Margin="464,475,0,0">
+            <ListView.Items>
+                
+            </ListView.Items>
+        </ListView>
     </Grid>
 </Page>

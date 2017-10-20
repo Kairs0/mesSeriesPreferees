@@ -17,10 +17,10 @@ namespace Series.Models
             name = (string)jObjectPeople["name"];
         }
 
-        public int id { get; set; }
-        public string url { get; set; }
-        public string name { get; set; }
-        public Image image { get; set; }
-        public _Links _links { get; set; }
+        public int id { get; }
+        public string url { get; }
+        public string name { get; }
+        public Image image { get; }
+        public _Links _links { get; }
     }
 }

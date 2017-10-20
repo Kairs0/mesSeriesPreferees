@@ -22,7 +22,9 @@ namespace Series
         private const string ShowSearchArg = "search/shows?q=";
         private const string SingleShearchArg = "singlesearch/shows?q=";
         private const string PeopleSearch = "search/people?q=";
-        private const string Schedule = "/schedule?country=";
+        private const string Schedule = "schedule?country=";
+        private const string ShowCastPartOne = "shows/";
+        private const string ShowCastPartTwo = "/cast";
 
         public static Serie GetShowByName(string arg)
         {
@@ -65,6 +67,7 @@ namespace Series
         }
 
         //TODO à tester
+        //Retourne une liste de personnes liées à un string donné
         public static List<Models.People> SearchByPeople(string arg)
         {
             var resultSearch = new List<People>();
@@ -82,6 +85,28 @@ namespace Series
                     );
                 }
             }
+            return resultSearch;
+        }
+
+        //TODO à tester
+        //Retourne une liste de paires acteur/personnage pour un id de série donnée
+        public static List<BindPersonToCharacter> GetCastSerie(string idShow)
+        {
+            var resultSearch = new List<BindPersonToCharacter>();
+            var response = client.GetAsync(BaseUrl + ShowCastPartOne + idShow + ShowCastPartTwo).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var stringContent = response.Content.ReadAsStringAsync().Result;
+                var jArrayPersonAndCharacter = JArray.Parse(stringContent);
+                foreach (JToken jTokenPersonAndCharacter in jArrayPersonAndCharacter)
+                {
+                    JToken jPerson = jTokenPersonAndCharacter["person"];
+                    JToken jCharacter = jTokenPersonAndCharacter["character"];
+                    var binding = new BindPersonToCharacter(new People(jPerson.ToString()), new People(jCharacter.ToString()));
+                    resultSearch.Add(binding);
+                }
+            }
+
             return resultSearch;
         }
 
