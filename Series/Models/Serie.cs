@@ -26,13 +26,13 @@ namespace Series.Models
             Premiered = (string)jObjectSerie["Premiered"];
             OfficialSite = (string)jObjectSerie["OfficialSite"];
             Schedule = jObjectSerie["Schedule"].ToObject<Schedule>();
-            //Rating = jObjectSerie["Rating"] != null ? jObjectSerie["Rating"].ToObject<Rating>() : null; // TODO gérer le cas average null
+            //Rating = jObjectSerie["Rating"] != null ? jObjectSerie["Rating"].ToObject<Rating>() : null; // TODO gérer le cas Average null
             Weight = (int)jObjectSerie["Weight"];
             Network = jObjectSerie["Network"].ToObject<Network>();
-            image = jObjectSerie["image"].ToObject<Image>();
-            summary = (string)jObjectSerie["summary"];
-            updated = (int)jObjectSerie["updated"];
-            _links = jObjectSerie["_links"].ToObject<_Links>();
+            Image = jObjectSerie["Image"].ToObject<Image>();
+            Summary = (string)jObjectSerie["Summary"];
+            Updated = (int)jObjectSerie["Updated"];
+            Links = jObjectSerie["Links"].ToObject<_Links>();
         }
 
         public int Id { get; }
@@ -51,63 +51,63 @@ namespace Series.Models
         public Network Network { get; }
         //public object webChannel { get; }
         //public Externals externals { get; }
-        public Image image { get; }
-        public string summary { get; }
-        public int updated { get; }
-        public _Links _links { get; }
+        public Image Image { get; }
+        public string Summary { get; }
+        public int Updated { get; }
+        public _Links Links { get; }
     }
 
     public class Schedule
     {
-        public string time { get; }
-        public string[] days { get; }
+        public string Time { get; }
+        public string[] Days { get; }
     }
 
     public class Rating
     {
-        public float average { get; }
+        public float Average { get; }
     }
 
     public class Network
     {
-        public int id { get; }
-        public string name { get; }
-        public Country country { get; }
+        public int Id { get; }
+        public string Name { get; }
+        public Country Country { get; }
     }
 
     public class Country
     {
-        public string name { get; }
-        public string code { get; }
-        public string timezone { get; }
+        public string Name { get; }
+        public string Code { get; }
+        public string Timezone { get; }
     }
 
     public class Externals
     {
-        public int tvrage { get; }
-        public int thetvdb { get; }
-        public string imdb { get; }
+        public int Tvrage { get; }
+        public int Thetvdb { get; }
+        public string Imdb { get; }
     }
 
     public class Image
     {
-        public string medium { get; }
-        public string original { get; }
+        public string Medium { get; }
+        public string Original { get; }
     }
 
     public class _Links
     {
-        public Self self { get; }
-        public Previousepisode previousepisode { get; }
+        public Self Self { get; }
+        public Previousepisode Previousepisode { get; }
     }
 
     public class Self
     {
-        public string href { get; }
+        public string Href { get; }
     }
 
     public class Previousepisode
     {
-        public string href { get; }
+        public string Href { get; }
     }
 }

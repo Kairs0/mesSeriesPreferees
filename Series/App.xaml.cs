@@ -17,25 +17,25 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Series
 {
-    /// <summary>
+    /// <Summary>
     /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
+    /// </Summary>
     sealed partial class App : Application
     {
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
+        /// <Summary>
+        /// Initializes the singleton application object.  This is the first line of authored Code
         /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
+        /// </Summary>
         public App()
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
 
-        /// <summary>
+        /// <Summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
-        /// </summary>
+        /// </Summary>
         /// <param Name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
@@ -72,9 +72,9 @@ namespace Series
             }
         }
 
-        /// <summary>
+        /// <Summary>
         /// Invoked when Navigation to a certain page fails
-        /// </summary>
+        /// </Summary>
         /// <param Name="sender">The Frame which failed navigation</param>
         /// <param Name="e">Details about the navigation failure</param>
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
@@ -82,11 +82,11 @@ namespace Series
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-        /// <summary>
+        /// <Summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents
         /// of memory still intact.
-        /// </summary>
+        /// </Summary>
         /// <param Name="sender">The source of the suspend request.</param>
         /// <param Name="e">Details about the suspend request.</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)

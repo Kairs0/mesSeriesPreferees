@@ -14,7 +14,7 @@ namespace Series.Models
         public Vignette(string NomSerie)
         {
             Serie InfosSerie = Api.GetShowByName(NomSerie);
-            imageDetail = InfosSerie.image;
+            imageDetail = InfosSerie.Image;
         }
 
         public void AccesPageSpecifique()

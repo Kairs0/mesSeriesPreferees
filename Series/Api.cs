@@ -22,7 +22,7 @@ namespace Series
         private const string ShowSearchArg = "search/shows?q=";
         private const string SingleShearchArg = "singlesearch/shows?q=";
         private const string PeopleSearch = "search/people?q=";
-        private const string Schedule = "Schedule?country=";
+        private const string Schedule = "Schedule?Country=";
         private const string ShowCastPartOne = "shows/";
         private const string ShowCastPartTwo = "/cast";
 
@@ -107,7 +107,7 @@ namespace Series
             return resultSearch;
         }
 
-        //Retourne la liste des épisodes diffusés le soir même pour un code pays donné
+        //Retourne la liste des épisodes diffusés le soir même pour un Code pays donné
         public static List<Episode> GetEpisodesToNight(string codePays)
         {
             //codePays = "FR" pour france

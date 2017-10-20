@@ -51,7 +51,7 @@ namespace Series
 
         private void ImageGridView_ItemClick(object sender, RoutedEventArgs e)
         {
-            //Montre la page DetailSeries lors d'un click sur une image de série
+            //Montre la page DetailSeries lors d'un click sur une Image de série
         }
 
         private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
@@ -114,20 +114,20 @@ namespace Series
         }
 
         //Arnaud : j'utilise cette fonction pour tester les appels à l'api
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //
-        //{
-        //    string test = "dexter";
-        //    string test2 = "ddzadza2AAA";
-        //    var a = Api.GetShowByName(test);
-        //    var b = Api.GetShowByName(test2);
-        //    var c = Api.GetCastSerie(a.Id.ToString());
-        //    var d = Api.ShowSearch(test);
-        //    var f = Api.ShowSearch(test2);
-        //    var g = Api.GetEpisodesToNight("FR");
-        //    var i = Api.SearchByPeople("john");
-        //    var br = "";
-        //}
+        private void Button_Click(object sender, RoutedEventArgs e)
+
+        {
+            string test = "dexter";
+            string test2 = "ddzadza2AAA";
+            var a = Api.GetShowByName(test);
+            var b = Api.GetShowByName(test2);
+            var c = Api.GetCastSerie(a.Id.ToString());
+            var d = Api.ShowSearch(test);
+            var f = Api.ShowSearch(test2);
+            var g = Api.GetEpisodesToNight("FR");
+            var i = Api.SearchByPeople("john");
+            var br = "";
+        }
 
     }
 }

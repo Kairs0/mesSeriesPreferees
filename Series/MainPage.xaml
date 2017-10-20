@@ -39,6 +39,7 @@
 
 
         <HyperlinkButton x:Name="NavVersSerie" Content="Vers Serie (PH)" Click="ClickBouttonNav" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="108" Margin="200,167,-200,-167"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="65" Margin="983,47,-983,-47" Click="Button_Click"/>
 
 
     </RelativePanel>
