@@ -111,9 +111,8 @@ namespace Series
             string NomSerie = "Friends";
             this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
             //TESTS ARNAUD
-            //var test = Api.GetShowsAndCharacForPeople("1");
+            //var test = Api.GetShowById(1.ToString());
             //var test2 = "";
-
             //END TEST ARNAUD
         }
     }

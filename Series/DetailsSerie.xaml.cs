@@ -29,6 +29,7 @@ namespace Series
         public string NomSerie;
        public Models.Image ImageSerie { get; set; }
         public string Image_Url;
+
         public string Nom_Serie;
         public string ID_Serie;
         private List<BindPersonToCharacter> ListePersonnes;
@@ -69,7 +70,7 @@ namespace Series
 
         private void ClickAjoutFavoris(object sender, RoutedEventArgs e)
         {
-
+            // Favoris.AddToFavorite("1");
         }
     }
 }
