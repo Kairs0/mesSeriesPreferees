@@ -103,6 +103,7 @@ namespace Series
             {
                 // Série non reconnue, utiliser la recherche large par texte.
                 //on affiche les vignettes
+
             }
         }
 
