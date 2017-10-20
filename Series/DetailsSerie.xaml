@@ -13,7 +13,25 @@
         <Button x:Name="BouttonRetour" Content="Retour" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="47" Margin="52,38,0,0" VerticalAlignment="Top" Width="176"/>
        <!-- <Image x:Name="PhotoPage" Source="{x:Bind ImageUrl}" HorizontalAlignment="Left" Height="212" Margin="166,274,0,0" VerticalAlignment="Top" Width="161"/>
        --> <TextBlock x:Name="Resume" HorizontalAlignment="Left" Height="151" Margin="511,230,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" Width="625"/>
-        <TextBlock x:Name="Acteurs" HorizontalAlignment="Left" Height="188" Margin="511,388,0,0" TextWrapping="Wrap" Text="Acteurs" VerticalAlignment="Top" Width="469"/>
         <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="46" Margin="52,149,0,0" VerticalAlignment="Top" Width="185" Background="#338B2F04"/>
+        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="351" Margin="511,411,0,0" VerticalAlignment="Top" Width="450">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Image Source="{Binding Person.url}"/>
+                        <TextBlock Text="{Binding Person.name}" 
+                           Margin="20,0,20,8"
+                           FontSize="20"  
+                           FontWeight="SemiBold"
+                           Foreground="DarkBlue" />
+                        <TextBlock Text="{Binding Character.name}" 
+                           Margin="20,0,20,8"
+                           FontSize="18"
+                           Foreground="DarkGray" 
+                           Opacity="1" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

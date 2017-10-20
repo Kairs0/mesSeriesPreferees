@@ -30,16 +30,21 @@ namespace Series
         public string ImageUrl;
         public string Nom_Serie;
         public string ID_Serie;
+        private List<BindPersonToCharacter> ListePersonnes;
 
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             NomSerie = (string)e.Parameter;
             Serie InfosSerie = Api.GetShowByName(NomSerie);
+            ID_Serie = InfosSerie.Id.ToString();
             Nom_Serie = InfosSerie.Name;
             TitrePage.Text = Nom_Serie;
-            // ImageUrl = InfosSerie.Image.Medium;
+
             Resume.Text = InfosSerie.Summary;
+            ListePersonnes = Api.GetCastSerie(ID_Serie);
+            ListeActeurs.ItemsSource = ListePersonnes;
+
             base.OnNavigatedTo(e);
         }
 
