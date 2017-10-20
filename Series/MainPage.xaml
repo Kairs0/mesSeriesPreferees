@@ -7,14 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <RelativePanel FocusVisualSecondaryBrush="#99494949">
+        <RelativePanel.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF6A6A6A" Offset="0"/>
+                <GradientStop Color="#FFD6D6D6" Offset="0.553"/>
+            </LinearGradientBrush>
+        </RelativePanel.Background>
 
         <!--<Button x:Name="Recherche" Content="Recherche" HorizontalAlignment="Left" Margin="49,104,0,0" VerticalAlignment="Top" Height="44" Width="100" Click="Button_Search"/>-->
         <Button x:Name="Favoris" Content="Favoris" HorizontalAlignment="Left" Margin="61,77,-12,0" VerticalAlignment="Top" Width="100" Height="44" Click="Button_Favorites" FontWeight="Bold">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFE60707" Offset="0"/>
-                    <GradientStop Color="#FFB88484" Offset="1"/>
+                    <GradientStop Color="#FF874949" Offset="1"/>
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
@@ -34,7 +40,7 @@
         </GridView>
         <TextBlock x:Name="LastEpisodes" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Dernières sorties" VerticalAlignment="Bottom" Width="246" Margin="220,256,-404,-276" SelectionChanged="TextBlock_SelectionChanged" FontSize="22"/>
         <AutoSuggestBox x:Name="BarreRechercheAuto" TextChanged="BarreRechercheAuto_TextChanged" QuerySubmitted="BarreRechercheAuto_QuerySubmitted" SuggestionChosen="BarreRechercheAuto_SuggestionChosen" PlaceholderText="Recherche de série" QueryIcon="Find" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="465" Margin="0,92,0,-92" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-        <HyperlinkButton x:Name="NavVersSerie" Content="Vers Serie (PH)" Click="ClickBouttonNav" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="108" Margin="200,167,-200,-167"/>
+        <ScrollBar HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="16"/>
 
 
     </RelativePanel>

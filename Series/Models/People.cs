@@ -12,9 +12,9 @@ namespace Series.Models
         public People(string json)
         {
             JToken jObjectPeople = JToken.Parse(json);
-            id = (int)jObjectPeople["id"];
-            url = (string)jObjectPeople["url"];
-            name = (string)jObjectPeople["name"];
+            id = (int)jObjectPeople["Id"];
+            url = (string)jObjectPeople["Url"];
+            name = (string)jObjectPeople["Name"];
         }
 
         public int id { get; }
