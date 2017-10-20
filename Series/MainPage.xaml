@@ -26,7 +26,7 @@
         </Button>
         <TextBlock x:Name="AppTitle" TextWrapping="Wrap" Text="Mes séries préférées" Width="352" FontSize="36" FontWeight="Bold" Height="48" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         <GridView x:Name="ImageGridView"
-                  Margin="200,218,200,-530"
+                  Margin="200,218,768,-530"
                   RelativePanel.AlignLeftWithPanel="True"
                   RelativePanel.AlignRightWithPanel="True"
                   RelativePanel.Below="AppTitle" RelativePanel.AlignHorizontalCenterWithPanel="True"
