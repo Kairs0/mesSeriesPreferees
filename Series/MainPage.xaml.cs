@@ -133,11 +133,21 @@ namespace Series
         }
 
 
-        private void BarreRechercheAuto_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            // Set sender.Text. You can use args.SelectedItem to build your text string.
-            BarreRechercheAuto.Text = args.SelectedItem as string;
+            string texteSaisi = BarreRechercheAuto.Text;
+            List<Models.Serie> seriesList = Api.ShowSearch(texteSaisi);
 
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                //var listeSuggestions = listeSeries.Where(i => i.StartsWith(texteSaisi)).ToList(); // /!\ listeSeries à créer avec l'API index
+                String[] listeSuggestions = new String[seriesList.Count];
+                for (int i = 0; i < seriesList.Count; i++)
+                {
+                    listeSuggestions[i] = seriesList[i].name;
+                }
+                BarreRechercheAuto.ItemsSource = listeSuggestions;
+            }
         }
 
 
