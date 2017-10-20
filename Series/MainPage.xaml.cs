@@ -105,5 +105,6 @@ namespace Series
                 //on affiche les vignettes
             }
         }
+
     }
 }
