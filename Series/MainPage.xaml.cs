@@ -107,13 +107,6 @@ namespace Series
             }
         }
 
-
-        private void ClickBouttonNav(object sender, RoutedEventArgs e)
-        {
-            string NomSerie = "Friends";
-            this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
-        }
-
         //Arnaud : j'utilise cette fonction pour tester les appels à l'api
         //private void Button_Click(object sender, RoutedEventArgs e)
         //

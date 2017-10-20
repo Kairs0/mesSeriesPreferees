@@ -45,9 +45,6 @@
         <ScrollBar HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="16"/>
 
 
-        <HyperlinkButton x:Name="NavVersSerie" Content="Vers Serie (PH)" Click="ClickBouttonNav" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="108" Margin="200,167,-200,-167"/>
-
-
     </RelativePanel>
 </Page>
 
