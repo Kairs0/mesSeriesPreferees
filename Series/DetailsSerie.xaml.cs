@@ -27,7 +27,7 @@ namespace Series
     {
 
         public string NomSerie;
-       public Models.Image ImageSerie { get; set; }
+        public Models.Image ImageSerie { get; set; }
         public string ImageUrl;
         public string Nom_Serie;
         public string ID_Serie;
@@ -63,7 +63,7 @@ namespace Series
 
         private void ClickAjoutFavoris(object sender, RoutedEventArgs e)
         {
-
+            Favoris.AddToFavorite("1");
         }
     }
 }

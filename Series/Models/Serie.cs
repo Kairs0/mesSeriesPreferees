@@ -29,7 +29,8 @@ namespace Series.Models
             //rating = jObjectSerie["rating"] != null ? jObjectSerie["rating"].ToObject<Rating>() : null; // TODO gérer le cas average null
             weight = (int)jObjectSerie["weight"];
             network = jObjectSerie["network"].ToObject<Network>();
-            image = jObjectSerie["image"].ToObject<Image>();
+            image = new Image(jObjectSerie["image"].ToString());
+            //image = jObjectSerie["image"].ToObject<Image>();
             summary = (string)jObjectSerie["summary"];
             updated = (int)jObjectSerie["updated"];
             _links = jObjectSerie["_links"].ToObject<_Links>();
@@ -91,6 +92,12 @@ namespace Series.Models
 
     public class Image
     {
+        public Image(string json)
+        {
+            JToken image = JToken.Parse(json);
+            medium = (string) image["medium"];
+            original = (string) image["original"];
+        }
         public string medium { get; }
         public string original { get; }
     }
