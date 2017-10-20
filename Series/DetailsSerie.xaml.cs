@@ -56,6 +56,12 @@ namespace Series
 
         }
 
+        private void ClickVersActeur (object sender, ItemClickEventArgs e)
+        {
+            string NomActeur = e.OriginalSource.ToString();
+            this.Frame.Navigate(typeof(DetailsActeurs),NomActeur);
+        }
+
         private void ClickBouttonRetour(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));

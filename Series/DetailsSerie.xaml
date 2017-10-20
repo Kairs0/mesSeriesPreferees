@@ -13,7 +13,7 @@
        <!--<Image x:Name="PhotoPage" Source="{x:Bind ImageUrl}" HorizontalAlignment="Left" Height="212" Margin="166,274,0,0" VerticalAlignment="Top" Width="161"/>
       --> <TextBox x:Name="Resume" HorizontalAlignment="Left" Height="151" Margin="511,230,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" Width="625"/>
         <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="46" Margin="52,149,0,0" VerticalAlignment="Top" Width="185" Background="#338B2F04"/>
-        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="351" Margin="511,411,0,0" VerticalAlignment="Top" Width="450">
+        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="351" Margin="511,411,0,0" VerticalAlignment="Top" Width="450" IsItemClickEnabled="True" ItemClick="ClickVersActeur">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -22,11 +22,11 @@
                            Margin="20,0,20,8"
                            FontSize="20"  
                            FontWeight="SemiBold"
-                           Foreground="DarkBlue"  />
+                           Foreground="DarkBlue"/>
                         <TextBlock Text="{Binding Character.name}" 
                            Margin="40,0,20,8"
                            FontSize="18"
-                           Foreground="DarkGray" 
+                           Foreground="#FF4D1818" 
                            Opacity="1" />
                     </StackPanel>
                 </DataTemplate>
