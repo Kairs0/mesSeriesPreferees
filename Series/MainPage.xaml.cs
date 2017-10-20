@@ -43,25 +43,6 @@ namespace Series
          //   TriggerSearch.Visibility = Visibility.Collapsed;
         }
 
-        /*
-        private void Button_Search(object sender, RoutedEventArgs e)
-        {
-            //Displays search box + button
-            BarreRecherche.Visibility = BarreRecherche.Visibility == Visibility.Visible
-                ? Visibility.Collapsed
-                : Visibility.Visible;
-            TriggerSearch.Visibility = TriggerSearch.Visibility == Visibility.Visible
-                ? Visibility.Collapsed
-                : Visibility.Visible;
-
-            //Hide last episodes text
-            LastEpisodes.Visibility = Visibility.Collapsed; 
-
-            //Hide previous results of search Or hide list from welcome view
-            //TODO
-            ImageGridView.Visibility = Visibility.Collapsed;
-        }
-        */
         private void Button_Favorites(object sender, RoutedEventArgs e)
         {
             // Displays list of series from user's favorite
@@ -70,51 +51,14 @@ namespace Series
 
         private void ImageGridView_ItemClick(object sender, RoutedEventArgs e)
         {
-            // Will display element on a serie when user clicks on an item
-        }
-
-
-      /*  private void TriggerSearch_Click(object sender, RoutedEventArgs e)
-        {
-            // idée : cherche à l'aide de la recheche exact (ShowByName), si ne retourne pas de résultat chercher avec ShowSearch
-            string textToSearch = BarreRecherche.Text;
-            var result = Api.ShowSearch(textToSearch);
-            //var result = Api.GetShowByName(textToSearch);
-            if (result.Count != 0)
-            {
-                ImageSource.Clear();
-                foreach (var serie in result)
-                {
-                    //! L'objet image peut être nul
-                    if (serie.image != null)
-                    {
-                        string urlImage = serie.image.medium;
-                        ImageSource.Add(@urlImage);
-                    }
-                    else
-                    {
-                        //TODO add an empty image
-
-                    }
-                    
-                }
-                //TODO trouver le moyen de reload l'image gridview depuis son initialisation
-                //TEST
-                ImageGridView.Items.Clear();
-                ImageGridView.Items.Add(@ImageSource[0]);
-                //END TEST
-
-                //ImageGridView.ItemsSource = null;
-                //ImageGridView.ItemsSource = ImageSource;
-                ImageGridView.Visibility = Visibility.Visible;
-            }
+            //Montre la page DetailSeries lors d'un click sur une image de série
         }
 
         private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
         {
             
         }
-        */
+
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
@@ -158,6 +102,7 @@ namespace Series
             else
             {
                 // Série non reconnue, utiliser la recherche large par texte.
+                //on affiche les vignettes
             }
         }
 

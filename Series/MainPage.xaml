@@ -36,7 +36,7 @@
         <Button x:Name="TriggerSearch" Content="Rechercher" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="95" Margin="739,104,-769,-104" Click="TriggerSearch_Click"/>-->
         <TextBlock x:Name="LastEpisodes" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Dernières sorties" VerticalAlignment="Bottom" Width="246" Margin="220,256,-404,-276" SelectionChanged="TextBlock_SelectionChanged" FontSize="22"/>
         <AutoSuggestBox x:Name="BarreRechercheAuto" TextChanged="BarreRechercheAuto_TextChanged" QuerySubmitted="BarreRechercheAuto_QuerySubmitted" SuggestionChosen="BarreRechercheAuto_SuggestionChosen" PlaceholderText="Recherche de série" QueryIcon="Find" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="465" Margin="0,92,0,-92" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-        <HyperlinkButton x:Name="NavVersSerie" Content="Vers Serie (PH)" Click="ClickBouttonNav" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="108" Margin="754,738,-754,-738"/>
+        <HyperlinkButton x:Name="NavVersSerie" Content="Vers Serie (PH)" Click="ClickBouttonNav" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="108" Margin="200,167,-200,-167"/>
 
 
     </RelativePanel>
