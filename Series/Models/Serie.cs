@@ -15,40 +15,40 @@ namespace Series.Models
 
             JToken jObjectSerie = JToken.Parse(json);
             
-            id = (int)jObjectSerie["id"];
-            url = (string)jObjectSerie["url"];
-            name = (string)jObjectSerie["name"];
-            type = (string)jObjectSerie["type"];
-            language = (string)jObjectSerie["language"];
-            genres = jObjectSerie["genres"].ToObject<string[]>();
-            status = (string)jObjectSerie["status"];
-            //runtime = (int)jObjectSerie["runtime"]; // TODO Gérer cas null
-            premiered = (string)jObjectSerie["premiered"];
-            officialSite = (string)jObjectSerie["officialSite"];
-            schedule = jObjectSerie["schedule"].ToObject<Schedule>();
-            //rating = jObjectSerie["rating"] != null ? jObjectSerie["rating"].ToObject<Rating>() : null; // TODO gérer le cas average null
-            weight = (int)jObjectSerie["weight"];
-            network = jObjectSerie["network"].ToObject<Network>();
+            Id = (int)jObjectSerie["Id"];
+            Url = (string)jObjectSerie["Url"];
+            Name = (string)jObjectSerie["Name"];
+            Type = (string)jObjectSerie["Type"];
+            Language = (string)jObjectSerie["Language"];
+            Genres = jObjectSerie["Genres"].ToObject<string[]>();
+            Status = (string)jObjectSerie["Status"];
+            //Runtime = (int)jObjectSerie["Runtime"]; // TODO Gérer cas null
+            Premiered = (string)jObjectSerie["Premiered"];
+            OfficialSite = (string)jObjectSerie["OfficialSite"];
+            Schedule = jObjectSerie["Schedule"].ToObject<Schedule>();
+            //Rating = jObjectSerie["Rating"] != null ? jObjectSerie["Rating"].ToObject<Rating>() : null; // TODO gérer le cas average null
+            Weight = (int)jObjectSerie["Weight"];
+            Network = jObjectSerie["Network"].ToObject<Network>();
             image = jObjectSerie["image"].ToObject<Image>();
             summary = (string)jObjectSerie["summary"];
             updated = (int)jObjectSerie["updated"];
             _links = jObjectSerie["_links"].ToObject<_Links>();
         }
 
-        public int id { get; }
-        public string url { get; }
-        public string name { get; }
-        public string type { get; }
-        public string language { get; }
-        public string[] genres { get; }
-        public string status { get; }
-        public int runtime { get; }
-        public string premiered { get; }
-        public string officialSite { get; }
-        public Schedule schedule { get; }
-        public Rating rating { get; }
-        public int weight { get; }
-        public Network network { get; }
+        public int Id { get; }
+        public string Url { get; }
+        public string Name { get; }
+        public string Type { get; }
+        public string Language { get; }
+        public string[] Genres { get; }
+        public string Status { get; }
+        public int Runtime { get; }
+        public string Premiered { get; }
+        public string OfficialSite { get; }
+        public Schedule Schedule { get; }
+        public Rating Rating { get; }
+        public int Weight { get; }
+        public Network Network { get; }
         //public object webChannel { get; }
         //public Externals externals { get; }
         public Image image { get; }

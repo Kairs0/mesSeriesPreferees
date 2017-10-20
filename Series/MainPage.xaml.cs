@@ -76,7 +76,7 @@ namespace Series
                 String[] listeSuggestions = new String[seriesList.Count];
                 for (int i = 0; i < seriesList.Count; i++)
                 {
-                    listeSuggestions[i] = seriesList[i].name;
+                    listeSuggestions[i] = seriesList[i].Name;
                 }
                 BarreRechercheAuto.ItemsSource = listeSuggestions;
             }
@@ -120,7 +120,7 @@ namespace Series
         //    string test2 = "ddzadza2AAA";
         //    var a = Api.GetShowByName(test);
         //    var b = Api.GetShowByName(test2);
-        //    var c = Api.GetCastSerie(a.id.ToString());
+        //    var c = Api.GetCastSerie(a.Id.ToString());
         //    var d = Api.ShowSearch(test);
         //    var f = Api.ShowSearch(test2);
         //    var g = Api.GetEpisodesToNight("FR");

@@ -12,15 +12,15 @@ namespace Series.Models
         public Episode(string json)
         {
             JToken jObjectEpisode = JToken.Parse(json);
-            id = (int)jObjectEpisode["id"];
-            url = (string)jObjectEpisode["url"];
-            name = (string)jObjectEpisode["name"];
+            id = (int)jObjectEpisode["Id"];
+            url = (string)jObjectEpisode["Url"];
+            name = (string)jObjectEpisode["Name"];
             season = (int) jObjectEpisode["season"];
             number = (int) jObjectEpisode["number"];
             airdate = (string)jObjectEpisode["airdate"];
             airtime = (string)jObjectEpisode["airtime"];
             airstamp = jObjectEpisode["airstamp"].ToObject<DateTime>();
-            runtime = (int)jObjectEpisode["runtime"];
+            runtime = (int)jObjectEpisode["Runtime"];
             image = jObjectEpisode["image"].ToObject<Image>();
             summary = (string)jObjectEpisode["summary"];
             show = new Serie(jObjectEpisode["show"].ToString());
