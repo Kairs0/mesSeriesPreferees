@@ -96,9 +96,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DetailsActeurs.xaml.cs">
+      <DependentUpon>DetailsActeurs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DetailsSerie.xaml.cs">
       <DependentUpon>DetailsSerie.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Favoris.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -131,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DetailsActeurs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DetailsSerie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

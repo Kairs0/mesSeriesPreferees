@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Series
@@ -23,8 +24,22 @@ namespace Series
         private const string SingleShearchArg = "singlesearch/shows?q=";
         private const string PeopleSearch = "search/people?q=";
         private const string Schedule = "schedule?country=";
-        private const string ShowCastPartOne = "shows/";
+        private const string Shows = "shows/";
         private const string ShowCastPartTwo = "/cast";
+        private const string PeopleInfo = "people/";
+        private const string CastCredits = "/castcredits";
+
+        public static Serie GetShowById(string id)
+        {
+            Serie show = null;
+            var response = client.GetAsync(BaseUrl + Shows + id).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = response.Content.ReadAsStringAsync().Result;
+                show = new Serie(stringResponse);
+            }
+            return show;
+        }
 
         public static Serie GetShowByName(string arg)
         {
@@ -66,7 +81,6 @@ namespace Series
             return resultSearch;
         }
 
-        //TODO à tester
         //Retourne une liste de personnes liées à un string donné
         public static List<Models.People> SearchByPeople(string arg)
         {
@@ -88,12 +102,11 @@ namespace Series
             return resultSearch;
         }
 
-        //TODO à tester
         //Retourne une liste de paires acteur/personnage pour un id de série donnée
         public static List<BindPersonToCharacter> GetCastSerie(string idShow)
         {
             var resultSearch = new List<BindPersonToCharacter>();
-            var response = client.GetAsync(BaseUrl + ShowCastPartOne + idShow + ShowCastPartTwo).Result;
+            var response = client.GetAsync(BaseUrl + Shows + idShow + ShowCastPartTwo).Result;
             if (response.IsSuccessStatusCode)
             {
                 var stringContent = response.Content.ReadAsStringAsync().Result;
@@ -109,7 +122,29 @@ namespace Series
             return resultSearch;
         }
 
-        //Todo tester 
+        //Retourne la liste de séries d'un acteur donné
+        public static List<Serie> GetShowsForPeople(string idPeople)
+        {
+            var resultSearch = new List<Serie>();
+            var response = client.GetAsync(BaseUrl + PeopleInfo + idPeople + CastCredits).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var stringContent = response.Content.ReadAsStringAsync().Result;
+                var jArrayLinks = JArray.Parse(stringContent);
+                foreach (var jTokenLink in jArrayLinks)
+                {
+                    JToken jLink = jTokenLink["_links"];
+                    JToken jShow = jLink["show"];
+                    JToken jLinkShow = jShow["href"];
+                    var idShow = jLinkShow.ToString().Split('/').Last();
+                    var show = GetShowById(idShow);
+                    resultSearch.Add(show);
+                }
+            }
+            return resultSearch;
+        }
+
+        //Retourne la liste des episodes passant le jour d'un pays donné
         public static List<Episode> GetEpisodesToNight(string codePays)
         {
             //codePays = "FR" pour france
