@@ -126,6 +126,7 @@ namespace Series
             string texteSaisi = BarreRechercheAuto.Text;
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
+                //TODO arnaud
                 var listeSuggestions = listeSeries.Where(i => i.StartsWith(texteSaisi)).ToList(); // /!\ listeSeries à créer avec l'API index
                 BarreRechercheAuto.ItemsSource = listeSuggestions;
             }
