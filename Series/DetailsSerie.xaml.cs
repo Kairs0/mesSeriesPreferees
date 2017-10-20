@@ -23,10 +23,27 @@ namespace Series
     /// </summary>
     public sealed partial class DetailsSerie : Page
     {
-        public DetailsSerie()
+
+        public string NomSerie;
+       // public Image ImageSerie { get; set; }
+       public string ImageUrl { get; set; }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            NomSerie = (string)e.Parameter;
+            TitrePage.Text = NomSerie;
+            base.OnNavigatedTo(e);
+        }
+
+          public DetailsSerie()
         {
             this.InitializeComponent();
-            Nom_Serie.Text = "Test";
+
+             //         Serie InfosSerie = Api.GetShowByName(NomSerieRecherche);
+            //           Nom_Serie = InfosSerie.name;
+            //           ImageSerie = InfosSerie.image;
+
+            ImageUrl = "http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg";
 
         }
 

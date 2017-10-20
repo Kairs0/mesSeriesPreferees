@@ -8,8 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="Nom_Serie" HorizontalAlignment="Center" Height="59" Margin="4,90,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
+        <TextBlock x:Name="TitrePage" HorizontalAlignment="Center" Height="59" Margin="4,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
         <Image HorizontalAlignment="Left" Height="269" Margin="237,195,0,0" VerticalAlignment="Top" Width="227"/>
-        <HyperlinkButton x:Name="RetourAccueil" Content="RetourAccueil (PH)" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="108" Margin="754,738,-754,-738"/>
+        <Button x:Name="BouttonRetour" Content="Retour" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="47" Margin="52,38,0,0" VerticalAlignment="Top" Width="176"/>
+        <Image x:Name="PhotoPage" Source="{x:Bind ImageUrl}" HorizontalAlignment="Left" Height="212" Margin="166,274,0,0" VerticalAlignment="Top" Width="161"/>
     </Grid>
 </Page>
