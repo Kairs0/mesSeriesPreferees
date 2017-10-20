@@ -36,14 +36,10 @@ namespace Series
         {
             NomSerie = (string)e.Parameter;
             Serie InfosSerie = Api.GetShowByName(NomSerie);
-            ID_Serie = InfosSerie.id.ToString();
-
             Nom_Serie = InfosSerie.name;
             TitrePage.Text = Nom_Serie;
-
-            ImageUrl = InfosSerie.image.medium;
+            // ImageUrl = InfosSerie.image.medium;
             Resume.Text = InfosSerie.summary;
-            //ListeActeurs.Items = Api.GetCastSerie(ID_Serie);
             base.OnNavigatedTo(e);
         }
 

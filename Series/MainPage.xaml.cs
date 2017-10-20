@@ -119,15 +119,21 @@ namespace Series
         {
 
         }
-        
+
 
         private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             string texteSaisi = BarreRechercheAuto.Text;
+            List<Models.Serie> seriesList = Api.ShowSearch(texteSaisi);
+
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
-                //TODO arnaud
-                var listeSuggestions = listeSeries.Where(i => i.StartsWith(texteSaisi)).ToList(); // /!\ listeSeries à créer avec l'API index
+                //var listeSuggestions = listeSeries.Where(i => i.StartsWith(texteSaisi)).ToList(); // /!\ listeSeries à créer avec l'API index
+                String[] listeSuggestions = new String[seriesList.Count];
+                for (int i = 0; i < seriesList.Count; i++)
+                {
+                    listeSuggestions[i] = seriesList[i].name;
+                }
                 BarreRechercheAuto.ItemsSource = listeSuggestions;
             }
         }
@@ -146,6 +152,8 @@ namespace Series
             if (args.ChosenSuggestion != null)
             {
                 // Serie choisie depuis la liste, utiliser la recherche ciblée par ID (ou nom ?).
+                string NomSerie = args.QueryText;
+                this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
             }
             else
             {
