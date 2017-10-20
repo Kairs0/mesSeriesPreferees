@@ -63,15 +63,26 @@ namespace Series
         {
 
         }
-        
+
 
         private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             string texteSaisi = BarreRechercheAuto.Text;
+            List<Models.Serie> seriesList = Api.ShowSearch(texteSaisi);
+
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
+<<<<<<< HEAD
                 //TODO
                 var listeSuggestions = listeSeries.Where(i => i.StartsWith(texteSaisi)).ToList(); // /!\ listeSeries à créer avec l'API index
+=======
+                //var listeSuggestions = listeSeries.Where(i => i.StartsWith(texteSaisi)).ToList(); // /!\ listeSeries à créer avec l'API index
+                String[] listeSuggestions = new String[seriesList.Count];
+                for (int i = 0; i < seriesList.Count; i++)
+                {
+                    listeSuggestions[i] = seriesList[i].name;
+                }
+>>>>>>> cd2a56a30bb77d5518880f5f2e71e90347897529
                 BarreRechercheAuto.ItemsSource = listeSuggestions;
             }
         }
