@@ -51,7 +51,7 @@ namespace Series
 
         private void ImageGridView_ItemClick(object sender, RoutedEventArgs e)
         {
-            //Montre la page DetailSeries lors d'un click sur une image de série
+            //Montre la page DetailSeries lors d'un click sur une Image de série
         }
 
         private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
@@ -109,7 +109,7 @@ namespace Series
 
         //Arnaud : j'utilise cette fonction pour tester les appels à l'api
         //private void Button_Click(object sender, RoutedEventArgs e)
-        //
+
         //{
         //    string test = "dexter";
         //    string test2 = "ddzadza2AAA";
