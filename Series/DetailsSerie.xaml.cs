@@ -40,7 +40,7 @@ namespace Series
             ID_Serie = InfosSerie.id.ToString();
             Nom_Serie = InfosSerie.name;
             TitrePage.Text = Nom_Serie;
-            // ImageUrl = InfosSerie.image.medium;
+            //ImageUrl = InfosSerie.image.medium;
             Resume.Text = InfosSerie.summary;
             ListePersonnes = Api.GetCastSerie(ID_Serie);
             ListeActeurs.ItemsSource = ListePersonnes;
