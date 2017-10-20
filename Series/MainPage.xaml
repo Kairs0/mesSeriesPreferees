@@ -43,6 +43,7 @@
         <TextBlock x:Name="LastEpisodes" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Dernières sorties" VerticalAlignment="Bottom" Width="246" Margin="220,256,-404,-276" SelectionChanged="TextBlock_SelectionChanged" FontSize="22"/>
         <AutoSuggestBox x:Name="BarreRechercheAuto" TextChanged="BarreRechercheAuto_TextChanged" QuerySubmitted="BarreRechercheAuto_QuerySubmitted" SuggestionChosen="BarreRechercheAuto_SuggestionChosen" PlaceholderText="Recherche de série" QueryIcon="Find" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="465" Margin="0,92,0,-92" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         <ScrollBar HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="16"/>
+        <Grid HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0"/>
 
 
     </RelativePanel>
