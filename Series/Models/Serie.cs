@@ -94,6 +94,7 @@ namespace Series.Models
     {
         public Image(string json)
         {
+
             try
             {
                 JToken image = JToken.Parse(json);
