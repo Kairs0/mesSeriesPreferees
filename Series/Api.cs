@@ -22,7 +22,7 @@ namespace Series
         private const string ShowSearchArg = "search/shows?q=";
         private const string SingleShearchArg = "singlesearch/shows?q=";
         private const string PeopleSearch = "search/people?q=";
-        private const string Schedule = "schedule?country=";
+        private const string Schedule = "Schedule?country=";
         private const string ShowCastPartOne = "shows/";
         private const string ShowCastPartTwo = "/cast";
 
@@ -87,7 +87,7 @@ namespace Series
             return resultSearch;
         }
 
-        //Retourne une liste de paires acteur/personnage pour un id de série donnée
+        //Retourne une liste de paires acteur/personnage pour un Id de série donnée
         public static List<BindPersonToCharacter> GetCastSerie(string idShow)
         {
             var resultSearch = new List<BindPersonToCharacter>();

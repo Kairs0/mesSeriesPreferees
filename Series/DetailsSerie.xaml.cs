@@ -36,7 +36,7 @@ namespace Series
         {
             NomSerie = (string)e.Parameter;
             Serie InfosSerie = Api.GetShowByName(NomSerie);
-            Nom_Serie = InfosSerie.name;
+            Nom_Serie = InfosSerie.Name;
             TitrePage.Text = Nom_Serie;
             // ImageUrl = InfosSerie.image.medium;
             Resume.Text = InfosSerie.summary;
