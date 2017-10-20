@@ -94,9 +94,18 @@ namespace Series.Models
     {
         public Image(string json)
         {
-            JToken image = JToken.Parse(json);
-            medium = (string) image["medium"];
-            original = (string) image["original"];
+
+            try
+            {
+                JToken image = JToken.Parse(json);
+                medium = (string)image["medium"];
+                original = (string)image["original"];
+            }
+            catch (Exception)
+            {
+                medium = "";
+                original = "";
+            }
         }
         public string medium { get; }
         public string original { get; }
