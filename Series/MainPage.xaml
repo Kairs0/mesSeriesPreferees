@@ -26,7 +26,7 @@
         </Button>
         <TextBlock x:Name="AppTitle" TextWrapping="Wrap" Text="Mes séries préférées" Width="352" FontSize="36" FontWeight="Bold" Height="48" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         <GridView x:Name="ImageGridView"
-                  Margin="200,218,200,-530"
+                  Margin="200,218,768,-530"
                   RelativePanel.AlignLeftWithPanel="True"
                   RelativePanel.AlignRightWithPanel="True"
                   RelativePanel.Below="AppTitle" RelativePanel.AlignHorizontalCenterWithPanel="True"
@@ -43,7 +43,6 @@
         <TextBlock x:Name="LastEpisodes" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Dernières sorties" VerticalAlignment="Bottom" Width="246" Margin="220,256,-404,-276" SelectionChanged="TextBlock_SelectionChanged" FontSize="22"/>
         <AutoSuggestBox x:Name="BarreRechercheAuto" TextChanged="BarreRechercheAuto_TextChanged" QuerySubmitted="BarreRechercheAuto_QuerySubmitted" SuggestionChosen="BarreRechercheAuto_SuggestionChosen" PlaceholderText="Recherche de série" QueryIcon="Find" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="465" Margin="0,92,0,-92" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         <ScrollBar HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="16"/>
-        <Grid HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0"/>
 
 
     </RelativePanel>
