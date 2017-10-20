@@ -106,7 +106,6 @@ namespace Series
                     resultSearch.Add(binding);
                 }
             }
-
             return resultSearch;
         }
 
@@ -130,6 +129,5 @@ namespace Series
             }
             return resultSearch;
         }
-
     }
 }
