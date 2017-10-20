@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Series.Models;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,11 +22,13 @@ namespace Series
     {
 
         public string NomActeur;
+        public List<Serie> ListeSeriesJouees;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             NomActeur = (string)e.Parameter;
             TitrePage.Text = NomActeur;
+            ListeSeriesJouees = Api.GetShowsForPeople(NomActeur);
             // ImageUrl = InfosSerie.image.medium;
             base.OnNavigatedTo(e);
         }
@@ -37,6 +40,11 @@ namespace Series
             this.InitializeComponent();
         }
 
+        private void ClickVersSerie(object sender, ItemClickEventArgs e)
+        {
+            string NomSerie = e.OriginalSource.ToString();
+            this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
+        }
 
         private void ClickBouttonRetour(object sender, RoutedEventArgs e)
         {

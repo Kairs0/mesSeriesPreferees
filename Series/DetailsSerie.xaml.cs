@@ -28,7 +28,7 @@ namespace Series
 
         public string NomSerie;
        public Models.Image ImageSerie { get; set; }
-        public string ImageUrl;
+        public string Image_Url;
         public string Nom_Serie;
         public string ID_Serie;
         private List<BindPersonToCharacter> ListePersonnes;
@@ -41,7 +41,7 @@ namespace Series
             ID_Serie = InfosSerie.id.ToString();
             Nom_Serie = InfosSerie.name;
             TitrePage.Text = Nom_Serie;
-            // ImageUrl = InfosSerie.image.medium;
+            Image_Url = InfosSerie.image.medium;
             var resumeHtml = InfosSerie.summary;
             Resume.Text = Regex.Replace(resumeHtml, @"<(.|\n)*?>", string.Empty); //Remplace les balises html
             ListePersonnes = Api.GetCastSerie(ID_Serie);
@@ -58,7 +58,7 @@ namespace Series
 
         private void ClickVersActeur (object sender, ItemClickEventArgs e)
         {
-            string NomActeur = e.OriginalSource.ToString();
+            string NomActeur = "Catherine Bell";
             this.Frame.Navigate(typeof(DetailsActeurs),NomActeur);
         }
 

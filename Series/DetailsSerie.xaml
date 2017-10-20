@@ -10,8 +10,8 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="59" Margin="4,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
         <Button x:Name="BouttonRetour" Content="Retour" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="47" Margin="52,38,0,0" VerticalAlignment="Top" Width="176"/>
-       <!--<Image x:Name="PhotoPage" Source="{x:Bind ImageUrl}" HorizontalAlignment="Left" Height="212" Margin="166,274,0,0" VerticalAlignment="Top" Width="161"/>
-      --> <TextBox x:Name="Resume" HorizontalAlignment="Left" Height="151" Margin="511,230,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" Width="625"/>
+        <Image x:Name="PhotoPage" Source="{Binding Image_Url}" HorizontalAlignment="Left" Height="256" Margin="166,230,0,0" VerticalAlignment="Top" Width="231"/>
+        <TextBox x:Name="Resume" HorizontalAlignment="Left" Height="151" Margin="511,230,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" Width="625"/>
         <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="46" Margin="52,149,0,0" VerticalAlignment="Top" Width="185" Background="#338B2F04"/>
         <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="351" Margin="511,411,0,0" VerticalAlignment="Top" Width="450" IsItemClickEnabled="True" ItemClick="ClickVersActeur">
             <ListView.ItemTemplate>
@@ -32,5 +32,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <TextBox x:Name="URLImageText" Text="{Binding Image_Url}" HorizontalAlignment="Left" Height="44" Margin="24,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="629"/>
     </Grid>
 </Page>
