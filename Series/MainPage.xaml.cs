@@ -110,6 +110,11 @@ namespace Series
         {
             string NomSerie = "Friends";
             this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
+            //TESTS ARNAUD
+            //var test = Api.GetShowsAndCharacForPeople("1");
+            //var test2 = "";
+
+            //END TEST ARNAUD
         }
     }
 }
