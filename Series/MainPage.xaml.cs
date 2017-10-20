@@ -105,11 +105,5 @@ namespace Series
                 //on affiche les vignettes
             }
         }
-
-        private void ClickBouttonNav(object sender, RoutedEventArgs e)
-        {
-            string NomSerie = "Friends";
-            this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
-        }
     }
 }
