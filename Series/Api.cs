@@ -81,7 +81,6 @@ namespace Series
             return resultSearch;
         }
 
-        //TODO à tester
         //Retourne une liste de personnes liées à un string donné
         public static List<Models.People> SearchByPeople(string arg)
         {
@@ -103,7 +102,6 @@ namespace Series
             return resultSearch;
         }
 
-        //TODO à tester
         //Retourne une liste de paires acteur/personnage pour un id de série donnée
         public static List<BindPersonToCharacter> GetCastSerie(string idShow)
         {
@@ -124,8 +122,8 @@ namespace Series
             return resultSearch;
         }
 
-        //Retourne la liste de séries d'un acteur
-        public static List<Serie> GetShowsAndCharacForPeople(string idPeople)
+        //Retourne la liste de séries d'un acteur donné
+        public static List<Serie> GetShowsForPeople(string idPeople)
         {
             var resultSearch = new List<Serie>();
             var response = client.GetAsync(BaseUrl + PeopleInfo + idPeople + CastCredits).Result;
@@ -146,7 +144,7 @@ namespace Series
             return resultSearch;
         }
 
-        //Todo tester 
+        //Retourne la liste des episodes passant le jour d'un pays donné
         public static List<Episode> GetEpisodesToNight(string codePays)
         {
             //codePays = "FR" pour france
