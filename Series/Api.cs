@@ -26,6 +26,7 @@ namespace Series
         private const string ShowCastPartOne = "shows/";
         private const string ShowCastPartTwo = "/cast";
 
+        //Retourne la série dont le nom correspond exactement à l'argument donné
         public static Serie GetShowByName(string arg)
         {
             //TODO: deal with empty string case
@@ -41,10 +42,9 @@ namespace Series
             return show;
         }
 
+        //Retourne la liste des séries dont le nom contient le string donné en argument
         public static List<Serie> ShowSearch(string arg)
         {
-            //TODO: deal with empty string case
-
             var resultSearch = new List<Serie>();
             //todo gérer cas serveur innaccessible
             var response = client.GetAsync(BaseUrl + ShowSearchArg + arg).Result;
@@ -66,8 +66,7 @@ namespace Series
             return resultSearch;
         }
 
-        //TODO à tester
-        //Retourne une liste de personnes liées à un string donné
+        //Retourne une liste de personnes dont le nom contient le string donné en argument
         public static List<Models.People> SearchByPeople(string arg)
         {
             var resultSearch = new List<People>();
@@ -88,7 +87,6 @@ namespace Series
             return resultSearch;
         }
 
-        //TODO à tester
         //Retourne une liste de paires acteur/personnage pour un id de série donnée
         public static List<BindPersonToCharacter> GetCastSerie(string idShow)
         {
@@ -109,7 +107,7 @@ namespace Series
             return resultSearch;
         }
 
-        //Todo tester 
+        //Retourne la liste des épisodes diffusés le soir même pour un code pays donné
         public static List<Episode> GetEpisodesToNight(string codePays)
         {
             //codePays = "FR" pour france
