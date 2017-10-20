@@ -17,14 +17,30 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Series
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
     public sealed partial class DetailsActeurs : Page
     {
+
+        public string NomActeur;
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            NomActeur = (string)e.Parameter;
+            TitrePage.Text = NomActeur;
+            // ImageUrl = InfosSerie.image.medium;
+            base.OnNavigatedTo(e);
+        }
+
+
+
         public DetailsActeurs()
         {
             this.InitializeComponent();
+        }
+
+
+        private void ClickBouttonRetour(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }
