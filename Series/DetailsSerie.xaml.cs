@@ -37,18 +37,14 @@ namespace Series
         {
             NomSerie = (string)e.Parameter;
             Serie InfosSerie = Api.GetShowByName(NomSerie);
-            ID_Serie = InfosSerie.id.ToString();
-            Nom_Serie = InfosSerie.name;
+            ID_Serie = InfosSerie.Id.ToString();
+            Nom_Serie = InfosSerie.Name;
             TitrePage.Text = Nom_Serie;
-<<<<<<< HEAD
-            // ImageUrl = InfosSerie.image.medium;
-            Resume.Text = InfosSerie.summary;
+
+            Resume.Text = InfosSerie.Summary;
             ListePersonnes = Api.GetCastSerie(ID_Serie);
             ListeActeurs.ItemsSource = ListePersonnes;
-=======
-            // ImageUrl = InfosSerie.Image.Medium;
-            Resume.Text = InfosSerie.Summary;
->>>>>>> 0ca790beeb0fe9f65a098c3c5c1835df3f96e94e
+
             base.OnNavigatedTo(e);
         }
 
