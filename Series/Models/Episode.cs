@@ -21,8 +21,8 @@ namespace Series.Models
             airtime = (string)jObjectEpisode["airtime"];
             airstamp = jObjectEpisode["airstamp"].ToObject<DateTime>();
             runtime = (int)jObjectEpisode["Runtime"];
-            image = jObjectEpisode["image"].ToObject<Image>();
-            summary = (string)jObjectEpisode["summary"];
+            image = jObjectEpisode["Image"].ToObject<Image>();
+            summary = (string)jObjectEpisode["Summary"];
             show = new Serie(jObjectEpisode["show"].ToString());
         }
 

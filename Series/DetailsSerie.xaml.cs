@@ -19,9 +19,9 @@ using Series.Models;
 
 namespace Series
 {
-    /// <summary>
+    /// <Summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    /// </Summary>
     public sealed partial class DetailsSerie : Page
     {
 
@@ -38,8 +38,8 @@ namespace Series
             Serie InfosSerie = Api.GetShowByName(NomSerie);
             Nom_Serie = InfosSerie.Name;
             TitrePage.Text = Nom_Serie;
-            // ImageUrl = InfosSerie.image.medium;
-            Resume.Text = InfosSerie.summary;
+            // ImageUrl = InfosSerie.Image.Medium;
+            Resume.Text = InfosSerie.Summary;
             base.OnNavigatedTo(e);
         }
 
