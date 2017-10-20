@@ -8,9 +8,21 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="59" Margin="4,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
+        <TextBox x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="103" Margin="279,38,993,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
         <Button x:Name="BouttonRetour" Content="Retour accueil" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="47" Margin="52,38,0,0" VerticalAlignment="Top" Width="176"/>
-
+        <ListView x:Name="ListeSeries" HorizontalAlignment="Left" Height="351" Margin="98,198,0,0" VerticalAlignment="Top" Width="450" IsItemClickEnabled="True" ItemClick="ClickVersSerie">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Serie.name}" 
+                           Margin="20,0,20,8"
+                           FontSize="20"  
+                           FontWeight="SemiBold"
+                           Foreground="DarkBlue"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 </Page>
