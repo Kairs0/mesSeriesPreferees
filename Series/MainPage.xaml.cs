@@ -152,10 +152,13 @@ namespace Series
             if (args.ChosenSuggestion != null)
             {
                 // Serie choisie depuis la liste, utiliser la recherche ciblée par ID (ou nom ?).
+                string NomSerie = args.QueryText;
+                this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
             }
             else
             {
                 // Série non reconnue, utiliser la recherche large par texte.
+                //on affiche les vignettes
             }
         }
 
