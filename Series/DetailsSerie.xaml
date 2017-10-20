@@ -25,7 +25,7 @@
                            FontWeight="SemiBold"
                            Foreground="DarkBlue" />
                         <TextBlock Text="{Binding Character.name}" 
-                           Margin="20,0,20,8"
+                           Margin="40,0,20,8"
                            FontSize="18"
                            Foreground="DarkGray" 
                            Opacity="1" />
