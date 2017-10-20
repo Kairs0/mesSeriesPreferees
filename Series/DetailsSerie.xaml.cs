@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -40,8 +41,9 @@ namespace Series
             ID_Serie = InfosSerie.id.ToString();
             Nom_Serie = InfosSerie.name;
             TitrePage.Text = Nom_Serie;
-            //ImageUrl = InfosSerie.image.medium;
-            Resume.Text = InfosSerie.summary;
+            // ImageUrl = InfosSerie.image.medium;
+            var resumeHtml = InfosSerie.summary;
+            Resume.Text = Regex.Replace(resumeHtml, @"<(.|\n)*?>", string.Empty); //Remplace les balises html
             ListePersonnes = Api.GetCastSerie(ID_Serie);
             ListeActeurs.ItemsSource = ListePersonnes;
             base.OnNavigatedTo(e);
