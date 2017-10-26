@@ -17,7 +17,6 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Image Source="{Binding Person.url}"/>
                         <TextBlock Text="{Binding Person.name}" 
                            Margin="20,0,20,8"
                            FontSize="20"  

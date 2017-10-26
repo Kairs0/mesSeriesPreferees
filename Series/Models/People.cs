@@ -15,6 +15,7 @@ namespace Series.Models
             id = (int)jObjectPeople["id"];
             url = (string)jObjectPeople["url"];
             name = (string)jObjectPeople["name"];
+            image = new Image(jObjectPeople["image"].ToString());
         }
 
         public int id { get; }

@@ -25,13 +25,16 @@ namespace Series
         public string ImageUrl;
         public int ActeurId;
 
+
          protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Acteur = (People)e.Parameter;
             TitrePage.Text = Acteur.name;
-            ListeSeriesJouees = Api.GetShowsForPeople(Acteur.name);
+            ListeSeriesJouees = Api.GetShowsForPeople(Acteur.id.ToString());
             ActeurId = Acteur.id;
             base.OnNavigatedTo(e);
+            ImageUrl = Acteur.image.medium;
+            ListeSeries.ItemsSource = ListeSeriesJouees;
         }
         
 
@@ -41,9 +44,11 @@ namespace Series
             this.InitializeComponent();
         }
 
-        private void ClickVersSerie(object sender, ItemClickEventArgs e)
+
+        private void SerieSelectionnee(object sender, RoutedEventArgs e)
         {
-            string NomSerie = e.OriginalSource.ToString();
+            Serie SerieSelectionne = ListeSeries.SelectedItem as Serie;
+            string NomSerie = SerieSelectionne.name;
             this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
         }
 

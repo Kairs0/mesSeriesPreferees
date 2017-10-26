@@ -9,21 +9,19 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Button x:Name="BouttonRetour" Content="Retour accueil" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="47" Margin="52,38,0,0" VerticalAlignment="Top" Width="176"/>
-        <ListView x:Name="ListeSeries" HorizontalAlignment="Left" Height="351" Margin="98,198,0,0" VerticalAlignment="Top" Width="450" IsItemClickEnabled="True" ItemClick="ClickVersSerie">
+        <ListView x:Name="ListeSeries" HorizontalAlignment="Left" Height="351" Margin="266,152,0,0" VerticalAlignment="Top" Width="450" SelectionChanged="SerieSelectionnee">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Serie.name}" 
+                    <TextBlock Text="{Binding name}" 
                            Margin="20,0,20,8"
                            FontSize="20"  
                            FontWeight="SemiBold"
                            Foreground="DarkBlue"/>
-                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <TextBox x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Left" Height="67" Margin="233,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" FontWeight="Bold" FontSize="48"/>
-        <Image x:Name="PhotoActeur" Source="{x:Bind ImageUrl}" HorizontalAlignment="Left" Height="269" Margin="98,154,0,0" VerticalAlignment="Top" Width="198"/>
+        <Image x:Name="PhotoActeur" Source="{x:Bind ImageUrl}" HorizontalAlignment="Left" Height="269" Margin="36,152,0,0" VerticalAlignment="Top" Width="198"/>
 
     </Grid>
 </Page>
