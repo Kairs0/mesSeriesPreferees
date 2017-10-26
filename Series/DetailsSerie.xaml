@@ -13,6 +13,7 @@
         <Image x:Name="PhotoPage" Source="{x:Bind Image_Url}" HorizontalAlignment="Left" Height="256" Margin="166,230,0,0" VerticalAlignment="Top" Width="231"/>
         <TextBox x:Name="Resume" HorizontalAlignment="Left" Height="151" Margin="511,230,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" Width="625"/>
         <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="46" Margin="52,149,0,0" VerticalAlignment="Top" Width="185" Background="#338B2F04"/>
+        <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" HorizontalAlignment="Left" Height="46" Margin="52,149,0,0" VerticalAlignment="Top" Width="185" Background="#338B2F04"/>
         <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="351" Margin="511,411,0,0" VerticalAlignment="Top" Width="450" SelectionChanged="SelectionActeur">
             <ListView.ItemTemplate>
                 <DataTemplate>
