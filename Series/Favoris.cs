@@ -16,7 +16,7 @@ namespace Series
         //Rajoute le favoris dans le fichier de favoris (présent dans le dossier AppData de l'user)
         public static void AddToFavorite(string idSerie)
         {
-            var existingList = GetFavoritesId();
+            var existingList = GetFavoritesIds();
             existingList.Add(idSerie);
             WriteListOfFavorites(existingList);
         }
@@ -24,7 +24,7 @@ namespace Series
         //Supprime le favoris dans le fichier de favoris
         public static void RemoveFromFavorite(string idSerie)
         {
-            var existingList = GetFavoritesId();
+            var existingList = GetFavoritesIds();
             existingList.Remove(idSerie);
             WriteListOfFavorites(existingList);
         }
@@ -33,7 +33,7 @@ namespace Series
         public static List<Serie> GetFavorites()
         {
             var result = new List<Serie>();
-            var seriesId = GetFavoritesId();
+            var seriesId = GetFavoritesIds();
             foreach (var id in seriesId)
             {
                 var serie = Api.GetShowById(id);
@@ -43,7 +43,12 @@ namespace Series
             return result;
         }
 
-        private static List<string> GetFavoritesId()
+        public static bool CheckFavorite(string idSerie)
+        {
+            return GetFavoritesIds().Contains(idSerie);
+        }
+
+        private static List<string> GetFavoritesIds()
         {
             string content = string.Empty;
             Windows.Storage.StorageFile favoriteFile;
