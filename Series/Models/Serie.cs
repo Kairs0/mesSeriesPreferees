@@ -98,13 +98,15 @@ namespace Series.Models
             try
             {
                 JToken image = JToken.Parse(json);
-                medium = (string)image["medium"];
-                original = (string)image["original"];
+                medium = "http://www.floridalel.org/extension/floridalel/design/challenge/images/no-image-available.png";
+                original = "http://www.floridalel.org/extension/floridalel/design/challenge/images/no-image-available.png";
+                if ((string)image["medium"] != string.Empty) { medium = (string)image["medium"]; }
+                if ((string)image["original"] != string.Empty) { original = (string)image["original"]; }
             }
             catch (Exception)
             {
-                medium = "";
-                original = "";
+                medium = "http://www.floridalel.org/extension/floridalel/design/challenge/images/no-image-available.png";
+                original = "http://www.floridalel.org/extension/floridalel/design/challenge/images/no-image-available.png";
             }
         }
         public string medium { get; }
