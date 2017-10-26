@@ -8,7 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="103" Margin="279,38,993,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
         <Button x:Name="BouttonRetour" Content="Retour accueil" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="47" Margin="52,38,0,0" VerticalAlignment="Top" Width="176"/>
         <ListView x:Name="ListeSeries" HorizontalAlignment="Left" Height="351" Margin="98,198,0,0" VerticalAlignment="Top" Width="450" IsItemClickEnabled="True" ItemClick="ClickVersSerie">
             <ListView.ItemTemplate>
@@ -23,6 +22,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <TextBox x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Left" Height="67" Margin="233,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" FontWeight="Bold" FontSize="48"/>
+        <Image x:Name="PhotoActeur" Source="{x:Bind ImageUrl}" HorizontalAlignment="Left" Height="269" Margin="98,154,0,0" VerticalAlignment="Top" Width="198"/>
 
     </Grid>
 </Page>

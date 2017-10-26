@@ -57,9 +57,10 @@ namespace Series
 
         }
 
-        private void ClickVersActeur (object sender, ItemClickEventArgs e)
+        private void SelectionActeur (object sender, RoutedEventArgs e)
         {
-            string NomActeur = "Catherine Bell";
+            BindPersonToCharacter ActeurSelectionne = ListeActeurs.SelectedItem as BindPersonToCharacter;
+            People NomActeur = ActeurSelectionne.Person;
             this.Frame.Navigate(typeof(DetailsActeurs),NomActeur);
         }
 

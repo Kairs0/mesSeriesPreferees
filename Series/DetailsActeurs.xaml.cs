@@ -20,19 +20,20 @@ namespace Series
 {
     public sealed partial class DetailsActeurs : Page
     {
-
-        public string NomActeur;
+        public People Acteur;
         public List<Serie> ListeSeriesJouees;
+        public string ImageUrl;
+        public int ActeurId;
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            NomActeur = (string)e.Parameter;
-            TitrePage.Text = NomActeur;
-            ListeSeriesJouees = Api.GetShowsForPeople(NomActeur);
-            // ImageUrl = InfosSerie.image.medium;
+            Acteur = (People)e.Parameter;
+            TitrePage.Text = Acteur.name;
+            ListeSeriesJouees = Api.GetShowsForPeople(Acteur.name);
+            ActeurId = Acteur.id;
             base.OnNavigatedTo(e);
         }
-
+        
 
 
         public DetailsActeurs()
