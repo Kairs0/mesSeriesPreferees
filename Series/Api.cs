@@ -1,14 +1,8 @@
-﻿using Series.Models;
-using System;
+﻿using Newtonsoft.Json.Linq;
+using Series.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Series
 {
@@ -82,7 +76,7 @@ namespace Series
         }
 
         //Retourne une liste de personnes liées à un string donné
-        public static List<Models.People> SearchByPeople(string arg)
+        public static List<People> SearchByPeople(string arg)
         {
             var resultSearch = new List<People>();
             var response = client.GetAsync(BaseUrl + PeopleSearch + arg).Result;
