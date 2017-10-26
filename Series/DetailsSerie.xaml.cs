@@ -47,13 +47,22 @@ namespace Series
             Resume.Text = Regex.Replace(resumeHtml, @"<(.|\n)*?>", string.Empty); //Remplace les balises html
             ListePersonnes = Api.GetCastSerie(ID_Serie);
             ListeActeurs.ItemsSource = ListePersonnes;
+            if (Favoris.CheckFavorite(ID_Serie))
+            {
+                AjoutFavoris.Visibility = Visibility.Collapsed;
+                RetraitFavoris.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                AjoutFavoris.Visibility = Visibility.Visible;
+                RetraitFavoris.Visibility = Visibility.Collapsed;
+            }
             base.OnNavigatedTo(e);
         }
 
           public DetailsSerie()
         {
             this.InitializeComponent();     
-
 
         }
 
@@ -72,6 +81,15 @@ namespace Series
         private void ClickAjoutFavoris(object sender, RoutedEventArgs e)
         {
            Favoris.AddToFavorite(ID_Serie);
+            AjoutFavoris.Visibility = Visibility.Collapsed;
+            RetraitFavoris.Visibility = Visibility.Visible;
+        }
+
+        private void ClickRetraitFavoris(object sender, RoutedEventArgs e)
+        {
+            Favoris.RemoveFromFavorite(ID_Serie);
+            AjoutFavoris.Visibility = Visibility.Visible;
+            RetraitFavoris.Visibility = Visibility.Collapsed;
         }
     }
 }
