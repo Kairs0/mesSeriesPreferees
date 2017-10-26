@@ -21,6 +21,7 @@ using Windows.System.Profile;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Media.Animation;
+using Series.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 // GridView - https://www.tutorialspoint.com/xaml/xaml_gridview.htm
@@ -122,7 +123,9 @@ namespace Series
 
         private void ImageGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Serie SerieSelectionne = ImageGridView.SelectedItem as Serie;
+            string NomSerie = SerieSelectionne.name;
+            this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
         }
     }
 }
