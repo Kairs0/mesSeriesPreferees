@@ -2,7 +2,7 @@
     x:Class="Series.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Series"
+    xmlns:local="using:Series.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -21,16 +21,19 @@
         <TextBlock x:Name="AppTitle" TextWrapping="Wrap" Text="Mes séries préférées" Width="352" FontSize="36" FontWeight="Bold" Height="48" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         <GridView x:Name="ImageGridView"
                   Margin="200,218,269,-692"
+                  ItemsSource="{x:Bind seriesList}"
                   RelativePanel.AlignLeftWithPanel="True"
                   RelativePanel.AlignRightWithPanel="True"
                   RelativePanel.Below="AppTitle" RelativePanel.AlignHorizontalCenterWithPanel="True" SelectionChanged="ImageGridView_SelectionChanged"
                   >
-            <Image x:Name="firstImage" Height="150" Width="150" Source="{x:Bind ImageSource[0], Mode=TwoWay}"></Image>
-            <Image Height="150" Width="150" Source="{x:Bind ImageSource[1], Mode=TwoWay}"></Image>
-            <!--<Image Height="150" Width="150" Source="{x:Bind ImageSource[2], Mode=OneWay}"></Image>
-            <Image Height="150" Width="150" Source="{x:Bind ImageSource[3], Mode=OneWay}"></Image>
-            <Image Height="150" Width="150" Source="{x:Bind ImageSource[4], Mode=OneWay}"></Image>-->
-
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="local:Serie">
+                    <StackPanel Width="150" Height="225">
+                        <Image Source="{x:Bind image.medium}">
+                        </Image>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
         </GridView>
         <TextBlock x:Name="LastEpisodes" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Dernières sorties" VerticalAlignment="Bottom" Width="246" Margin="220,256,-404,-276" SelectionChanged="TextBlock_SelectionChanged" FontSize="22"/>
         <AutoSuggestBox x:Name="BarreRechercheAuto" TextChanged="BarreRechercheAuto_TextChanged" QuerySubmitted="BarreRechercheAuto_QuerySubmitted" SuggestionChosen="BarreRechercheAuto_SuggestionChosen" PlaceholderText="Recherche de série" QueryIcon="Find" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="465" Margin="0,92,0,-92" RelativePanel.AlignHorizontalCenterWithPanel="True"/>

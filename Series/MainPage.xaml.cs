@@ -37,8 +37,8 @@ namespace Series
         {
             this.InitializeComponent();
             // use 
-            ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg");
-            ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/72/181728.jpg");
+            //ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg");
+            //ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/72/181728.jpg");
          //   BarreRecherche.Visibility = Visibility.Collapsed;
          //   TriggerSearch.Visibility = Visibility.Collapsed;
         }
@@ -91,7 +91,7 @@ namespace Series
 
         }
 
-
+        List<Models.Serie> seriesList;
         private void BarreRechercheAuto_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
             if (args.ChosenSuggestion != null)
@@ -104,44 +104,9 @@ namespace Series
             {
                 // Série non reconnue, utiliser la recherche large par texte.
                 //on affiche les vignettes
-                //ImageGridView.ItemsSource:
-                List<Image> images = new List<Image>();
                 string texteSaisi = BarreRechercheAuto.Text;
-                List<Models.Serie> seriesList = Api.ShowSearch(texteSaisi);
-                foreach (Models.Serie serie in seriesList)
-                {
-                    var image = new Image();
-
-                    if(serie.image.medium != null) {
-                        var fullFilePath = serie.image.medium; // @ url
-                        //string fullFilePath = @"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg";
-                        BitmapImage bitmap = new BitmapImage();
-                        bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
-                        image.Source = bitmap;
-                        //wrapPanel1.Children.Add(image);
-                        images.Add(image);
-                    }
-                }
-                
-                  
-                ImageGridView.ItemsSource = images;
-                
-                
-                /*
-                var image = new Image();
-                var fullFilePath = @"http://www.americanlayout.com/wp/wp-content/uploads/2012/08/C-To-Go-300x300.png";
-
-                BitmapImage bitmap = new BitmapImage();
-                
-                bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
-                
-
-                image.Source = bitmap;
-                //wrapPanel1.Children.Add(image);
-                images.Add( image);
-                ImageGridView.ItemsSource= images;
-                */
-
+                seriesList = Api.ShowSearch(texteSaisi);
+                ImageGridView.ItemsSource = seriesList;
             }
         }
 
