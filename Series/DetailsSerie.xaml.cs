@@ -71,7 +71,6 @@ namespace Series
 
         private void ClickAjoutFavoris(object sender, RoutedEventArgs e)
         {
-
            Favoris.AddToFavorite(ID_Serie);
         }
     }
