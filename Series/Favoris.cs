@@ -1,21 +1,24 @@
-﻿using System;
+﻿using Series.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Series.Models;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Series
 {
     public static class Favoris
     {
-        private static string NameFavoriteFile = "favoris.txt";
-        private static Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+        private const string NameFavoriteFile = "favoris.txt";
+        private static readonly Windows.Storage.StorageFolder StorageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
 
         //Rajoute le favoris dans le fichier de favoris (présent dans le dossier AppData de l'user)
         public static void AddToFavorite(string idSerie)
         {
+            if (CheckFavorite(idSerie))
+            {
+                return;
+            }
             var existingList = GetFavoritesIds();
             existingList.Add(idSerie);
             WriteListOfFavorites(existingList);
@@ -43,6 +46,7 @@ namespace Series
             return result;
         }
 
+        //Retourne true si l'id testé est dans les favoris, false sinon
         public static bool CheckFavorite(string idSerie)
         {
             return GetFavoritesIds().Contains(idSerie);
@@ -56,7 +60,7 @@ namespace Series
             {
                 try
                 {
-                    favoriteFile = await storageFolder.GetFileAsync(NameFavoriteFile);
+                    favoriteFile = await StorageFolder.GetFileAsync(NameFavoriteFile);
                     content = await Windows.Storage.FileIO.ReadTextAsync(favoriteFile);
                 }
                 catch (FileNotFoundException) { }
@@ -79,11 +83,11 @@ namespace Series
                 Windows.Storage.StorageFile favoriteFile;
                 try
                 {
-                    favoriteFile = await storageFolder.GetFileAsync(NameFavoriteFile);
+                    favoriteFile = await StorageFolder.GetFileAsync(NameFavoriteFile);
                 }
                 catch (FileNotFoundException)
                 {
-                    favoriteFile = await storageFolder.CreateFileAsync(NameFavoriteFile,
+                    favoriteFile = await StorageFolder.CreateFileAsync(NameFavoriteFile,
                         Windows.Storage.CreationCollisionOption.ReplaceExisting);
                 }
                 await Windows.Storage.FileIO.WriteTextAsync(favoriteFile, stringToWrite);
