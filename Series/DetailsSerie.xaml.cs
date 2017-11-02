@@ -41,7 +41,14 @@ namespace Series
             Image_Url = InfosSerie.image.medium;
             var resumeHtml = InfosSerie.summary;
             //TODO pour le résumé : gérer le cas resumeHtml null
-            Resume.Text = Regex.Replace(resumeHtml, @"<(.|\n)*?>", string.Empty); //Remplace les balises html 
+            if (resumeHtml != null) {
+                resumeHtml = Regex.Replace(resumeHtml, @"<(.|\n)*?>", string.Empty); //Remplace les balises html 
+            }
+            else
+            {
+                resumeHtml = "Résumé pas disponible";
+            }
+            Resume.Text = resumeHtml;
             ListePersonnes = Api.GetCastSerie(ID_Serie);
             ListeActeurs.ItemsSource = ListePersonnes;
             if (Favoris.CheckFavorite(ID_Serie))
