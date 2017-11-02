@@ -34,8 +34,6 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        <TextBlock x:Name="LastEpisodes" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" Text="Dernières sorties" VerticalAlignment="Bottom" Width="246" Margin="220,256,-404,-276" FontSize="22"/>
-
         <AutoSuggestBox x:Name="BarreRechercheAuto" 
                         TextChanged="BarreRechercheAuto_TextChanged" 
                         ItemsSource="{x:Bind seriesListAutoSuggest}"
