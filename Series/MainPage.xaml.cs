@@ -40,6 +40,7 @@ namespace Series
 
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            
 
         }
 
