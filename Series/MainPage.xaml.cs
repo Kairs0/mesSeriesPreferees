@@ -37,11 +37,7 @@ namespace Series
         public MainPage()
         {
             this.InitializeComponent();
-            // use 
-            //ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/39/99906.jpg");
-            //ImageSource.Add(@"http://static.tvmaze.com/uploads/images/medium_portrait/72/181728.jpg");
-         //   BarreRecherche.Visibility = Visibility.Collapsed;
-         //   TriggerSearch.Visibility = Visibility.Collapsed;
+
         }
 
         private void Button_Favorites(object sender, RoutedEventArgs e)
@@ -50,21 +46,6 @@ namespace Series
            
         }
         
-
-        private void ImageGridView_ItemClick(object sender, RoutedEventArgs e)
-        {
-            //Montre la page DetailSeries lors d'un click sur une image de série
-        }
-
-        private void BarreRecherche_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
-
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
 
 
         private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

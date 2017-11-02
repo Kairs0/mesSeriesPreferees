@@ -15,14 +15,10 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Series.Models;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-// https://docs.microsoft.com/en-us/windows/uwp/layout/navigate-between-two-pages
 
 namespace Series
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+
     public sealed partial class DetailsSerie : Page
     {
 
