@@ -46,15 +46,10 @@ namespace Series
         private void Button_Favorites(object sender, RoutedEventArgs e)
         {
             // Displays list of series from user's favorite
-           
+            listeFavoris = Series.Favoris.GetFavorites();
+            ImageGridView.ItemsSource = listeFavoris;
         }
 
-//        protected override void OnNavigatedTo(NavigationEventArgs e)
- //       {
-  //          listeFavoris = Series.Favoris.GetFavorites();
-   //         ImageGridView.ItemsSource = listeFavoris;
-   //         base.OnNavigatedTo(e);
-   //     }
 
         List<Models.Serie> seriesListAutoSuggest;
         private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -100,7 +95,6 @@ namespace Series
         private void ImageGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Serie SerieSelectionne = ImageGridView.SelectedItem as Serie;
-            // string IdSerie = SerieSelectionne.id.ToString();
             this.Frame.Navigate(typeof(DetailsSerie), SerieSelectionne);
         }
     }
