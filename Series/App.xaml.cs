@@ -30,6 +30,8 @@ namespace Series
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            //Arnaud: d'ici on démarre la fonction de notifications
+            //Series.NotificationManager.SendNotifNewEpisodeOfShow("1");
         }
 
         /// <summary>
