@@ -32,7 +32,7 @@ namespace Series
     public sealed partial class MainPage : Page
     {
         private readonly List<string> ImageSource = new List<string>(); /*{ get; set; }*/
-        private List<string> listeSeries;
+        // private List<string> listeSeries;
 
         public MainPage()
         {
@@ -55,7 +55,6 @@ namespace Series
 
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
-                //var listeSuggestions = listeSeries.Where(i => i.StartsWith(texteSaisi)).ToList(); // /!\ listeSeries à créer avec l'API index
                 String[] listeSuggestions = new String[seriesList.Count];
                 for (int i = 0; i < seriesList.Count; i++)
                 {
@@ -78,9 +77,11 @@ namespace Series
         {
             if (args.ChosenSuggestion != null)
             {
-                // Serie choisie depuis la liste, utiliser la recherche ciblée par ID (ou nom ?).
+                // Serie choisie depuis la liste, utiliser la recherche ciblée par ID.
                 string NomSerie = args.QueryText;
-                this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
+                Serie SerieChoisie = Api.GetShowByName(NomSerie);
+                // string IdSerie = SerieChoisie.id.ToString();
+                this.Frame.Navigate(typeof(DetailsSerie), SerieChoisie);
             }
             else
             {
@@ -96,8 +97,8 @@ namespace Series
         private void ImageGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Serie SerieSelectionne = ImageGridView.SelectedItem as Serie;
-            string NomSerie = SerieSelectionne.name;
-            this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
+            // string IdSerie = SerieSelectionne.id.ToString();
+            this.Frame.Navigate(typeof(DetailsSerie), SerieSelectionne);
         }
     }
 }

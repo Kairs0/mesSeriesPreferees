@@ -33,8 +33,8 @@ namespace Series
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            NomSerie = (string)e.Parameter;
-            Serie InfosSerie = Api.GetShowByName(NomSerie);
+            //ID_Serie = (string)e.Parameter;
+            Serie InfosSerie = e.Parameter as Serie; //Api.GetShowById(ID_Serie);
             ID_Serie = InfosSerie.id.ToString();
             Nom_Serie = InfosSerie.name;
             TitrePage.Text = Nom_Serie;
