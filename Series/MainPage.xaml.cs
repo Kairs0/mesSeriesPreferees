@@ -32,11 +32,14 @@ namespace Series
     public sealed partial class MainPage : Page
     {
         private readonly List<string> ImageSource = new List<string>(); /*{ get; set; }*/
-        // private List<string> listeSeries;
+        private List<Serie> listeFavoris ;
+
 
         public MainPage()
         {
+
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
 
         }
 
@@ -45,8 +48,13 @@ namespace Series
             // Displays list of series from user's favorite
            
         }
-        
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            listeFavoris = Series.Favoris.GetFavorites();
+            ImageGridView.ItemsSource = listeFavoris;
+            base.OnNavigatedTo(e);
+        }
 
         private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
