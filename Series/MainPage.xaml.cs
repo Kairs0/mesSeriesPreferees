@@ -49,26 +49,22 @@ namespace Series
            
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            listeFavoris = Series.Favoris.GetFavorites();
-            ImageGridView.ItemsSource = listeFavoris;
-            base.OnNavigatedTo(e);
-        }
+//        protected override void OnNavigatedTo(NavigationEventArgs e)
+ //       {
+  //          listeFavoris = Series.Favoris.GetFavorites();
+   //         ImageGridView.ItemsSource = listeFavoris;
+   //         base.OnNavigatedTo(e);
+   //     }
 
+        List<Models.Serie> seriesListAutoSuggest;
         private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             string texteSaisi = BarreRechercheAuto.Text;
-            List<Models.Serie> seriesList = Api.ShowSearch(texteSaisi);
-
+            seriesListAutoSuggest = Api.ShowSearch(texteSaisi);
+            
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
-                String[] listeSuggestions = new String[seriesList.Count];
-                for (int i = 0; i < seriesList.Count; i++)
-                {
-                    listeSuggestions[i] = seriesList[i].name;
-                }
-                BarreRechercheAuto.ItemsSource = listeSuggestions;
+                BarreRechercheAuto.ItemsSource = seriesListAutoSuggest;
             }
         }
 
@@ -76,7 +72,7 @@ namespace Series
         private void BarreRechercheAuto_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             // Set sender.Text. You can use args.SelectedItem to build your text string.
-            BarreRechercheAuto.Text = args.SelectedItem as string;
+            BarreRechercheAuto.Text = ((Models.Serie)args.SelectedItem).name;
 
         }
 
@@ -86,9 +82,8 @@ namespace Series
             if (args.ChosenSuggestion != null)
             {
                 // Serie choisie depuis la liste, utiliser la recherche ciblée par ID.
-                string NomSerie = args.QueryText;
-                Serie SerieChoisie = Api.GetShowByName(NomSerie);
-                // string IdSerie = SerieChoisie.id.ToString();
+                
+                Serie SerieChoisie = (Serie)args.ChosenSuggestion;
                 this.Frame.Navigate(typeof(DetailsSerie), SerieChoisie);
             }
             else
