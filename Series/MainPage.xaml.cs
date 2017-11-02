@@ -39,16 +39,19 @@ namespace Series
         {
 
             this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Enabled;
+//           this.NavigationCacheMode = NavigationCacheMode.Enabled;
 
         }
 
+
+    
         private void Button_Favorites(object sender, RoutedEventArgs e)
         {
             // Displays list of series from user's favorite
             listeFavoris = Series.Favoris.GetFavorites();
             ImageGridView.ItemsSource = listeFavoris;
         }
+        
 
 
         List<Models.Serie> seriesListAutoSuggest;

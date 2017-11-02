@@ -26,8 +26,8 @@ namespace Series
        public Models.Image ImageSerie { get; set; }
         public string Image_Url;
 
-        public string Nom_Serie;
-        public string ID_Serie;
+        private string Nom_Serie;
+        private string ID_Serie;
         private List<BindPersonToCharacter> ListePersonnes;
 
 
