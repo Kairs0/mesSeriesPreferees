@@ -1,14 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json.Linq;
 
 namespace Series.Models
 {
 
     public class Saison
     {
+        public Saison(string json)
+        {
+            JToken jObjectSaison = JToken.Parse(json);
+            id = (int)jObjectSaison["id"];
+            url = (string)jObjectSaison["url"];
+            name = (string)jObjectSaison["name"];
+            number = (int)jObjectSaison["number"];
+            premiereDate = (string) jObjectSaison["premiereDate"];
+            endDate = (string) jObjectSaison["endDate"];
+            image = jObjectSaison["image"].ToObject<Image>();
+            summary = (string)jObjectSaison["summary"];
+        }
+
         public int id { get; }
         public string url { get; }
         public int number { get; }

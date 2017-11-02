@@ -19,9 +19,48 @@ namespace Series
         private const string PeopleSearch = "search/people?q=";
         private const string Schedule = "schedule?country=";
         private const string Shows = "shows/";
+        private const string Seasons = "seasons/";
         private const string ShowCastPartTwo = "/cast";
         private const string PeopleInfo = "people/";
         private const string CastCredits = "/castcredits";
+        private const string SeasonsForShowPartTwo = "/seasons";
+        private const string EpisodesForSeasonPartTwo = "/episodes";
+
+        //TODO: à tester
+        public static List<Episode> GetEpisodesForSeason(string idSeason)
+        {
+            var result = new List<Episode>();
+            var response = client.GetAsync(BaseUrl + Seasons + idSeason + EpisodesForSeasonPartTwo).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = response.Content.ReadAsStringAsync().Result;
+                var jArrayEpisodes = JArray.Parse(stringResponse);
+                foreach (var jEpisodeToken in jArrayEpisodes)
+                {
+                    result.Add(new Episode(jEpisodeToken.ToString()));
+                }
+            }
+
+            return result;
+        }
+
+        //TODO : a tester
+        public static List<Saison> GetSeasonsForShow(string idShow)
+        {
+            var result = new List<Saison>();
+            var response = client.GetAsync(BaseUrl + Shows + idShow + SeasonsForShowPartTwo).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = response.Content.ReadAsStringAsync().Result;
+                var jArraySeasons = JArray.Parse(stringResponse);
+                foreach (var jSeasonToken in jArraySeasons)
+                {
+                    result.Add(new Saison(jSeasonToken.ToString()));
+                }
+            }
+
+            return result;
+        }
 
         public static Serie GetShowById(string id)
         {
