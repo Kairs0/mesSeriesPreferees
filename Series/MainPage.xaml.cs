@@ -92,15 +92,6 @@ namespace Series
             }
         }
 
-        private void ClickBouttonNav(object sender, RoutedEventArgs e)
-        {
-            string NomSerie = "Friends";
-            this.Frame.Navigate(typeof(DetailsSerie), NomSerie);
-            //TESTS ARNAUD
-            //var test = Api.GetShowById(1.ToString());
-            //var test2 = "";
-            //END TEST ARNAUD
-        }
 
         private void ImageGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

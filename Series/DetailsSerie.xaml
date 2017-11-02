@@ -9,26 +9,33 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="59" Margin="4,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
-        <Button x:Name="BouttonRetour" Content="Retour" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="47" Margin="52,38,0,0" VerticalAlignment="Top" Width="176"/>
-        <Image x:Name="PhotoPage" Source="{x:Bind Image_Url}" HorizontalAlignment="Left" Height="256" Margin="166,230,0,0" VerticalAlignment="Top" Width="231"/>
-        <TextBox x:Name="Resume" HorizontalAlignment="Left" Height="151" Margin="511,230,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" Width="625"/>
-        <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="46" Margin="52,149,0,0" VerticalAlignment="Top" Width="185" Background="#338B2F04"/>
-        <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" HorizontalAlignment="Left" Height="46" Margin="52,149,0,0" VerticalAlignment="Top" Width="185" Background="#338B2F04"/>
-        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="351" Margin="511,411,0,0" VerticalAlignment="Top" Width="450" SelectionChanged="SelectionActeur">
+        <Button x:Name="BouttonRetour" Content="Retour" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="40,40,0,0" VerticalAlignment="Top" Width="180"/>
+        <Image x:Name="PhotoPage" Source="{x:Bind Image_Url}" HorizontalAlignment="Left" Height="256" Margin="100,200,0,0" VerticalAlignment="Top" Width="231"/>
+        <TextBox x:Name="Resume" Height="151" Margin="365,200,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" HorizontalAlignment="Left" Width="625"/>
+        <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="40" Margin="40,100,0,0" VerticalAlignment="Top" Width="180" Background="#338B2F04"/>
+        <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" HorizontalAlignment="Left" Height="40" Margin="40,100,0,0" VerticalAlignment="Top" Width="180" Background="#338B2F04"/>
+        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="351" Margin="365,371,0,0" VerticalAlignment="Top" Width="625" SelectionChanged="SelectionActeur">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Person.name}" 
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="47"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding Character.image.medium}" Height="70"></Image>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="{Binding Person.name}"
                            Margin="20,0,20,8"
                            FontSize="20"  
                            FontWeight="SemiBold"
                            Foreground="DarkBlue"/>
-                        <TextBlock Text="{Binding Character.name}" 
+                            <TextBlock Text="{Binding Character.name}" 
                            Margin="40,0,20,8"
                            FontSize="18"
                            Foreground="#FF4D1818" 
                            Opacity="1" />
-                    </StackPanel>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
