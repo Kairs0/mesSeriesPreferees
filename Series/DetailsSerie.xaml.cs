@@ -120,7 +120,7 @@ namespace Series
             AjoutFavoris.Visibility = Visibility.Visible;
             RetraitFavoris.Visibility = Visibility.Collapsed;
         }
-        List<Episode> EpisodeAAfficher;
+        List<Episode> EpisodeAAfficher= new List<Episode>();
         private void AffichageListeEpisodes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             EpisodeAAfficher.Add((Episode)AffichageListeEpisodes.SelectedItem);

@@ -102,27 +102,27 @@
             </ListView.ItemTemplate>
             <ListView Height="100" Width="100"/>
         </ListView>
-        <GridView x:Name="DetailsEpisode" 
+        <ListView x:Name="DetailsEpisode" 
               HorizontalAlignment="Left" 
-              Height="472" 
               ItemsSource="{x:Bind EpisodeAAfficher}"
+              Height="472"
               VerticalAlignment="Top" 
               Width="504" 
               Margin="488,324,0,0">
             <DataTemplate x:DataType="binding:Episode">
                 <StackPanel>
                     <TextBlock Text="{Binding name}"
-                                    Margin="0,0,20,8"
+                                    Margin="0,0,0,8"
                                     FontSize="30"  
                                     FontWeight="SemiBold"
                                     Foreground="Black"/>
                     <TextBlock Text="{Binding summary}"
                                     Margin="20,20,20,8"
-                                    FontSize="30"  
+                                    FontSize="12"  
                                     FontWeight="SemiBold"
                                     Foreground="Black"/>
                 </StackPanel>
             </DataTemplate>
-        </GridView>
+        </ListView>
     </Grid>
 </Page>
