@@ -30,7 +30,7 @@ namespace Series
         private string ID_Serie;
         private List<BindPersonToCharacter> ListePersonnes;
         private List<Saison> ListeSaisons;
-
+        private List<Episode> ListeEpisode;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -58,7 +58,10 @@ namespace Series
 
                 ListeSaisons = Api.GetSeasonsForShow(ID_Serie);
                 AffichageListeSaisons.ItemsSource = ListeSaisons;
-
+                if (ListeSaisons.Count > 0)
+                {
+                    AffichageListeSaisons.SelectedItem = AffichageListeSaisons.Items[0];
+                }
                 if (Favoris.CheckFavorite(ID_Serie))
                 {
                     AjoutFavoris.Visibility = Visibility.Collapsed;
@@ -89,7 +92,9 @@ namespace Series
         private void SelectionSaison (object sender, RoutedEventArgs e)
         {
             Saison SaisonSelectionne = AffichageListeSaisons.SelectedItem as Saison;
-            this.Frame.Navigate(typeof(DetailsSaison), SaisonSelectionne);
+            //this.Frame.Navigate(typeof(DetailsSaison), SaisonSelectionne);
+            ListeEpisode = Api.GetEpisodesForSeason(SaisonSelectionne.id.ToString());
+            AffichageListeEpisodes.ItemsSource = ListeEpisode;
         }
 
         private void ClickBouttonRetour(object sender, RoutedEventArgs e)
@@ -114,6 +119,12 @@ namespace Series
             Favoris.RemoveFromFavorite(ID_Serie);
             AjoutFavoris.Visibility = Visibility.Visible;
             RetraitFavoris.Visibility = Visibility.Collapsed;
+        }
+        List<Episode> EpisodeAAfficher;
+        private void AffichageListeEpisodes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EpisodeAAfficher.Add((Episode)AffichageListeEpisodes.SelectedItem);
+            DetailsEpisode.ItemsSource = EpisodeAAfficher;
         }
     }
 }

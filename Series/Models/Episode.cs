@@ -15,11 +15,11 @@ namespace Series.Models
             number = (int) jObjectEpisode["number"];
             airdate = (string)jObjectEpisode["airdate"];
             airtime = (string)jObjectEpisode["airtime"];
-            airstamp = jObjectEpisode["airstamp"].ToObject<DateTime>();
+            //airstamp = jObjectEpisode["airstamp"].ToObject<DateTime>();
             runtime = (int)jObjectEpisode["runtime"];
-            image = jObjectEpisode["image"].ToObject<Image>();
+            //image = jObjectEpisode["image"].ToObject<Image>();
             summary = (string)jObjectEpisode["summary"];
-            show = jObjectEpisode["show"].ToObject<Serie>();
+            //show = jObjectEpisode["show"].ToObject<Serie>();
         }
 
         public int id { get; }
