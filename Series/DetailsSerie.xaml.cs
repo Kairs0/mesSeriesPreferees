@@ -120,11 +120,13 @@ namespace Series
             AjoutFavoris.Visibility = Visibility.Visible;
             RetraitFavoris.Visibility = Visibility.Collapsed;
         }
-        List<Episode> EpisodeAAfficher= new List<Episode>();
         private void AffichageListeEpisodes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            EpisodeAAfficher.Add((Episode)AffichageListeEpisodes.SelectedItem);
-            DetailsEpisode.ItemsSource = EpisodeAAfficher;
+            DetailsEpisode_Titre.Text = ((Episode)AffichageListeEpisodes.SelectedItem).name;
+            DetailsEpisode_Dates.Text = "Saison " + ((Saison)AffichageListeSaisons.SelectedItem).number +
+                ", Episode " + ((Episode)AffichageListeEpisodes.SelectedItem).number +"\n"+
+                "Aired Date: " + ((Episode)AffichageListeEpisodes.SelectedItem).airdate;
+            DetailsEpisode_Resume.Text = ((Episode)AffichageListeEpisodes.SelectedItem).summary;
         }
     }
 }
