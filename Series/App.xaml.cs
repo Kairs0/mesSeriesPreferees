@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.QueryStringDotNET;
+using Series.Models;
 
 namespace Series
 {
@@ -31,7 +33,7 @@ namespace Series
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             //Arnaud: d'ici on démarre la fonction de notifications
-            //Series.NotificationManager.SendNotifNewEpisodeOfShow("1");
+            //NotificationManager.RunNotifService();
         }
 
         /// <summary>
@@ -72,6 +74,45 @@ namespace Series
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+        }
+
+        //Gestion des notifications
+        protected override void OnActivated(IActivatedEventArgs e)
+        {
+            // Get the root frame
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            // Handle toast activation
+            if (e is ToastNotificationActivatedEventArgs)
+            {
+                var toastActivationArgs = e as ToastNotificationActivatedEventArgs;
+
+                // Parse the query string (using QueryString.NET)
+                QueryString args = QueryString.Parse(toastActivationArgs.Argument);
+
+                if (!args.Any())
+                {
+                    rootFrame.Navigate(typeof(MainPage));
+                }
+                else
+                {
+                    if (args["action"] == "viewShow")
+                    {
+                        string idShow = args["idShow"];
+                        Serie show = Api.GetShowById(idShow);
+                        rootFrame.Navigate(typeof(DetailsSerie), show);
+                    }
+                }
+
+                // If we're loading the app for the first time, place the main page on
+                // the back stack so that user can go back after they've been
+                // navigated to the specific page
+                if (rootFrame.BackStack.Count == 0)
+                    rootFrame.BackStack.Add(new PageStackEntry(typeof(MainPage), null, null));
+            }
+
+            // Ensure the current window is active
+            Window.Current.Activate();
         }
 
         /// <summary>
