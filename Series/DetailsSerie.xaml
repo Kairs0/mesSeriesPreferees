@@ -3,19 +3,20 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Series"
+    xmlns:binding="using:Series.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Width="1382" Height="830">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="59" Margin="4,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
+        <TextBlock x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="59" Margin="368,10,484,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
         <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="40,40,0,0" VerticalAlignment="Top" Width="85"/>
         <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="130,40,0,0" VerticalAlignment="Top" Width="85"/>
-        <Image x:Name="PhotoPage" Source="{x:Bind Image_Url}" HorizontalAlignment="Left" Height="256" Margin="100,200,0,0" VerticalAlignment="Top" Width="231"/>
-        <TextBox x:Name="Resume" Height="151" Margin="365,200,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" HorizontalAlignment="Left" Width="625"/>
+        <Image x:Name="PhotoPage" Source="{x:Bind Image_Url}" HorizontalAlignment="Left" Height="151" Margin="253,81,0,0" VerticalAlignment="Top" Width="115"/>
+        <TextBox x:Name="Resume" Height="142" Margin="417,90,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" HorizontalAlignment="Left" Width="575"/>
         <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="40" Margin="40,90,0,0" VerticalAlignment="Top" Width="175" Background="#338B2F04"/>
         <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" HorizontalAlignment="Left" Height="40" Margin="40,90,0,0" VerticalAlignment="Top" Width="175" Background="#338B2F04"/>
-        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="351" Margin="365,371,0,0" VerticalAlignment="Top" Width="625" SelectionChanged="SelectionActeur">
+        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="706" Margin="1059,90,0,0" VerticalAlignment="Top" Width="305" SelectionChanged="SelectionActeur">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -41,12 +42,12 @@
             </ListView.ItemTemplate>
             <ListView Height="100" Width="100"/>
         </ListView>
-        <ListView x:Name="AffichageListeSaisons" HorizontalAlignment="Left" Height="266" Margin="100,456,0,0" VerticalAlignment="Top" Width="250" SelectionChanged="SelectionSaison">
+        <ListView x:Name="AffichageListeSaisons" HorizontalAlignment="Left" Height="472" Margin="40,324,0,0" VerticalAlignment="Top" Width="175" SelectionChanged="SelectionSaison">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Saison"
+                            <TextBlock Text="Saison"
                            Margin="10,0,6,8"
                            FontSize="20"  
                            FontWeight="SemiBold"
@@ -58,7 +59,7 @@
                            Foreground="DarkRed"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding premiereDate}" 
+                            <TextBlock Text="{Binding premiereDate}" 
                            Margin="0,0,20,8"
                            FontSize="12"
                            Foreground="#FF4D1818" 
@@ -74,5 +75,54 @@
             </ListView.ItemTemplate>
             <ListView Height="100" Width="100"/>
         </ListView>
+        <ListView x:Name="AffichageListeEpisodes" 
+                  HorizontalAlignment="Left" 
+                  ItemsSource="{x:Bind ListeEpisode}"
+                  Height="472"
+                  Margin="253,324,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="140" SelectionChanged="AffichageListeEpisodes_SelectionChanged" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Episode"
+                                Margin="10,0,6,8"
+                                FontSize="20"  
+                                FontWeight="SemiBold"
+                                Foreground="DarkRed"/>
+                            <TextBlock Text="{Binding number}"
+                                Margin="0,0,20,8"
+                                FontSize="20"  
+                                FontWeight="SemiBold"
+                                Foreground="DarkRed"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView Height="100" Width="100"/>
+        </ListView>
+        <GridView x:Name="DetailsEpisode" 
+              HorizontalAlignment="Left" 
+              Height="472" 
+              ItemsSource="{x:Bind EpisodeAAfficher}"
+              VerticalAlignment="Top" 
+              Width="504" 
+              Margin="488,324,0,0">
+            <DataTemplate x:DataType="binding:Episode">
+                <StackPanel>
+                    <TextBlock Text="{Binding name}"
+                                    Margin="0,0,20,8"
+                                    FontSize="30"  
+                                    FontWeight="SemiBold"
+                                    Foreground="Black"/>
+                    <TextBlock Text="{Binding summary}"
+                                    Margin="20,20,20,8"
+                                    FontSize="30"  
+                                    FontWeight="SemiBold"
+                                    Foreground="Black"/>
+                </StackPanel>
+            </DataTemplate>
+        </GridView>
     </Grid>
 </Page>
