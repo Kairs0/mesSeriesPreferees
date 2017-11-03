@@ -39,11 +39,17 @@ namespace Series
         {
 
             this.InitializeComponent();
-//           this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            // this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            
+
 
         }
 
-
+        private void PageChargee(object sender, RoutedEventArgs args)
+        {
+            listeFavoris = Series.Favoris.GetFavorites();
+            ImageGridView.ItemsSource = listeFavoris;
+        }
     
         private void Button_Favorites(object sender, RoutedEventArgs e)
         {

@@ -96,6 +96,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DetailsSaison.xaml.cs">
+      <DependentUpon>DetailsSaison.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DetailsActeurs.xaml.cs">
       <DependentUpon>DetailsActeurs.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DetailsSaison.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DetailsActeurs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

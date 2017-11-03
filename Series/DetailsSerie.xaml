@@ -9,11 +9,12 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="59" Margin="4,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
-        <Button x:Name="BouttonRetour" Content="Retour" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="40,40,0,0" VerticalAlignment="Top" Width="180"/>
+        <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="40,40,0,0" VerticalAlignment="Top" Width="85"/>
+        <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="130,40,0,0" VerticalAlignment="Top" Width="85"/>
         <Image x:Name="PhotoPage" Source="{x:Bind Image_Url}" HorizontalAlignment="Left" Height="256" Margin="100,200,0,0" VerticalAlignment="Top" Width="231"/>
         <TextBox x:Name="Resume" Height="151" Margin="365,200,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" HorizontalAlignment="Left" Width="625"/>
-        <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="40" Margin="40,100,0,0" VerticalAlignment="Top" Width="180" Background="#338B2F04"/>
-        <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" HorizontalAlignment="Left" Height="40" Margin="40,100,0,0" VerticalAlignment="Top" Width="180" Background="#338B2F04"/>
+        <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="40" Margin="40,90,0,0" VerticalAlignment="Top" Width="175" Background="#338B2F04"/>
+        <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" HorizontalAlignment="Left" Height="40" Margin="40,90,0,0" VerticalAlignment="Top" Width="175" Background="#338B2F04"/>
         <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="351" Margin="365,371,0,0" VerticalAlignment="Top" Width="625" SelectionChanged="SelectionActeur">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -38,6 +39,40 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView Height="100" Width="100"/>
+        </ListView>
+        <ListView x:Name="AffichageListeSaisons" HorizontalAlignment="Left" Height="266" Margin="100,456,0,0" VerticalAlignment="Top" Width="250" SelectionChanged="SelectionSaison">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Saison"
+                           Margin="10,0,6,8"
+                           FontSize="20"  
+                           FontWeight="SemiBold"
+                           Foreground="DarkRed"/>
+                            <TextBlock Text="{Binding number}"
+                           Margin="0,0,20,8"
+                           FontSize="20"  
+                           FontWeight="SemiBold"
+                           Foreground="DarkRed"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding premiereDate}" 
+                           Margin="0,0,20,8"
+                           FontSize="12"
+                           Foreground="#FF4D1818" 
+                           Opacity="1" />
+                            <TextBlock Text="{Binding endDate}" 
+                           Margin="10,0,20,8"
+                           FontSize="12"
+                           Foreground="#FF4D1818" 
+                           Opacity="1" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView Height="100" Width="100"/>
         </ListView>
     </Grid>
 </Page>

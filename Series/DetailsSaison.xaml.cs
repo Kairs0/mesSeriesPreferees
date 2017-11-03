@@ -17,39 +17,33 @@ using Series.Models;
 
 namespace Series
 {
-    public sealed partial class DetailsActeurs : Page
+    public sealed partial class DetailsSaison : Page
     {
-        public People Acteur;
-        public List<Serie> ListeSeriesJouees;
-        public string ImageUrl;
-        public int ActeurId;
+        private Saison DetailSaison;
+        private string NumeroSaison;
+        private List<Episode> ListeEpisodesSaison;
+        private string ResumeSaison;
+        private Models.Image ImageSaison;
+
 
 
          protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Acteur = (People)e.Parameter;
-            TitrePage.Text = Acteur.name;
-            ListeSeriesJouees = Api.GetShowsForPeople(Acteur.id.ToString());
-            ActeurId = Acteur.id;
-            base.OnNavigatedTo(e);
-            ImageUrl = Acteur.image.medium;
-            ListeSeries.ItemsSource = ListeSeriesJouees;
+            DetailSaison = e.Parameter as Saison;
+            TitrePage.Text = DetailSaison.name;
+            ResumeSaison = DetailSaison.summary;
+
+
         }
         
 
 
-        public DetailsActeurs()
+        public DetailsSaison()
         {
             this.InitializeComponent();
         }
 
 
-        private void SerieSelectionnee(object sender, RoutedEventArgs e)
-        {
-            Serie SerieSelectionne = ListeSeries.SelectedItem as Serie;
-        //    string NomSerie = SerieSelectionne.name;
-            this.Frame.Navigate(typeof(DetailsSerie), SerieSelectionne);
-        }
 
         private void ClickBouttonRetour(object sender, RoutedEventArgs e)
         {
@@ -59,6 +53,11 @@ namespace Series
         private void ClickBouttonAccueil(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void EpisodeSelectionne(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

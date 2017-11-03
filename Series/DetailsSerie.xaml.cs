@@ -29,37 +29,46 @@ namespace Series
         private string Nom_Serie;
         private string ID_Serie;
         private List<BindPersonToCharacter> ListePersonnes;
+        private List<Saison> ListeSaisons;
 
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             //ID_Serie = (string)e.Parameter;
-            Serie InfosSerie = e.Parameter as Serie; //Api.GetShowById(ID_Serie);
-            ID_Serie = InfosSerie.id.ToString();
-            Nom_Serie = InfosSerie.name;
-            TitrePage.Text = Nom_Serie;
-            Image_Url = InfosSerie.image.medium;
-            var resumeHtml = InfosSerie.summary;
-            //TODO pour le résumé : gérer le cas resumeHtml null
-            if (resumeHtml != null) {
-                resumeHtml = Regex.Replace(resumeHtml, @"<(.|\n)*?>", string.Empty); //Remplace les balises html 
-            }
-            else
+            if (e.Parameter != null)
             {
-                resumeHtml = "Résumé pas disponible";
-            }
-            Resume.Text = resumeHtml;
-            ListePersonnes = Api.GetCastSerie(ID_Serie);
-            ListeActeurs.ItemsSource = ListePersonnes;
-            if (Favoris.CheckFavorite(ID_Serie))
-            {
-                AjoutFavoris.Visibility = Visibility.Collapsed;
-                RetraitFavoris.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                AjoutFavoris.Visibility = Visibility.Visible;
-                RetraitFavoris.Visibility = Visibility.Collapsed;
+                Serie InfosSerie = e.Parameter as Serie; //Api.GetShowById(ID_Serie);
+                ID_Serie = InfosSerie.id.ToString();
+                Nom_Serie = InfosSerie.name;
+                TitrePage.Text = Nom_Serie;
+                Image_Url = InfosSerie.image.medium;
+                var resumeHtml = InfosSerie.summary;
+                //TODO pour le résumé : gérer le cas resumeHtml null
+                if (resumeHtml != null)
+                {
+                    resumeHtml = Regex.Replace(resumeHtml, @"<(.|\n)*?>", string.Empty); //Remplace les balises html 
+                }
+                else
+                {
+                    resumeHtml = "Résumé pas disponible";
+                }
+                Resume.Text = resumeHtml;
+                ListePersonnes = Api.GetCastSerie(ID_Serie);
+                ListeActeurs.ItemsSource = ListePersonnes;
+
+                ListeSaisons = Api.GetSeasonsForShow(ID_Serie);
+                AffichageListeSaisons.ItemsSource = ListeSaisons;
+
+                if (Favoris.CheckFavorite(ID_Serie))
+                {
+                    AjoutFavoris.Visibility = Visibility.Collapsed;
+                    RetraitFavoris.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    AjoutFavoris.Visibility = Visibility.Visible;
+                    RetraitFavoris.Visibility = Visibility.Collapsed;
+                }
             }
             base.OnNavigatedTo(e);
         }
@@ -77,7 +86,18 @@ namespace Series
             this.Frame.Navigate(typeof(DetailsActeurs),NomActeur);
         }
 
+        private void SelectionSaison (object sender, RoutedEventArgs e)
+        {
+            Saison SaisonSelectionne = AffichageListeSaisons.SelectedItem as Saison;
+            this.Frame.Navigate(typeof(DetailsSaison), SaisonSelectionne);
+        }
+
         private void ClickBouttonRetour(object sender, RoutedEventArgs e)
+        {
+            this.Frame.GoBack(); ;
+        }
+
+        private void ClickBouttonAccueil(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
         }
