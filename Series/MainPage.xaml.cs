@@ -38,12 +38,11 @@ namespace Series
         public MainPage()
         {
 
-            this.InitializeComponent();
-            // this.NavigationCacheMode = NavigationCacheMode.Enabled;
-            
+            this.InitializeComponent();        
 
 
         }
+
 
         private void PageChargee(object sender, RoutedEventArgs args)
         {

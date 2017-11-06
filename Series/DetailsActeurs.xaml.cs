@@ -47,7 +47,6 @@ namespace Series
         private void SerieSelectionnee(object sender, RoutedEventArgs e)
         {
             Serie SerieSelectionne = ListeSeries.SelectedItem as Serie;
-        //    string NomSerie = SerieSelectionne.name;
             this.Frame.Navigate(typeof(DetailsSerie), SerieSelectionne);
         }
 
