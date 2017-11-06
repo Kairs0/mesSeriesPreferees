@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Loaded="PageChargee">
 
-    <RelativePanel Background="{ThemeResource CalendarDatePickerBorderBrush}">
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Button x:Name="Favoris" Content="Favoris" HorizontalAlignment="Stretch" Margin="128,80,-79.5,-3" VerticalAlignment="Top" Height="44" Click="Button_Favorites" FontWeight="Bold" Background="#FF7A9B0A"/>
         <TextBlock x:Name="AppTitle" TextWrapping="Wrap" Text="Mes séries préférées" Width="352" FontSize="36" FontWeight="Bold" Height="48" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"/>

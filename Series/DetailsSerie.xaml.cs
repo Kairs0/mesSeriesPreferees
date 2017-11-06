@@ -31,6 +31,7 @@ namespace Series
         private List<BindPersonToCharacter> ListePersonnes;
         private List<Saison> ListeSaisons;
         private List<Episode> ListeEpisode;
+        private Episode DetailsEpisode;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -61,6 +62,8 @@ namespace Series
                 if (ListeSaisons.Count > 0)
                 {
                     AffichageListeSaisons.SelectedItem = AffichageListeSaisons.Items[0];
+                    AffichageListeEpisodes.SelectedItem = AffichageListeEpisodes.Items[0];
+
                 }
                 if (Favoris.CheckFavorite(ID_Serie))
                 {
@@ -92,7 +95,6 @@ namespace Series
         private void SelectionSaison (object sender, RoutedEventArgs e)
         {
             Saison SaisonSelectionne = AffichageListeSaisons.SelectedItem as Saison;
-            //this.Frame.Navigate(typeof(DetailsSaison), SaisonSelectionne);
             ListeEpisode = Api.GetEpisodesForSeason(SaisonSelectionne.id.ToString());
             AffichageListeEpisodes.ItemsSource = ListeEpisode;
         }
@@ -120,13 +122,22 @@ namespace Series
             AjoutFavoris.Visibility = Visibility.Visible;
             RetraitFavoris.Visibility = Visibility.Collapsed;
         }
+
         private void AffichageListeEpisodes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DetailsEpisode_Titre.Text = ((Episode)AffichageListeEpisodes.SelectedItem).name;
+            if (AffichageListeEpisodes.SelectedItem != null)
+            {
+                DetailsEpisode = AffichageListeEpisodes.SelectedItem as Episode;
+            }
+            else
+            {
+                AffichageListeEpisodes.SelectedItem = AffichageListeEpisodes.Items[0];
+            }
+            DetailsEpisode_Titre.Text = DetailsEpisode.name;
             DetailsEpisode_Dates.Text = "Saison " + ((Saison)AffichageListeSaisons.SelectedItem).number +
-                ", Episode " + ((Episode)AffichageListeEpisodes.SelectedItem).number +"\n"+
-                "Aired Date: " + ((Episode)AffichageListeEpisodes.SelectedItem).airdate;
-            DetailsEpisode_Resume.Text = ((Episode)AffichageListeEpisodes.SelectedItem).summary;
+                ", Episode " + DetailsEpisode.number +"\n"+
+                "Date de diffusion : " + DetailsEpisode.airdate;
+            DetailsEpisode_Resume.Text = DetailsEpisode.summary;
+            }
         }
     }
-}
