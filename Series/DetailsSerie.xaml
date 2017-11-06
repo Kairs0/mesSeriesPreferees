@@ -8,14 +8,16 @@
     mc:Ignorable="d" Width="1382" Height="830">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="59" Margin="368,10,484,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="648" FontSize="48" TextAlignment="Center"/>
+        <TextBlock x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="70" Margin="309,10,390,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="683" FontSize="48" TextAlignment="Center"/>
         <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="40,40,0,0" VerticalAlignment="Top" Width="85"/>
         <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="130,40,0,0" VerticalAlignment="Top" Width="85"/>
         <Image x:Name="PhotoPage" Source="{x:Bind Image_Url}" HorizontalAlignment="Left" Height="151" Margin="253,81,0,0" VerticalAlignment="Top" Width="115"/>
-        <TextBox x:Name="Resume" Height="142" Margin="417,90,0,0" TextWrapping="Wrap" Text="Résumé" VerticalAlignment="Top" HorizontalAlignment="Left" Width="575"/>
+        <ScrollViewer Height="140" Width="575" Margin="417,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBlock x:Name="Resume" TextWrapping="Wrap" Text="Résumé"/>
+        </ScrollViewer>
         <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="40" Margin="40,90,0,0" VerticalAlignment="Top" Width="175" Background="#338B2F04"/>
         <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" HorizontalAlignment="Left" Height="40" Margin="40,90,0,0" VerticalAlignment="Top" Width="175" Background="#338B2F04"/>
-        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="706" Margin="1015,90,0,0" VerticalAlignment="Top" Width="333" SelectionChanged="SelectionActeur">
+        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="706" Margin="1015,90,0,0" VerticalAlignment="Top" Width="357" SelectionChanged="SelectionActeur">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -64,7 +66,7 @@
                            Foreground="#FF4D1818" 
                            Opacity="1" />
                             <TextBlock Text="{Binding endDate}" 
-                           Margin="10,0,20,8"
+                           Margin="5,0,20,8"
                            FontSize="12"
                            Foreground="#FF4D1818" 
                            Opacity="1" />
@@ -103,13 +105,12 @@
         </ListView>
         <TextBlock x:Name="DetailsEpisode_Titre" 
                        HorizontalAlignment="Left" 
-                       Height="52" VerticalAlignment="Top" Width="575" Margin="417,324,0,0" FontSize="20" FontWeight="Bold">
-        </TextBlock>
+                       Height="52" VerticalAlignment="Top" Width="575" Margin="415,324,0,0" FontSize="22" TextWrapping="Wrap" Foreground="#FF003E3B"/>
         <TextBlock x:Name="DetailsEpisode_Dates" 
             HorizontalAlignment="Left" Foreground="Gray"
-            Height="52" VerticalAlignment="Top" Width="575" Margin="417,404,0,0" FontSize="12"/>
+            Height="52" VerticalAlignment="Top" Width="575" Margin="415,378,0,0" FontSize="12" TextWrapping="Wrap"/>
         <TextBlock x:Name="DetailsEpisode_Resume" 
             HorizontalAlignment="Left" 
-            Height="312" VerticalAlignment="Top" Width="575" Margin="417,484,0,0" FontSize="12"/>
+            Height="312" VerticalAlignment="Top" Width="575" Margin="417,434,0,0" FontSize="16" TextWrapping="Wrap"/>
     </Grid>
 </Page>

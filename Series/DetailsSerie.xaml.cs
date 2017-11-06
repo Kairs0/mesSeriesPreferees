@@ -44,8 +44,7 @@ namespace Series
                 TitrePage.Text = Nom_Serie;
                 Image_Url = InfosSerie.image.medium;
                 var resumeHtml = InfosSerie.summary;
-                resumeHtml = resumeHtml != null ? Regex.Replace(resumeHtml, @"<(.|\n)*?>", string.Empty) : "Résumé non disponible";
-                Resume.Text = resumeHtml;
+                Resume.Text = Regex.Replace(resumeHtml, @"<(.|\n)*?>", string.Empty);
                 ListePersonnes = Api.GetCastSerie(ID_Serie);
                 ListeActeurs.ItemsSource = ListePersonnes;
 
@@ -129,7 +128,9 @@ namespace Series
             DetailsEpisode_Dates.Text = "Saison " + ((Saison)AffichageListeSaisons.SelectedItem).number +
                 ", Episode " + DetailsEpisode.number +"\n"+
                 "Date de diffusion : " + DetailsEpisode.airdate;
-            DetailsEpisode_Resume.Text = DetailsEpisode.summary;
+            var resumeEpisodeHtml = DetailsEpisode.summary;
+            DetailsEpisode_Resume.Text = Regex.Replace(resumeEpisodeHtml, @"<(.|\n)*?>", string.Empty);
+
             }
         }
     }

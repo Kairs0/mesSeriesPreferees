@@ -33,7 +33,7 @@ namespace Series
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             //Arnaud: d'ici on démarre la fonction de notifications
-            NotificationManager.Run();
+            // NotificationManager.Run();
         }
 
         /// <summary>
