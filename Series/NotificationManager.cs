@@ -21,10 +21,10 @@ namespace Series
     {
         private static int _compteurNotifs;
 
-        //Test
         public static void Run()
         {
-            TimeSpan period = TimeSpan.FromSeconds(10);
+            //periode: toutes les dix minutes
+            TimeSpan period = TimeSpan.FromMinutes(10);
 
             ThreadPoolTimer PeriodicTimer = ThreadPoolTimer.CreatePeriodicTimer((source) =>
             {
@@ -40,23 +40,6 @@ namespace Series
                 SendNotifNewEpisodeOfShow(show.id.ToString());
             }
         }
-        
-        //NE MARCHE PAS ENCORE
-        //public static void RunNotifService()
-        //{
-        //    Task.Run(async () =>
-        //    {
-        //        while (true)
-        //        {
-        //            await Task.Delay(1 * 60 * 1000);
-        //            var toNotif = GetFavoritesOnAirTonight();
-        //            foreach (var show in toNotif)
-        //            {
-        //                SendNotifNewEpisodeOfShow(show.id.ToString());
-        //            }
-        //        }
-        //    }).GetAwaiter().GetResult();
-        //}
 
         public static List<Serie> GetFavoritesOnAirTonight()
         {
@@ -92,7 +75,6 @@ namespace Series
 
         public static void SendNotifNewEpisodeOfShow(string idShow)
         {
-            //todo a changer p - e : donner directement un object show?
             var show = Api.GetShowById(idShow);
             //Data notification
             string title = "New Episode of " + show.name + " tonight !";
