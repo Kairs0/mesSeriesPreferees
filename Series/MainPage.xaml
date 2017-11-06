@@ -8,37 +8,47 @@
     mc:Ignorable="d"
     Loaded="PageChargee">
 
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-        <Button x:Name="Favoris" Content="Favoris" HorizontalAlignment="Stretch" Margin="128,80,-79.5,-3" VerticalAlignment="Top" Height="44" Click="Button_Favorites" FontWeight="Bold" Background="#FF7A9B0A"/>
-        <TextBlock x:Name="AppTitle" TextWrapping="Wrap" Text="Mes séries préférées" Width="352" FontSize="36" FontWeight="Bold" Height="48" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-        <GridView x:Name="ImageGridView"
-                  Margin="200,218,269,-692"
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+            <Button Grid.Column="0" Grid.Row="0" x:Name="Favoris" Content="Favoris" HorizontalAlignment="Left" Margin="20,60,0,0" VerticalAlignment="Top" Height="44" Click="Button_Favorites" FontWeight="Bold" Background="#FF7A9B0A"/>
+            <TextBlock Grid.Column="1" Grid.Row="0" x:Name="AppTitle" TextWrapping="Wrap" Text="Mes séries préférées" Width="352" FontSize="36" FontWeight="Bold" Height="48" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+            <GridView x:Name="ImageGridView"
+                  Margin="10,10,10,10"
+                      Grid.Column="1"
+                      Grid.Row="1"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
                   ItemsSource="{x:Bind seriesList}"
-                  RelativePanel.AlignLeftWithPanel="True"
-                  RelativePanel.AlignRightWithPanel="True"
-                  RelativePanel.Below="AppTitle" RelativePanel.AlignHorizontalCenterWithPanel="True" SelectionChanged="ImageGridView_SelectionChanged"
-                  >
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="local:Serie">
-                    <StackPanel Width="150" Height="225">
-                        <Image Source="{x:Bind image.medium}">
-                        </Image>
-                    </StackPanel>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
-        <AutoSuggestBox x:Name="BarreRechercheAuto" 
+                      SelectionChanged="ImageGridView_SelectionChanged">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Serie">
+                        <StackPanel Width="150" Height="225">
+                            <Image Source="{x:Bind image.medium}">
+                            </Image>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            <AutoSuggestBox x:Name="BarreRechercheAuto" 
+                            Grid.Column="1"
+                            Grid.Row="0"
                         TextChanged="BarreRechercheAuto_TextChanged" 
                         ItemsSource="{x:Bind seriesListAutoSuggest}"
                         DisplayMemberPath="name"
                         QuerySubmitted="BarreRechercheAuto_QuerySubmitted" 
                         SuggestionChosen="BarreRechercheAuto_SuggestionChosen" 
                         PlaceholderText="Recherche de série" QueryIcon="Find" 
-                        HorizontalAlignment="Left" Height="32" 
-                        VerticalAlignment="Top" Width="465" Margin="0,92,0,-92" 
+                        HorizontalAlignment="Center" Height="32" 
+                        VerticalAlignment="Top" Width="465" Margin="0,92,0,0" 
                         RelativePanel.AlignHorizontalCenterWithPanel="True">
-        </AutoSuggestBox>
-    </RelativePanel>
+            </AutoSuggestBox>
+        </Grid>
 </Page>
 
