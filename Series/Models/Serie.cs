@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using Newtonsoft.Json;
 
 namespace Series.Models
 {
@@ -24,7 +25,7 @@ namespace Series.Models
             schedule = jObjectSerie["schedule"].ToObject<Schedule>();
             //rating = jObjectSerie["rating"] != null ? jObjectSerie["rating"].ToObject<Rating>() : null; // TODO gérer le cas average null
             weight = (int)jObjectSerie["weight"];
-            network = jObjectSerie["network"].ToObject<Network>();
+            network = new Network(jObjectSerie["network"].ToString());
             image = new Image(jObjectSerie["image"].ToString());
             //image = jObjectSerie["image"].ToObject<Image>();
             summary = (string)jObjectSerie["summary"];
@@ -67,6 +68,23 @@ namespace Series.Models
 
     public class Network
     {
+        public Network(string json)
+        {
+
+            //JToken network = JToken.Parse(json);
+            //id = (int)network["id"];
+            //name = (string)network["name"];
+            //country = new Country(network["country"].ToString());
+            try
+            {
+                JToken network = JToken.Parse(json);
+                id = (int)network["id"];
+                name = (string)network["name"];
+                country = new Country(network["country"].ToString());
+            }
+            catch (JsonReaderException) { }
+        }
+
         public int id { get; }
         public string name { get; }
         public Country country { get; }
@@ -74,6 +92,13 @@ namespace Series.Models
 
     public class Country
     {
+        public Country(string json)
+        {
+            JToken country = JToken.Parse(json);
+            name = (string) country["name"];
+            code = (string) country["code"];
+            timezone = (string) country["timezone"];
+        }
         public string name { get; }
         public string code { get; }
         public string timezone { get; }
