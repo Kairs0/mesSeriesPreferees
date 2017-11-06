@@ -27,7 +27,7 @@ namespace Series.Models
             weight = jObjectSerie["weight"].IsNullOrEmpty() ? 0 : (int) jObjectSerie["weight"];
             network = jObjectSerie["network"].IsNullOrEmpty() ? null : new Network(jObjectSerie["network"].ToString());
             image = jObjectSerie["image"].IsNullOrEmpty() ? null : new Image(jObjectSerie["image"].ToString());
-            summary = (string)jObjectSerie["summary"];
+            summary = jObjectSerie["summary"].IsNullOrEmpty() ? "Résumé non disponible" : (string)jObjectSerie["summary"];
             updated = jObjectSerie["updated"].IsNullOrEmpty() ? 0 : (int)jObjectSerie["updated"];
             _links = jObjectSerie["_links"].ToObject<_Links>();
         }
