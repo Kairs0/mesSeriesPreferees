@@ -4,9 +4,7 @@ using Series.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Windows.System.Threading;
-using Windows.UI.Core;
 using Windows.UI.Notifications;
 
 namespace Series
@@ -21,9 +19,6 @@ namespace Series
     {
         private static int _compteurNotifs;
         private static List<Serie> _alreadySent;
-
-        //TODO: ne pas réenvoyer de notif pour une série quand elle a déjà été envoyée aujourd'hui
-        // 
         
         public static void Run()
         {
@@ -31,22 +26,25 @@ namespace Series
             TimeSpan period = TimeSpan.FromMinutes(10);
             _alreadySent = new List<Serie>();
 
-            ThreadPoolTimer PeriodicTimer = ThreadPoolTimer.CreatePeriodicTimer((source) =>
+            ThreadPoolTimer periodicTimer = ThreadPoolTimer.CreatePeriodicTimer((source) =>
             {
                 SendAllNotifs();
             }, period);
         }
 
-        public static void SendAllNotifs()
+        private static void SendAllNotifs()
         {
-            var toNotif = GetFavoritesOnAirTonight();
+            //On checke les ids de alreadySent pour ne pas réenvoyer de notifications pour la même série
+            List<Serie> toNotif = GetFavoritesOnAirTonight().Where(s => _alreadySent.All(x => x.id != s.id)).ToList();
+
             foreach (var show in toNotif)
             {
                 SendNotifNewEpisodeOfShow(show.id.ToString());
+                _alreadySent.Add(show);
             }
         }
 
-        public static List<Serie> GetFavoritesOnAirTonight()
+        private static List<Serie> GetFavoritesOnAirTonight()
         {
             var result = new List<Serie>();
             var favorites = Favoris.GetFavorites();
@@ -77,7 +75,7 @@ namespace Series
         }
 
 
-        public static void SendNotifNewEpisodeOfShow(string idShow)
+        private static void SendNotifNewEpisodeOfShow(string idShow)
         {
             var show = Api.GetShowById(idShow);
             //Data notification
