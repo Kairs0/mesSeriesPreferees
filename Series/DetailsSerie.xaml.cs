@@ -53,8 +53,10 @@ namespace Series
                 if (ListeSaisons.Count > 0)
                 {
                     AffichageListeSaisons.SelectedItem = AffichageListeSaisons.Items[0];
+                    if (ListeEpisode.Count > 0)
+                    {
                     AffichageListeEpisodes.SelectedItem = AffichageListeEpisodes.Items[0];
-
+                    }
                 }
                 if (Favoris.CheckFavorite(ID_Serie))
                 {

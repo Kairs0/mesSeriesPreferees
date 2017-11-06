@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <ScrollViewer>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="40,40,0,0" VerticalAlignment="Top" Width="85"/>
         <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="130,40,0,0" VerticalAlignment="Top" Width="85"/>
@@ -31,6 +32,6 @@
         </ListView>
         <TextBlock x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="90" Margin="311,40,527,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="662" TextAlignment="Center" FontSize="48"/>
         <Image x:Name="PhotoActeur" Source="{x:Bind ImageUrl}" HorizontalAlignment="Left" Height="269" Margin="310,150,0,0" VerticalAlignment="Top" Width="198"/>
-
     </Grid>
+    </ScrollViewer>
 </Page>
