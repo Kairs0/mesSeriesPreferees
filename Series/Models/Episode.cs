@@ -19,7 +19,7 @@ namespace Series.Models
             runtime = (int)jObjectEpisode["runtime"];
             image = new Image(jObjectEpisode["image"].ToString());
             summary = (string)jObjectEpisode["summary"];
-            show = new Serie(jObjectEpisode["show"].ToString());
+            show = jObjectEpisode["show"] != null ? new Serie(jObjectEpisode["show"].ToString()) : null;
         }
 
         public int id { get; }

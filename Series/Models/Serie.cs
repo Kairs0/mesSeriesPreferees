@@ -19,15 +19,13 @@ namespace Series.Models
             language = (string)jObjectSerie["language"];
             genres = jObjectSerie["genres"].ToObject<string[]>();
             status = (string)jObjectSerie["status"];
-            //runtime = (int)jObjectSerie["runtime"]; // TODO Gérer cas null
             premiered = (string)jObjectSerie["premiered"];
             officialSite = (string)jObjectSerie["officialSite"];
             schedule = jObjectSerie["schedule"].ToObject<Schedule>();
             //rating = jObjectSerie["rating"] != null ? jObjectSerie["rating"].ToObject<Rating>() : null; // TODO gérer le cas average null
             weight = (int)jObjectSerie["weight"];
             network = new Network(jObjectSerie["network"].ToString());
-            image = new Image(jObjectSerie["image"].ToString());
-            //image = jObjectSerie["image"].ToObject<Image>();
+            image = jObjectSerie["image"] != null ? new Image(jObjectSerie["image"].ToString()) : null;
             summary = (string)jObjectSerie["summary"];
             updated = (int)jObjectSerie["updated"];
             _links = jObjectSerie["_links"].ToObject<_Links>();

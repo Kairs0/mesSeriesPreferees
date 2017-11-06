@@ -14,8 +14,7 @@ namespace Series.Models
             number = (int)jObjectSaison["number"];
             premiereDate = (string) jObjectSaison["premiereDate"];
             endDate = (string) jObjectSaison["endDate"];
-            image = new Image(jObjectSaison["image"].ToString());
-            //image = jObjectSaison["image"].ToObject<Image>();
+            image = jObjectSaison["image"] != null ? new Image(jObjectSaison["image"].ToString()) : null;
             summary = (string)jObjectSaison["summary"];
         }
 
