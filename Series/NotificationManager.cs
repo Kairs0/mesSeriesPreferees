@@ -22,14 +22,20 @@ namespace Series
         
         public static void Run()
         {
-            //periode: toutes les dix minutes
+            //publie les notifs toutes les dix minutes, reset les séries tous les jours.
             TimeSpan period = TimeSpan.FromMinutes(10);
+            TimeSpan periodResetSent = TimeSpan.FromDays(1);
             _alreadySent = new List<Serie>();
 
             ThreadPoolTimer periodicTimer = ThreadPoolTimer.CreatePeriodicTimer((source) =>
             {
                 SendAllNotifs();
             }, period);
+
+            ThreadPoolTimer periodicReset = ThreadPoolTimer.CreatePeriodicTimer((source) =>
+            {
+                _alreadySent = new List<Serie>();
+            }, periodResetSent);
         }
 
         private static void SendAllNotifs()
