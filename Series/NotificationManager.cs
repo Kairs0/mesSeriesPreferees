@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Windows.System.Threading;
+using Windows.UI.Core;
 using Windows.UI.Notifications;
 
 namespace Series
@@ -18,6 +20,19 @@ namespace Series
     static class NotificationManager
     {
         private static int _compteurNotifs;
+
+        //Test
+        public static void Run()
+        {
+            TimeSpan period = TimeSpan.FromSeconds(60);
+
+            ThreadPoolTimer PeriodicTimer = ThreadPoolTimer.CreatePeriodicTimer((source) =>
+            {
+                RunNotifService();
+            }, period);
+        }
+        
+
 
         //NE MARCHE PAS ENCORE
         public static void RunNotifService()
@@ -51,9 +66,8 @@ namespace Series
                 }
             }
             allCodesCountries.Add("FR");
-            var codesContries = allCodesCountries.Distinct();
 
-            foreach (var codeCountry in codesContries)
+            foreach (var codeCountry in allCodesCountries.Distinct())
             {
                 onAirForAllCountriesFavorites = onAirForAllCountriesFavorites.Concat(Api.GetEpisodesToNight(codeCountry)).ToList();
             }

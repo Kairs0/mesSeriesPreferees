@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using Series.Extensions;
 
 namespace Series.Models
 {
@@ -10,7 +11,7 @@ namespace Series.Models
             id = (int)jObjectPeople["id"];
             url = (string)jObjectPeople["url"];
             name = (string)jObjectPeople["name"];
-            image = jObjectPeople["image"] != null ? new Image(jObjectPeople["image"].ToString()) : null;
+            image = jObjectPeople[image].IsNullOrEmpty() ? null : new Image(jObjectPeople["image"].ToString());
         }
 
         public int id { get; }

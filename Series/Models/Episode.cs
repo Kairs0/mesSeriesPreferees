@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using Series.Extensions;
 
 namespace Series.Models
 {
@@ -11,15 +12,14 @@ namespace Series.Models
             id = (int)jObjectEpisode["id"];
             url = (string)jObjectEpisode["url"];
             name = (string)jObjectEpisode["name"];
-            season = (int)jObjectEpisode["season"];
-            number = (int) jObjectEpisode["number"];
+            season = jObjectEpisode["season"].IsNullOrEmpty() ? 0 : (int) jObjectEpisode["season"];
+            number = jObjectEpisode["number"].IsNullOrEmpty() ? 0 : (int)jObjectEpisode["number"];
             airdate = (string)jObjectEpisode["airdate"];
             airtime = (string)jObjectEpisode["airtime"];
-            //airstamp = jObjectEpisode["airstamp"].ToObject<DateTime>();
-            runtime = (int)jObjectEpisode["runtime"];
-            image = new Image(jObjectEpisode["image"].ToString());
+            runtime = jObjectEpisode["runtime"].IsNullOrEmpty() ? 0 : (int) jObjectEpisode["runtime"];
+            image = jObjectEpisode["image"].IsNullOrEmpty() ? null : new Image(jObjectEpisode["image"].ToString());
             summary = (string)jObjectEpisode["summary"];
-            show = jObjectEpisode["show"] != null ? new Serie(jObjectEpisode["show"].ToString()) : null;
+            show = jObjectEpisode["show"].IsNullOrEmpty() ? null : new Serie(jObjectEpisode["show"].ToString());
         }
 
         public int id { get; }

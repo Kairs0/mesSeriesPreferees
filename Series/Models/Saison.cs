@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using Series.Extensions;
 
 namespace Series.Models
 {
@@ -11,10 +12,10 @@ namespace Series.Models
             id = (int)jObjectSaison["id"];
             url = (string)jObjectSaison["url"];
             name = (string)jObjectSaison["name"];
-            number = (int)jObjectSaison["number"];
+            number = jObjectSaison["number"].IsNullOrEmpty() ? 0 : (int)jObjectSaison["number"];
             premiereDate = (string) jObjectSaison["premiereDate"];
             endDate = (string) jObjectSaison["endDate"];
-            image = jObjectSaison["image"] != null ? new Image(jObjectSaison["image"].ToString()) : null;
+            image = jObjectSaison["image"].IsNullOrEmpty() ? null : new Image(jObjectSaison["image"].ToString());
             summary = (string)jObjectSaison["summary"];
         }
 

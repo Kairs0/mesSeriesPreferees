@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using Newtonsoft.Json;
+using Series.Extensions;
 
 namespace Series.Models
 {
@@ -21,13 +22,13 @@ namespace Series.Models
             status = (string)jObjectSerie["status"];
             premiered = (string)jObjectSerie["premiered"];
             officialSite = (string)jObjectSerie["officialSite"];
-            schedule = jObjectSerie["schedule"].ToObject<Schedule>();
+            schedule = jObjectSerie["schedule"].IsNullOrEmpty() ? null : jObjectSerie["schedule"].ToObject<Schedule>();
             //rating = jObjectSerie["rating"] != null ? jObjectSerie["rating"].ToObject<Rating>() : null; // TODO gérer le cas average null
-            weight = (int)jObjectSerie["weight"];
-            network = new Network(jObjectSerie["network"].ToString());
-            image = jObjectSerie["image"] != null ? new Image(jObjectSerie["image"].ToString()) : null;
+            weight = jObjectSerie["weight"].IsNullOrEmpty() ? 0 : (int) jObjectSerie["weight"];
+            network = jObjectSerie["network"].IsNullOrEmpty() ? null : new Network(jObjectSerie["network"].ToString());
+            image = jObjectSerie["image"].IsNullOrEmpty() ? null : new Image(jObjectSerie["image"].ToString());
             summary = (string)jObjectSerie["summary"];
-            updated = (int)jObjectSerie["updated"];
+            updated = jObjectSerie["updated"].IsNullOrEmpty() ? 0 : (int)jObjectSerie["updated"];
             _links = jObjectSerie["_links"].ToObject<_Links>();
         }
 
