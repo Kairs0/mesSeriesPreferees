@@ -15,7 +15,7 @@ namespace Series.Models
             number = jObjectSaison["number"].IsNullOrEmpty() ? 0 : (int)jObjectSaison["number"];
             premiereDate = (string) jObjectSaison["premiereDate"];
             endDate = (string) jObjectSaison["endDate"];
-            image = jObjectSaison["image"].IsNullOrEmpty() ? null : new Image(jObjectSaison["image"].ToString());
+            image = new Image(jObjectSaison["image"].ToString());
             summary = jObjectSaison["summary"].IsNullOrEmpty() ? "Résumé non disponible" : (string)jObjectSaison["summary"];
         }
 

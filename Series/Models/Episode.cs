@@ -17,7 +17,7 @@ namespace Series.Models
             airdate = (string)jObjectEpisode["airdate"];
             airtime = (string)jObjectEpisode["airtime"];
             runtime = jObjectEpisode["runtime"].IsNullOrEmpty() ? 0 : (int) jObjectEpisode["runtime"];
-            image = jObjectEpisode["image"].IsNullOrEmpty() ? null : new Image(jObjectEpisode["image"].ToString());
+            image = new Image(jObjectEpisode["image"].ToString());
             summary = jObjectEpisode["summary"].IsNullOrEmpty() ? "Résumé non disponible" : (string)jObjectEpisode["summary"];
             show = jObjectEpisode["show"].IsNullOrEmpty() ? null : new Serie(jObjectEpisode["show"].ToString());
         }

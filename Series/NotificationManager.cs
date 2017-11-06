@@ -20,11 +20,16 @@ namespace Series
     static class NotificationManager
     {
         private static int _compteurNotifs;
+        private static List<Serie> _alreadySent;
 
+        //TODO: ne pas réenvoyer de notif pour une série quand elle a déjà été envoyée aujourd'hui
+        // 
+        
         public static void Run()
         {
             //periode: toutes les dix minutes
             TimeSpan period = TimeSpan.FromMinutes(10);
+            _alreadySent = new List<Serie>();
 
             ThreadPoolTimer PeriodicTimer = ThreadPoolTimer.CreatePeriodicTimer((source) =>
             {
@@ -55,7 +60,6 @@ namespace Series
                     allCodesCountries.Add(show.network.country.code);
                 }
             }
-            allCodesCountries.Add("FR");
 
             foreach (var codeCountry in allCodesCountries.Distinct())
             {
