@@ -24,32 +24,39 @@ namespace Series
         //Test
         public static void Run()
         {
-            TimeSpan period = TimeSpan.FromSeconds(60);
+            TimeSpan period = TimeSpan.FromSeconds(10);
 
             ThreadPoolTimer PeriodicTimer = ThreadPoolTimer.CreatePeriodicTimer((source) =>
             {
-                RunNotifService();
+                SendAllNotifs();
             }, period);
         }
-        
 
-
-        //NE MARCHE PAS ENCORE
-        public static void RunNotifService()
+        public static void SendAllNotifs()
         {
-            Task.Run(async () =>
+            var toNotif = GetFavoritesOnAirTonight();
+            foreach (var show in toNotif)
             {
-                while (true)
-                {
-                    await Task.Delay(1 * 60 * 1000);
-                    var toNotif = GetFavoritesOnAirTonight();
-                    foreach (var show in toNotif)
-                    {
-                        SendNotifNewEpisodeOfShow(show.id.ToString());
-                    }
-                }
-            }).GetAwaiter().GetResult();
+                SendNotifNewEpisodeOfShow(show.id.ToString());
+            }
         }
+        
+        //NE MARCHE PAS ENCORE
+        //public static void RunNotifService()
+        //{
+        //    Task.Run(async () =>
+        //    {
+        //        while (true)
+        //        {
+        //            await Task.Delay(1 * 60 * 1000);
+        //            var toNotif = GetFavoritesOnAirTonight();
+        //            foreach (var show in toNotif)
+        //            {
+        //                SendNotifNewEpisodeOfShow(show.id.ToString());
+        //            }
+        //        }
+        //    }).GetAwaiter().GetResult();
+        //}
 
         public static List<Serie> GetFavoritesOnAirTonight()
         {
@@ -60,7 +67,7 @@ namespace Series
 
             foreach (var show in favorites)
             {
-                if (show.network.country != null)
+                if (show.network?.country != null)
                 {
                     allCodesCountries.Add(show.network.country.code);
                 }
