@@ -1,6 +1,6 @@
 ﻿namespace Series.Models
 {
-    class BindPersonToCharacter
+    public class BindPersonToCharacter
     {
         public BindPersonToCharacter(People person, People character)
         {

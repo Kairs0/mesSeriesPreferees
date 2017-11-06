@@ -3,13 +3,12 @@ using Series.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 
 namespace Series
 {
-    static class Api
+    public static class Api
     {
-        // https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client
-        // En chantier 
 
         private static HttpClient client = new HttpClient();
 
@@ -26,91 +25,110 @@ namespace Series
         private const string SeasonsForShowPartTwo = "/seasons";
         private const string EpisodesForSeasonPartTwo = "/episodes";
 
-        //TODO: à tester
+        //Retourne la liste des épisodes étant donné un id de saison
         public static List<Episode> GetEpisodesForSeason(string idSeason)
         {
-            var result = new List<Episode>();
-            var response = client.GetAsync(BaseUrl + Seasons + idSeason + EpisodesForSeasonPartTwo).Result;
-            if (response.IsSuccessStatusCode)
+            List<Episode> result = new List<Episode>();
+            try
             {
-                var stringResponse = response.Content.ReadAsStringAsync().Result;
-                var jArrayEpisodes = JArray.Parse(stringResponse);
-                foreach (var jEpisodeToken in jArrayEpisodes)
+                var response = client.GetAsync(BaseUrl + Seasons + idSeason + EpisodesForSeasonPartTwo).Result;
+                result = new List<Episode>();
+                if (response.IsSuccessStatusCode)
                 {
-                    result.Add(new Episode(jEpisodeToken.ToString()));
+                    var stringResponse = response.Content.ReadAsStringAsync().Result;
+                    var jArrayEpisodes = JArray.Parse(stringResponse);
+                    foreach (var jEpisodeToken in jArrayEpisodes)
+                    {
+                        result.Add(new Episode(jEpisodeToken.ToString()));
+                    }
                 }
             }
-
+            catch (HttpRequestException) { }
             return result;
         }
 
-        //TODO : a tester
+        //Retourne la liste des saisons pour un id de série donné (format string)
         public static List<Saison> GetSeasonsForShow(string idShow)
         {
-            var result = new List<Saison>();
-            var response = client.GetAsync(BaseUrl + Shows + idShow + SeasonsForShowPartTwo).Result;
-            if (response.IsSuccessStatusCode)
+            List<Saison> result = new List<Saison>();
+            try
             {
-                var stringResponse = response.Content.ReadAsStringAsync().Result;
-                var jArraySeasons = JArray.Parse(stringResponse);
-                foreach (var jSeasonToken in jArraySeasons)
+                var response = client.GetAsync(BaseUrl + Shows + idShow + SeasonsForShowPartTwo).Result;
+                result = new List<Saison>();
+                if (response.IsSuccessStatusCode)
                 {
-                    result.Add(new Saison(jSeasonToken.ToString()));
+                    var stringResponse = response.Content.ReadAsStringAsync().Result;
+                    var jArraySeasons = JArray.Parse(stringResponse);
+                    foreach (var jSeasonToken in jArraySeasons)
+                    {
+                        result.Add(new Saison(jSeasonToken.ToString()));
+                    }
                 }
             }
-
+            catch (HttpRequestException) { }
             return result;
         }
 
+        //Retourne un objet Serie étant donné un id (format string)
         public static Serie GetShowById(string id)
         {
             Serie show = null;
-            var response = client.GetAsync(BaseUrl + Shows + id).Result;
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var stringResponse = response.Content.ReadAsStringAsync().Result;
-                show = new Serie(stringResponse);
-            }
-            return show;
-        }
-
-        public static Serie GetShowByName(string arg)
-        {
-            //TODO: deal with empty string case
-
-            Serie show = null;
-            var response = client.GetAsync(BaseUrl + SingleShearchArg + arg).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                var responseContent = response.Content;
-                var stringContent = responseContent.ReadAsStringAsync().Result;
-                show = new Serie(stringContent);
-            }
-            return show;
-        }
-
-        public static List<Serie> ShowSearch(string arg)
-        {
-            //TODO: deal with empty string case
-
-            var resultSearch = new List<Serie>();
-            //todo gérer cas serveur innaccessible
-            var response = client.GetAsync(BaseUrl + ShowSearchArg + arg).Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                var responseContent = response.Content;
-                var stringContent = responseContent.ReadAsStringAsync().Result;
-
-                var jArraySeries = JArray.Parse(stringContent);
-                foreach (JToken jSearchResultUnit in jArraySeries)
+                var response = client.GetAsync(BaseUrl + Shows + id).Result;
+                if (response.IsSuccessStatusCode)
                 {
-                    JToken jSerie = jSearchResultUnit["show"];
-                    resultSearch.Add(
-                        new Serie(jSerie.ToString())
-                        );
+                    var stringResponse = response.Content.ReadAsStringAsync().Result;
+                    show = new Serie(stringResponse);
                 }
             }
+            catch (HttpRequestException) { }
+            catch (COMException) { }
+            return show;
+        }
+
+        //Retourne une série dont nle nom match exactement avec le string donné
+        public static Serie GetShowByName(string arg)
+        {
+            Serie show = null;
+            try
+            {
+                var response = client.GetAsync(BaseUrl + SingleShearchArg + arg).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    var stringContent = responseContent.ReadAsStringAsync().Result;
+                    show = new Serie(stringContent);
+                }
+            }
+            catch (HttpRequestException) { }
+            return show;
+        }
+
+        //Retourne une liste de séries à partir d'un string donné
+        public static List<Serie> ShowSearch(string arg)
+        {
+            var resultSearch = new List<Serie>();
+            try
+            {
+                var response = client.GetAsync(BaseUrl + ShowSearchArg + arg).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
+                    var stringContent = responseContent.ReadAsStringAsync().Result;
+
+                    var jArraySeries = JArray.Parse(stringContent);
+                    foreach (JToken jSearchResultUnit in jArraySeries)
+                    {
+                        JToken jSerie = jSearchResultUnit["show"];
+                        resultSearch.Add(
+                            new Serie(jSerie.ToString())
+                        );
+                    }
+                }
+            }
+            catch (HttpRequestException) { }
             return resultSearch;
         }
 
@@ -118,20 +136,25 @@ namespace Series
         public static List<People> SearchByPeople(string arg)
         {
             var resultSearch = new List<People>();
-            var response = client.GetAsync(BaseUrl + PeopleSearch + arg).Result;
-            if (response.IsSuccessStatusCode)
+
+            try
             {
-                var responseContent = response.Content;
-                var stringContent = responseContent.ReadAsStringAsync().Result;
-                var jArrayPeople = JArray.Parse(stringContent);
-                foreach (var jSearchResultUnit in jArrayPeople)
+                var response = client.GetAsync(BaseUrl + PeopleSearch + arg).Result;
+                if (response.IsSuccessStatusCode)
                 {
-                    JToken jPeople = jSearchResultUnit["person"];
-                    resultSearch.Add(
-                        new People(jPeople.ToString())
-                    );
+                    var responseContent = response.Content;
+                    var stringContent = responseContent.ReadAsStringAsync().Result;
+                    var jArrayPeople = JArray.Parse(stringContent);
+                    foreach (var jSearchResultUnit in jArrayPeople)
+                    {
+                        JToken jPeople = jSearchResultUnit["person"];
+                        resultSearch.Add(
+                            new People(jPeople.ToString())
+                        );
+                    }
                 }
             }
+            catch (HttpRequestException) { }
             return resultSearch;
         }
 
@@ -139,19 +162,23 @@ namespace Series
         public static List<BindPersonToCharacter> GetCastSerie(string idShow)
         {
             var resultSearch = new List<BindPersonToCharacter>();
-            var response = client.GetAsync(BaseUrl + Shows + idShow + ShowCastPartTwo).Result;
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var stringContent = response.Content.ReadAsStringAsync().Result;
-                var jArrayPersonAndCharacter = JArray.Parse(stringContent);
-                foreach (JToken jTokenPersonAndCharacter in jArrayPersonAndCharacter)
+                var response = client.GetAsync(BaseUrl + Shows + idShow + ShowCastPartTwo).Result;
+                if (response.IsSuccessStatusCode)
                 {
-                    JToken jPerson = jTokenPersonAndCharacter["person"];
-                    JToken jCharacter = jTokenPersonAndCharacter["character"];
-                    var binding = new BindPersonToCharacter(new People(jPerson.ToString()), new People(jCharacter.ToString()));
-                    resultSearch.Add(binding);
+                    var stringContent = response.Content.ReadAsStringAsync().Result;
+                    var jArrayPersonAndCharacter = JArray.Parse(stringContent);
+                    foreach (JToken jTokenPersonAndCharacter in jArrayPersonAndCharacter)
+                    {
+                        JToken jPerson = jTokenPersonAndCharacter["person"];
+                        JToken jCharacter = jTokenPersonAndCharacter["character"];
+                        var binding = new BindPersonToCharacter(new People(jPerson.ToString()), new People(jCharacter.ToString()));
+                        resultSearch.Add(binding);
+                    }
                 }
             }
+            catch (HttpRequestException) { }
             return resultSearch;
         }
 
@@ -159,21 +186,27 @@ namespace Series
         public static List<Serie> GetShowsForPeople(string idPeople)
         {
             var resultSearch = new List<Serie>();
-            var response = client.GetAsync(BaseUrl + PeopleInfo + idPeople + CastCredits).Result;
-            if (response.IsSuccessStatusCode)
+
+            try
             {
-                var stringContent = response.Content.ReadAsStringAsync().Result;
-                var jArrayLinks = JArray.Parse(stringContent);
-                foreach (var jTokenLink in jArrayLinks)
+                var response = client.GetAsync(BaseUrl + PeopleInfo + idPeople + CastCredits).Result;
+                if (response.IsSuccessStatusCode)
                 {
-                    JToken jLink = jTokenLink["_links"];
-                    JToken jShow = jLink["show"];
-                    JToken jLinkShow = jShow["href"];
-                    var idShow = jLinkShow.ToString().Split('/').Last();
-                    var show = GetShowById(idShow);
-                    resultSearch.Add(show);
+                    var stringContent = response.Content.ReadAsStringAsync().Result;
+                    var jArrayLinks = JArray.Parse(stringContent);
+                    foreach (var jTokenLink in jArrayLinks)
+                    {
+                        JToken jLink = jTokenLink["_links"];
+                        JToken jShow = jLink["show"];
+                        JToken jLinkShow = jShow["href"];
+                        var idShow = jLinkShow.ToString().Split('/').Last();
+                        var show = GetShowById(idShow);
+                        resultSearch.Add(show);
+                    }
                 }
             }
+            catch (HttpRequestException) { }
+            
             return resultSearch;
         }
 
@@ -182,19 +215,24 @@ namespace Series
         {
             //codePays = "FR" pour france
             var resultSearch = new List<Episode>();
-            var response = client.GetAsync(BaseUrl + Schedule + codePays).Result;
-            if (response.IsSuccessStatusCode)
+
+            try
             {
-                var responseContent = response.Content;
-                var stringContent = responseContent.ReadAsStringAsync().Result;
-                var jArrayEpisodes = JArray.Parse(stringContent);
-                foreach (var jSearchResultUnit in jArrayEpisodes)
+                var response = client.GetAsync(BaseUrl + Schedule + codePays).Result;
+                if (response.IsSuccessStatusCode)
                 {
-                    resultSearch.Add(
-                        new Episode(jSearchResultUnit.ToString())
-                    );
+                    var responseContent = response.Content;
+                    var stringContent = responseContent.ReadAsStringAsync().Result;
+                    var jArrayEpisodes = JArray.Parse(stringContent);
+                    foreach (var jSearchResultUnit in jArrayEpisodes)
+                    {
+                        resultSearch.Add(
+                            new Episode(jSearchResultUnit.ToString())
+                        );
+                    }
                 }
             }
+            catch (HttpRequestException) { }
             return resultSearch;
         }
     }
