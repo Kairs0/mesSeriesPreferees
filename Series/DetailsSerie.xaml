@@ -7,106 +7,106 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="1382" Height="830">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Visible" >
         <TextBlock x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Center" Height="70" Margin="309,10,390,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="683" FontSize="48" TextAlignment="Center"/>
-        <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="40,40,0,0" VerticalAlignment="Top" Width="85"/>
-        <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="130,40,0,0" VerticalAlignment="Top" Width="85"/>
-        <Image x:Name="PhotoPage" Source="{x:Bind Image_Url}" HorizontalAlignment="Left" Height="151" Margin="253,81,0,0" VerticalAlignment="Top" Width="115"/>
-        <ScrollViewer Height="140" Width="575" Margin="417,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <TextBlock x:Name="Resume" TextWrapping="Wrap" Text="Résumé"/>
-        </ScrollViewer>
-        <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="40" Margin="40,90,0,0" VerticalAlignment="Top" Width="175" Background="#338B2F04"/>
-        <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" HorizontalAlignment="Left" Height="40" Margin="40,90,0,0" VerticalAlignment="Top" Width="175" Background="#338B2F04"/>
-        <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="706" Margin="1015,90,0,0" VerticalAlignment="Top" Width="357" SelectionChanged="SelectionActeur">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="47"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="{Binding Character.image.medium}" Height="70"></Image>
-                        <StackPanel Grid.Column="1">
-                            <TextBlock Text="{Binding Person.name}"
+            <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="40,40,0,0" VerticalAlignment="Top" Width="85"/>
+            <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="130,40,0,0" VerticalAlignment="Top" Width="85"/>
+            <Image x:Name="PhotoPage" Source="{x:Bind Image_Url}" HorizontalAlignment="Left" Height="151" Margin="253,81,0,0" VerticalAlignment="Top" Width="115"/>
+            <ScrollViewer Height="140" Width="575" Margin="417,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <TextBlock x:Name="Resume" TextWrapping="Wrap" Text="Résumé"/>
+            </ScrollViewer>
+            <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" HorizontalAlignment="Left" Height="40" Margin="40,90,0,0" VerticalAlignment="Top" Width="175" Background="#338B2F04"/>
+            <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" HorizontalAlignment="Left" Height="40" Margin="40,90,0,0" VerticalAlignment="Top" Width="175" Background="#338B2F04"/>
+            <ListView x:Name="ListeActeurs" HorizontalAlignment="Left" Height="706" Margin="1015,90,0,0" VerticalAlignment="Top" Width="357" SelectionChanged="SelectionActeur">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="47"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Character.image.medium}" Height="70"></Image>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="{Binding Person.name}"
                            Margin="20,0,20,8"
                            FontSize="20"  
                            FontWeight="SemiBold"
                            Foreground="DarkBlue"/>
-                            <TextBlock Text="{Binding Character.name}" 
+                                <TextBlock Text="{Binding Character.name}" 
                            Margin="40,0,20,8"
                            FontSize="18"
                            Foreground="#FF4D1818" 
                            Opacity="1" />
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView Height="100" Width="100"/>
-        </ListView>
-        <ListView x:Name="AffichageListeSaisons" HorizontalAlignment="Left" Height="472" Margin="40,324,0,0" VerticalAlignment="Top" Width="175" SelectionChanged="SelectionSaison">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Saison"
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView Height="100" Width="100"/>
+            </ListView>
+            <ListView x:Name="AffichageListeSaisons" HorizontalAlignment="Left" Height="472" Margin="40,324,0,0" VerticalAlignment="Top" Width="175" SelectionChanged="SelectionSaison">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Saison"
                            Margin="10,0,6,8"
                            FontSize="20"  
                            FontWeight="SemiBold"
                            Foreground="DarkRed"/>
-                            <TextBlock Text="{Binding number}"
+                                <TextBlock Text="{Binding number}"
                            Margin="0,0,20,8"
                            FontSize="20"  
                            FontWeight="SemiBold"
                            Foreground="DarkRed"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding premiereDate}" 
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding premiereDate}" 
                            Margin="0,0,20,8"
                            FontSize="12"
                            Foreground="#FF4D1818" 
                            Opacity="1" />
-                            <TextBlock Text="{Binding endDate}" 
+                                <TextBlock Text="{Binding endDate}" 
                            Margin="5,0,20,8"
                            FontSize="12"
                            Foreground="#FF4D1818" 
                            Opacity="1" />
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView Height="100" Width="100"/>
-        </ListView>
-        <ListView x:Name="AffichageListeEpisodes" 
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView Height="100" Width="100"/>
+            </ListView>
+            <ListView x:Name="AffichageListeEpisodes" 
                   HorizontalAlignment="Left" 
                   ItemsSource="{x:Bind ListeEpisode}"
                   Height="472"
                   Margin="253,324,0,0" 
                   VerticalAlignment="Top" 
                   Width="140" SelectionChanged="AffichageListeEpisodes_SelectionChanged" >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Episode"
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Episode"
                                 Margin="10,0,6,8"
                                 FontSize="20"  
                                 FontWeight="SemiBold"
                                 Foreground="DarkRed"/>
-                            <TextBlock Text="{Binding number}"
+                                <TextBlock Text="{Binding number}"
                                 Margin="0,0,20,8"
                                 FontSize="20"  
                                 FontWeight="SemiBold"
                                 Foreground="DarkRed"/>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView Height="100" Width="100"/>
-        </ListView>
-        <TextBlock x:Name="DetailsEpisode_Titre" 
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView Height="100" Width="100"/>
+            </ListView>
+            <TextBlock x:Name="DetailsEpisode_Titre" 
                        HorizontalAlignment="Left" 
                        Height="52" VerticalAlignment="Top" Width="575" Margin="415,324,0,0" FontSize="22" TextWrapping="Wrap" Foreground="#FF003E3B"/>
-        <TextBlock x:Name="DetailsEpisode_Dates" 
+            <TextBlock x:Name="DetailsEpisode_Dates" 
             HorizontalAlignment="Left" Foreground="Gray"
             Height="52" VerticalAlignment="Top" Width="575" Margin="415,378,0,0" FontSize="12" TextWrapping="Wrap"/>
         <TextBlock x:Name="DetailsEpisode_Resume" 
