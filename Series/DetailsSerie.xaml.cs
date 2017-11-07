@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using Windows.Foundation;
@@ -23,7 +24,7 @@ namespace Series
     {
 
         public string NomSerie;
-       public Models.Image ImageSerie { get; set; }
+        public Models.Image ImageSerie { get; set; }
         public string Image_Url;
 
         private string Nom_Serie;
@@ -35,7 +36,10 @@ namespace Series
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //ID_Serie = (string)e.Parameter;
+            if (!NetworkInterface.GetIsNetworkAvailable())
+            {
+                this.Frame.Navigate(typeof(NoConnection));
+            }
             if (e.Parameter != null)
             {
                 Serie InfosSerie = e.Parameter as Serie; //Api.GetShowById(ID_Serie);

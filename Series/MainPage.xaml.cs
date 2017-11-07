@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -31,21 +32,23 @@ namespace Series
 {
     public sealed partial class MainPage : Page
     {
-        private readonly List<string> ImageSource = new List<string>(); /*{ get; set; }*/
-        private List<Serie> listeFavoris ;
+        private readonly List<string> ImageSource = new List<string>();
+        private List<Serie> listeFavoris;
 
 
         public MainPage()
         {
-
-            this.InitializeComponent();        
-
-
+            
+            this.InitializeComponent();
         }
 
 
         private void PageChargee(object sender, RoutedEventArgs args)
         {
+            if (!NetworkInterface.GetIsNetworkAvailable())
+            {
+                this.Frame.Navigate(typeof(NoConnection));
+            }
             listeFavoris = Series.Favoris.GetFavorites();
             ImageGridView.ItemsSource = listeFavoris;
         }
