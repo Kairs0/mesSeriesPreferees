@@ -23,7 +23,7 @@ namespace Series.Models
             premiered = (string)jObjectSerie["premiered"];
             officialSite = (string)jObjectSerie["officialSite"];
             schedule = jObjectSerie["schedule"].IsNullOrEmpty() ? null : jObjectSerie["schedule"].ToObject<Schedule>();
-            //rating = jObjectSerie["rating"] != null ? jObjectSerie["rating"].ToObject<Rating>() : null; // TODO gérer le cas average null
+            rating = jObjectSerie["rating"].IsNullOrEmpty() ? null : new Rating(jObjectSerie["rating"].ToString());
             weight = jObjectSerie["weight"].IsNullOrEmpty() ? 0 : (int) jObjectSerie["weight"];
             network = jObjectSerie["network"].IsNullOrEmpty() ? null : new Network(jObjectSerie["network"].ToString());
             image = new Image(jObjectSerie["image"].ToString());
@@ -46,8 +46,6 @@ namespace Series.Models
         public Rating rating { get; }
         public int weight { get; }
         public Network network { get; }
-        //public object webChannel { get; }
-        //public Externals externals { get; }
         public Image image { get; }
         public string summary { get; }
         public int updated { get; }
@@ -62,23 +60,24 @@ namespace Series.Models
 
     public class Rating
     {
-        public float average { get; }
+        public Rating(string json)
+        {
+            JToken rating = JToken.Parse(json);
+            Average = rating["average"].IsNullOrEmpty() ? 0 : (float) rating["average"];
+        }
+
+        public float Average { get; }
     }
 
     public class Network
     {
         public Network(string json)
         {
-
-            //JToken network = JToken.Parse(json);
-            //id = (int)network["id"];
-            //name = (string)network["name"];
-            //country = new Country(network["country"].ToString());
             try
             {
                 JToken network = JToken.Parse(json);
-                id = (int)network["id"];
-                name = (string)network["name"];
+                id = (int) network["id"];
+                name = (string) network["name"];
                 country = new Country(network["country"].ToString());
             }
             catch (JsonReaderException) { }
@@ -114,7 +113,6 @@ namespace Series.Models
     {
         public Image(string json)
         {
-
             try
             {
                 JToken image = JToken.Parse(json);
