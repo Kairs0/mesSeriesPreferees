@@ -27,12 +27,14 @@ namespace Series
             TimeSpan periodResetSent = TimeSpan.FromDays(1);
             _alreadySent = new List<Serie>();
 
-            ThreadPoolTimer periodicTimer = ThreadPoolTimer.CreatePeriodicTimer((source) =>
+            //Publication des notifs
+            ThreadPoolTimer unused = ThreadPoolTimer.CreatePeriodicTimer((source) =>
             {
                 SendAllNotifs();
             }, period);
 
-            ThreadPoolTimer periodicReset = ThreadPoolTimer.CreatePeriodicTimer((source) =>
+            //Reset compteur
+            ThreadPoolTimer unused1 = ThreadPoolTimer.CreatePeriodicTimer((source) =>
             {
                 _alreadySent = new List<Serie>();
             }, periodResetSent);
@@ -50,6 +52,7 @@ namespace Series
             }
         }
 
+        //Retourne la liste des séries dont un nouvel épisode est diffusé le soir
         private static List<Serie> GetFavoritesOnAirTonight()
         {
             var result = new List<Serie>();
@@ -57,6 +60,7 @@ namespace Series
             var allCodesCountries = new List<string>();
             var onAirForAllCountriesFavorites = new List<Episode>();
 
+            //Récupère le code pays de chacun des favoris
             foreach (var show in favorites)
             {
                 if (show.network?.country != null)
@@ -65,11 +69,13 @@ namespace Series
                 }
             }
 
+            //Récupère la liste des épisodes diffusés pour chacun des pays 
             foreach (var codeCountry in allCodesCountries.Distinct())
             {
                 onAirForAllCountriesFavorites = onAirForAllCountriesFavorites.Concat(Api.GetEpisodesToNight(codeCountry)).ToList();
             }
 
+            //Depuis la liste précédente, construit la liste des séries pour lesquelles une notification va être envoyée
             foreach (var episode in onAirForAllCountriesFavorites)
             {
                 if (favorites.Select(x => x.id).Contains(episode.show.id))
@@ -80,11 +86,12 @@ namespace Series
             return result;
         }
 
-
+        //Envoie la notification pour une série
         private static void SendNotifNewEpisodeOfShow(string idShow)
         {
             var show = Api.GetShowById(idShow);
-            //Data notification
+            
+            //Données de la notification
             string title = "New Episode of " + show.name + " tonight !";
             string image = show.image.medium;
 
@@ -114,8 +121,8 @@ namespace Series
                 {
                     new ToastButton("See show details", new QueryString()
                     {
-                        { "action", "viewShow" },
-                        { "idShow", idShow }
+                        { "action", "viewShow" },//Action (voir App.xaml.cs, OnActivated)
+                        { "idShow", idShow }//Arguments de l'action
 
                     }.ToString())
                 }
@@ -128,7 +135,7 @@ namespace Series
                 Actions = actions
             };
 
-            //Cree la notif
+            //Crée la notification
             var toast = new ToastNotification(toastContent.GetXml())
             {
                 ExpirationTime = DateTime.Now.AddDays(1),
@@ -136,7 +143,7 @@ namespace Series
                 Group = "Series Notifications"
             };
 
-            //envoie la notif
+            //Envoie la notification
             ToastNotificationManager.CreateToastNotifier().Show(toast);
             _compteurNotifs++;
         }
