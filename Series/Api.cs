@@ -83,9 +83,7 @@ namespace Series
                     show = new Serie(stringResponse);
                 }
             }
-            catch (Exception) { } //TODO ENCOURS
-            //catch (HttpRequestException) { }
-            //catch (COMException) { }
+            catch (Exception) { }//TODO 
             return show;
         }
 
