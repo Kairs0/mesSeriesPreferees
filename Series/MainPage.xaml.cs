@@ -40,7 +40,6 @@ namespace Series
 
         public MainPage()
         {
-            
             this.InitializeComponent();
         }
 

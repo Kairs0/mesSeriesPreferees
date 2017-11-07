@@ -9,11 +9,6 @@ using Windows.UI.Notifications;
 
 namespace Series
 {
-    //https://docs.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-send-local-toast
-    //https://docs.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-adaptive-interactive-toasts
-
-    //https://docs.microsoft.com/en-us/windows/uwp/threading-async/create-a-periodic-work-item
-
     //Idée : contient une méthode asyncrhone qui va checker toutes les 5 minutes la sortie d'un épisode d'une série favorite.
     static class NotificationManager
     {

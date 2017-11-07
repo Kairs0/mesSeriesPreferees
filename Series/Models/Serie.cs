@@ -5,7 +5,6 @@ using System;
 
 namespace Series.Models
 {
-    // https://stackoverflow.com/questions/2246694/how-to-convert-json-object-to-custom-c-sharp-object
     public class Serie
     {
         public Serie(string json)
@@ -107,13 +106,6 @@ namespace Series.Models
         public string Timezone { get; }
     }
 
-    //public class Externals
-    //{
-    //    public int tvrage { get; }
-    //    public int thetvdb { get; }
-    //    public string imdb { get; }
-    //}
-
     public class Image
     {
         public Image(string json)
@@ -135,14 +127,4 @@ namespace Series.Models
         public string Medium { get; }
         public string Original { get; }
     }
-
-    //public class Self
-    //{
-    //    public string Href { get; }
-    //}
-
-    //public class Previousepisode
-    //{
-    //    public string Href { get; }
-    //}
 }
