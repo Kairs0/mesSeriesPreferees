@@ -29,8 +29,13 @@
             <RowDefinition Height="180" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" x:Name="Favoris" Content="Afficher les favoris" HorizontalAlignment="Left" Width="175" Margin="10,60,0,0" VerticalAlignment="Top" Height="40" Click="Button_Favorites" FontFamily="Calibri Light" FontSize="16" Foreground="White" Grid.ColumnSpan="2" Background="#B2950505">
-        </Button>
+        <Button Grid.Column="0" Grid.Row="0" 
+                x:Name="Favoris" Content="Afficher les favoris" 
+                HorizontalAlignment="Left" Width="175" Margin="10,60,0,0" 
+                VerticalAlignment="Top" Height="40" Click="Button_Favorites" 
+                FontFamily="Calibri Light" FontSize="16" Foreground="White" 
+                Grid.ColumnSpan="2" Background="#B2950505">
+        </Button> 
         <TextBlock Grid.Column="1" Grid.Row="0" 
                    x:Name="AppTitle" TextWrapping="Wrap" 
                    Text="Mes séries préférées" FontSize="22" 
