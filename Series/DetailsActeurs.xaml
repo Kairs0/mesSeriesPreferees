@@ -8,7 +8,13 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid BorderBrush="Black" >
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1F1F1F" Offset="0"/>
+                    <GradientStop Color="#FF3C3C3C" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="200"/>
@@ -18,8 +24,8 @@
                 <RowDefinition Height="100" />
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="10,20,0,0" VerticalAlignment="Top" Width="85"/>
-            <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="100,20,0,0" VerticalAlignment="Top" Width="85"/>
+            <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="10,20,0,0" VerticalAlignment="Top" Width="85" Background="{ThemeResource SystemControlHighlightAltAccentBrush}"/>
+            <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="100,20,0,0" VerticalAlignment="Top" Width="85" Background="{ThemeResource SystemControlHighlightAltAccentBrush}"/>
         <ListView x:Name="ListeSeries" HorizontalAlignment="Stretch" Grid.Column="2" Grid.Row="1" Margin="10,10,0,0" VerticalAlignment="Stretch" SelectionChanged="SerieSelectionnee">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -34,12 +40,12 @@
                            FontSize="20"  
                            VerticalAlignment="Center"
                            FontWeight="SemiBold"
-                           Foreground="DarkBlue"/>
+                           Foreground="#FFB2E9FD"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBlock x:Name="TitrePage" Text="Titre" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Stretch" Height="90" Margin="50,20,0,0" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Left" FontSize="48"/>
+        <TextBlock x:Name="TitrePage" Text="Titre" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" HorizontalAlignment="Stretch" Height="90" Margin="50,20,0,0" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Left" FontSize="48" Foreground="White"/>
         <Image x:Name="PhotoActeur" Grid.Column="1" Grid.Row="1" Source="{x:Bind ImageUrl}" HorizontalAlignment="Left"  Margin="12,10,10,12" VerticalAlignment="Top" />
     </Grid>
     </ScrollViewer>
