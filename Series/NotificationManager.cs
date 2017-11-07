@@ -23,7 +23,7 @@ namespace Series
         public static void Run()
         {
             //publie les notifs toutes les dix minutes, reset les séries tous les jours.
-            TimeSpan period = TimeSpan.FromMinutes(10);
+            TimeSpan period = TimeSpan.FromSeconds(40);
             TimeSpan periodResetSent = TimeSpan.FromDays(1);
             _alreadySent = new List<Serie>();
 
