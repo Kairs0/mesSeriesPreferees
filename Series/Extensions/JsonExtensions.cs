@@ -9,6 +9,7 @@ namespace Series.Extensions
 {
     public static class JsonExtensions
     {
+        //Extensions destionée à gérer les cas problématiques: propriété non existante, ou attribut d'une propriété vide
         public static bool IsNullOrEmpty(this JToken token)
         {
             return (token == null) ||
