@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using Newtonsoft.Json.Linq;
 using Series.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,8 +83,9 @@ namespace Series
                     show = new Serie(stringResponse);
                 }
             }
-            catch (HttpRequestException) { }
-            catch (COMException) { }
+            catch (Exception) { } //TODO ENCOURS
+            //catch (HttpRequestException) { }
+            //catch (COMException) { }
             return show;
         }
 
