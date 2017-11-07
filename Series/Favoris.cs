@@ -23,6 +23,7 @@ namespace Series
         //Rajoute le favoris dans le fichier de favoris (présent dans le dossier AppData de l'user)
         public static void AddToFavorite(string idSerie)
         {
+            //Si le favoris est déjà dans la liste on ne le rajoute pas 
             if (CheckFavorite(idSerie))
             {
                 return;
@@ -50,7 +51,6 @@ namespace Series
                 var serie = Api.GetShowById(id);
                 result.Add(serie);
             }
-
             return result;
         }
 
@@ -85,7 +85,7 @@ namespace Series
         }
 
         //(Private) Ecrase le contenu du fichier de favoris et ecrit la liste des favoris donné en paramètres
-        //Crée le fichier de favories s'il n'existe pas 
+        //Crée le fichier de favoris s'il n'existe pas 
         private static void WriteListOfFavorites(List<string> ids)
         {
             var stringToWrite = String.Join(";", ids);
