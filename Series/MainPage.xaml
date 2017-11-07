@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Loaded="PageChargee">
 
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <Grid Background="WhiteSmoke" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" x:Name="Favoris" Content="Afficher les favoris" HorizontalAlignment="Left" Width="175" Margin="10,60,0,0" VerticalAlignment="Top" Height="40" Click="Button_Favorites" Background="#338B2F04"/>
-            <TextBlock Grid.Column="1" Grid.Row="0" x:Name="AppTitle" TextWrapping="Wrap" Text="Mes séries préférées" Width="352" FontSize="36" FontWeight="SemiBold" Height="48" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+            <TextBlock Grid.Column="1" Grid.Row="0" x:Name="AppTitle" TextWrapping="Wrap" Text="Mes séries préférées" Width="352" FontSize="36" Foreground="Black" FontWeight="SemiBold" Height="48" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
             <GridView x:Name="ImageGridView"
                   Margin="10,10,10,10"
                       Grid.Column="1"

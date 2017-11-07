@@ -23,7 +23,7 @@ namespace Series
     {
 
         public string NomSerie;
-       public Models.Image ImageSerie { get; set; }
+        public Models.Image ImageSerie;
         public string Image_Url;
 
         private string Nom_Serie;
@@ -35,10 +35,9 @@ namespace Series
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //ID_Serie = (string)e.Parameter;
             if (e.Parameter != null)
             {
-                Serie InfosSerie = e.Parameter as Serie; //Api.GetShowById(ID_Serie);
+                Serie InfosSerie = e.Parameter as Serie; 
                 ID_Serie = InfosSerie.id.ToString();
                 Nom_Serie = InfosSerie.name;
                 TitrePage.Text = Nom_Serie;
