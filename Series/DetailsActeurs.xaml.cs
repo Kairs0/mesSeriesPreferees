@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -27,6 +28,11 @@ namespace Series
 
          protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (!NetworkInterface.GetIsNetworkAvailable())
+            {
+                this.Frame.Navigate(typeof(NoConnection));
+            }
+
             Acteur = (People)e.Parameter;
             TitrePage.Text = Acteur.name;
             ListeSeriesJouees = Api.GetShowsForPeople(Acteur.id.ToString());

@@ -7,7 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="WhiteSmoke">
+    <Grid BorderBrush="Black" >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF1F1F1F" Offset="0"/>
+                <GradientStop Color="#FF3C3C3C" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="200"/>
@@ -20,16 +26,24 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="2" x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Stretch" Margin="10,10,10,10" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="48" TextAlignment="Center"/>
-            <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="10,20,0,0" VerticalAlignment="Top" Width="85"/>
-            <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="100,20,0,0" VerticalAlignment="Top" Width="85"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Stretch" Margin="10,10,10,10" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="36" TextAlignment="Center" Foreground="#FFFFFDFD"/>
+            <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="10,20,0,0" VerticalAlignment="Top" Width="85" Foreground="White" Background="#3345CCFF"/>
+            <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="100,20,0,0" VerticalAlignment="Top" Width="85" Foreground="White" Background="#3345CCFF"/>
             <Image Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" x:Name="PhotoPage" Source="{x:Bind Image_Url}" Margin="0,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <ScrollViewer Grid.Column="2" Grid.Row="1" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <TextBlock x:Name="Resume" TextWrapping="Wrap" Text="Résumé"/>
+                <TextBlock x:Name="Resume" TextWrapping="Wrap" Text="Résumé" Foreground="#FFE0DFDF" SelectionHighlightColor="#FF0078D7"/>
             </ScrollViewer>
-            <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" Height="40" Margin="10,40,0,0" Width="175" Background="#338B2F04"/>
-            <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" Height="40" Margin="10,40,0,0" Width="175" Background="#338B2F04"/>
-            <ListView x:Name="ListeActeurs" Grid.Column="3" Grid.Row="3" Margin="10,10,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="SelectionActeur">
+        <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" Height="40" Margin="10,40,0,0" Width="175" FontFamily="Calibri Light" FontSize="16" Foreground="#FFC5C5C5" >
+            <Button.Background>
+                <SolidColorBrush  Color="#33FF2C2C"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" Height="40" Margin="10,40,0,0" Width="175" FontFamily="Calibri Light" FontSize="16" Foreground="#FFC5C5C5">
+            <Button.Background>
+                <SolidColorBrush  Color="#33FF9F2C"/>
+            </Button.Background>
+        </Button>
+            <ListView x:Name="ListeActeurs" Grid.Column="3" Grid.Row="3" Margin="10,10,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="SelectionActeur" Background="#FF2E2E2E" Foreground="#FFD6D6D6">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -43,7 +57,7 @@
                            Margin="20,0,20,8"
                            FontSize="20"  
                            FontWeight="SemiBold"
-                           Foreground="DarkBlue"/>
+                           Foreground="#FFC4C4FF"/>
                             <TextBlock Text="{Binding Character.name}" 
                            Margin="40,0,20,8"
                            FontSize="18"
@@ -54,7 +68,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-            <ListView x:Name="AffichageListeSaisons" Margin="10,10,10,10" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" SelectionChanged="SelectionSaison">
+            <ListView x:Name="AffichageListeSaisons" Margin="10,10,10,10" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" SelectionChanged="SelectionSaison" BorderBrush="#FF2E2E2E">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -63,12 +77,12 @@
                            Margin="10,0,6,8"
                            FontSize="20"  
                            FontWeight="SemiBold"
-                           Foreground="DarkRed"/>
+                           Foreground="#FFFB1B1B"/>
                             <TextBlock Text="{Binding number}"
                            Margin="0,0,20,8"
                            FontSize="20"  
                            FontWeight="SemiBold"
-                           Foreground="DarkRed"/>
+                           Foreground="#FFFF1A1A"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding premiereDate}" 
@@ -102,12 +116,12 @@
                                 Margin="10,0,6,8"
                                 FontSize="20"  
                                 FontWeight="SemiBold"
-                                Foreground="DarkRed"/>
+                                Foreground="#FFFB1B1B"/>
                             <TextBlock Text="{Binding number}"
                                 Margin="0,0,20,8"
                                 FontSize="20"  
                                 FontWeight="SemiBold"
-                                Foreground="DarkRed"/>
+                                Foreground="#FFFB1B1B"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
@@ -117,17 +131,17 @@
                        Grid.Column="2"
                        Grid.Row="3"
                        HorizontalAlignment="Stretch" 
-                       Height="80" VerticalAlignment="Top" Margin="10,10,10,0" FontSize="22" TextWrapping="Wrap" Foreground="#FF003E3B"/>
+                       Height="80" VerticalAlignment="Top" Margin="10,10,10,0" FontSize="22" TextWrapping="Wrap" Foreground="#FF0BBDB5"/>
             <TextBlock x:Name="DetailsEpisode_Dates" 
             HorizontalAlignment="Stretch" Foreground="Gray"
                        Grid.Column="2"
                        Grid.Row="3"
-            Height="50" VerticalAlignment="Top" Margin="10,85,10,0" FontSize="14" TextWrapping="Wrap"/>
+            Height="50" VerticalAlignment="Top" Margin="10,85,10,0" FontSize="14" TextWrapping="Wrap" FontWeight="Bold"/>
         <TextBlock x:Name="DetailsEpisode_Resume" 
             HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch"
                    Grid.Column="2"
                    Grid.Row="3"
-            Margin="10,140,10,0" FontSize="16" TextWrapping="Wrap"/>
+            Margin="10,140,10,0" FontSize="16" TextWrapping="Wrap" />
     </Grid>
 </Page>

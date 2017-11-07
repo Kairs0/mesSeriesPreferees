@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -39,10 +40,8 @@ namespace Series
 
         public MainPage()
         {
-
-            this.InitializeComponent();        
-
-
+            
+            this.InitializeComponent();
         }
 
 
@@ -59,6 +58,11 @@ namespace Series
                 }
             }
             ImageGridView.ItemsSource = listSerieTonight;
+            if (!NetworkInterface.GetIsNetworkAvailable())
+            {
+                this.Frame.Navigate(typeof(NoConnection));
+            }
+
         }
     
         private void Button_Favorites(object sender, RoutedEventArgs e)

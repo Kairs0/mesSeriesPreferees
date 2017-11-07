@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using Windows.Foundation;
@@ -35,6 +36,12 @@ namespace Series
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+
+            if (!NetworkInterface.GetIsNetworkAvailable())
+            {
+                this.Frame.Navigate(typeof(NoConnection));
+            }
+
             if (e.Parameter != null)
             {
                 Serie InfosSerie = e.Parameter as Serie; 
@@ -84,13 +91,22 @@ namespace Series
             this.Frame.Navigate(typeof(DetailsActeurs),NomActeur);
         }
 
-        private void SelectionSaison (object sender, RoutedEventArgs e)
+        private void SelectionSaison(object sender, RoutedEventArgs e)
         {
             Saison SaisonSelectionne = AffichageListeSaisons.SelectedItem as Saison;
             ListeEpisode = Api.GetEpisodesForSeason(SaisonSelectionne.id.ToString());
             AffichageListeEpisodes.ItemsSource = ListeEpisode;
+            if (ListeEpisode.Count > 0)
+            {
+                AffichageListeEpisodes.SelectedItem = AffichageListeEpisodes.Items[0];
+            }
+            else
+            {
+                DetailsEpisode_Titre.Text = "";
+                DetailsEpisode_Dates.Text = "";
+                DetailsEpisode_Resume.Text = "";
+            }
         }
-
         private void ClickBouttonRetour(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack(); ;
@@ -117,21 +133,19 @@ namespace Series
 
         private void AffichageListeEpisodes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (AffichageListeEpisodes.SelectedItem != null)
-            {
-                DetailsEpisode = AffichageListeEpisodes.SelectedItem as Episode;
-            }
-            else
-            {
-                AffichageListeEpisodes.SelectedItem = AffichageListeEpisodes.Items[0];
-            }
-            DetailsEpisode_Titre.Text = DetailsEpisode.name;
-            DetailsEpisode_Dates.Text = "Saison " + ((Saison)AffichageListeSaisons.SelectedItem).number +
-                ", Episode " + DetailsEpisode.number +"\n"+
-                "Date de diffusion : " + DetailsEpisode.airdate;
-            var resumeEpisodeHtml = DetailsEpisode.summary;
-            DetailsEpisode_Resume.Text = Regex.Replace(resumeEpisodeHtml, @"<(.|\n)*?>", string.Empty);
 
+                if (AffichageListeEpisodes.SelectedItem != null)
+                {
+                    DetailsEpisode = AffichageListeEpisodes.SelectedItem as Episode;
+                }
+
+                DetailsEpisode_Titre.Text = DetailsEpisode.name;
+                DetailsEpisode_Dates.Text = "Saison " + ((Saison)AffichageListeSaisons.SelectedItem).number +
+                    ", Episode " + DetailsEpisode.number + "\n" +
+                    "Date de diffusion : " + DetailsEpisode.airdate;
+                var resumeEpisodeHtml = DetailsEpisode.summary;
+                DetailsEpisode_Resume.Text = Regex.Replace(resumeEpisodeHtml, @"<(.|\n)*?>", string.Empty);
+       
             }
         }
     }

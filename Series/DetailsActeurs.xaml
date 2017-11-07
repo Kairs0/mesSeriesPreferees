@@ -8,7 +8,13 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <Grid Background="WhiteSmoke">
+        <Grid BorderBrush="Black" >
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1F1F1F" Offset="0"/>
+                    <GradientStop Color="#FF3C3C3C" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="200"/>
