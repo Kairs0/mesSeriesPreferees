@@ -14,8 +14,8 @@
 
     <Grid BorderBrush="Black" >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -27,15 +27,18 @@
 
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="200" />
+            <RowDefinition Height="180" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" x:Name="Favoris" Content="Afficher les favoris" HorizontalAlignment="Left" Width="175" Margin="10,60,0,0" VerticalAlignment="Top" Height="40" Click="Button_Favorites" FontFamily="Calibri Light" FontSize="16" Foreground="#FFC5C5C5" Grid.ColumnSpan="2" >
-            <Button.Background>
-                <SolidColorBrush  Color="#33FF2C2C"/>
-            </Button.Background>
+        <Button Grid.Column="0" Grid.Row="0" x:Name="Favoris" Content="Afficher les favoris" HorizontalAlignment="Left" Width="175" Margin="10,60,0,0" VerticalAlignment="Top" Height="40" Click="Button_Favorites" FontFamily="Calibri Light" FontSize="16" Foreground="White" Grid.ColumnSpan="2" Background="#B2950505">
         </Button>
-        <TextBlock Grid.Column="1" Grid.Row="0" x:Name="AppTitle" TextWrapping="Wrap" Text="Mes séries préférées" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,40,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True" Foreground="White" FontFamily="Calibri" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="1" Grid.Row="0" 
+                   x:Name="AppTitle" TextWrapping="Wrap" 
+                   Text="Mes séries préférées" FontSize="22" 
+                   VerticalAlignment="Top" HorizontalAlignment="Center" 
+                   Margin="0,40,0,0" 
+                   RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                   Foreground="White" FontFamily="Calibri" Height="27" Width="185"/>
         <GridView x:Name="ImageGridView"
                   Margin="10,10,10,10"
                       Grid.Row="1"
@@ -43,7 +46,7 @@
                       VerticalAlignment="Stretch"
                       HorizontalAlignment="Stretch"
                   ItemsSource="{x:Bind seriesList}"
-                      SelectionChanged="ImageGridView_SelectionChanged" Grid.ColumnSpan="2">
+                      SelectionChanged="ImageGridView_SelectionChanged">
             <GridView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF1F1F1F" Offset="0"/>
