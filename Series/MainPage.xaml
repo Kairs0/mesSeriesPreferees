@@ -8,8 +8,9 @@
     mc:Ignorable="d"
     Loaded="PageChargee">
     <Page.Resources>
-        <Color x:Key="Color1">#33FF2C2C</Color>
+        <Color x:Key="Color1"></Color>
     </Page.Resources>
+
 
     <Grid BorderBrush="Black" >
         <Grid.ColumnDefinitions>
