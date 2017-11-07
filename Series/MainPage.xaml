@@ -57,7 +57,7 @@
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Serie">
                     <StackPanel Width="150" Height="225">
-                        <Image Source="{x:Bind image.medium}">
+                        <Image Source="{x:Bind Image.Medium}">
                         </Image>
                     </StackPanel>
                 </DataTemplate>

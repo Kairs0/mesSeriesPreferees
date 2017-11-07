@@ -45,11 +45,11 @@ namespace Series
             if (e.Parameter != null)
             {
                 Serie InfosSerie = e.Parameter as Serie; 
-                ID_Serie = InfosSerie.id.ToString();
-                Nom_Serie = InfosSerie.name;
+                ID_Serie = InfosSerie.Id.ToString();
+                Nom_Serie = InfosSerie.Name;
                 TitrePage.Text = Nom_Serie;
-                Image_Url = InfosSerie.image.medium;
-                var resumeHtml = InfosSerie.summary;
+                Image_Url = InfosSerie.Image.Medium;
+                var resumeHtml = InfosSerie.Summary;
                 Resume.Text = Regex.Replace(resumeHtml, @"<(.|\n)*?>", string.Empty);
                 ListePersonnes = Api.GetCastSerie(ID_Serie);
                 ListeActeurs.ItemsSource = ListePersonnes;
@@ -94,7 +94,7 @@ namespace Series
         private void SelectionSaison(object sender, RoutedEventArgs e)
         {
             Saison SaisonSelectionne = AffichageListeSaisons.SelectedItem as Saison;
-            ListeEpisode = Api.GetEpisodesForSeason(SaisonSelectionne.id.ToString());
+            ListeEpisode = Api.GetEpisodesForSeason(SaisonSelectionne.Id.ToString());
             AffichageListeEpisodes.ItemsSource = ListeEpisode;
             if (ListeEpisode.Count > 0)
             {
@@ -139,11 +139,11 @@ namespace Series
                     DetailsEpisode = AffichageListeEpisodes.SelectedItem as Episode;
                 }
 
-                DetailsEpisode_Titre.Text = DetailsEpisode.name;
-                DetailsEpisode_Dates.Text = "Saison " + ((Saison)AffichageListeSaisons.SelectedItem).number +
-                    ", Episode " + DetailsEpisode.number + "\n" +
-                    "Date de diffusion : " + DetailsEpisode.airdate;
-                var resumeEpisodeHtml = DetailsEpisode.summary;
+                DetailsEpisode_Titre.Text = DetailsEpisode.Name;
+                DetailsEpisode_Dates.Text = "Saison " + ((Saison)AffichageListeSaisons.SelectedItem).Number +
+                    ", Episode " + DetailsEpisode.Number + "\n" +
+                    "Date de diffusion : " + DetailsEpisode.Airdate;
+                var resumeEpisodeHtml = DetailsEpisode.Summary;
                 DetailsEpisode_Resume.Text = Regex.Replace(resumeEpisodeHtml, @"<(.|\n)*?>", string.Empty);
        
             }

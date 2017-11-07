@@ -8,16 +8,16 @@ namespace Series.Models
         public People(string json)
         {
             JToken jObjectPeople = JToken.Parse(json);
-            id = (int)jObjectPeople["id"];
-            url = (string)jObjectPeople["url"];
-            name = (string)jObjectPeople["name"];
-            image = new Image(jObjectPeople["image"].ToString());
+            Id = (int)jObjectPeople["id"];
+            Url = (string)jObjectPeople["url"];
+            Name = (string)jObjectPeople["name"];
+            Image = new Image(jObjectPeople["image"].ToString());
         }
 
-        public int id { get; }
-        public string url { get; }
-        public string name { get; }
-        public Image image { get; }
-        public _Links _links { get; }
+        public int Id { get; }
+        public string Url { get; }
+        public string Name { get; }
+        public Image Image { get; }
+        public _Links Links { get; }
     }
 }

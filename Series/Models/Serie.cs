@@ -13,49 +13,49 @@ namespace Series.Models
 
             JToken jObjectSerie = JToken.Parse(json);
             
-            id = (int)jObjectSerie["id"];
-            url = (string)jObjectSerie["url"];
-            name = (string)jObjectSerie["name"];
-            type = (string)jObjectSerie["type"];
-            language = (string)jObjectSerie["language"];
-            genres = jObjectSerie["genres"].ToObject<string[]>();
-            status = (string)jObjectSerie["status"];
-            premiered = (string)jObjectSerie["premiered"];
-            officialSite = (string)jObjectSerie["officialSite"];
-            schedule = jObjectSerie["schedule"].IsNullOrEmpty() ? null : jObjectSerie["schedule"].ToObject<Schedule>();
-            rating = jObjectSerie["rating"].IsNullOrEmpty() ? null : new Rating(jObjectSerie["rating"].ToString());
-            weight = jObjectSerie["weight"].IsNullOrEmpty() ? 0 : (int) jObjectSerie["weight"];
-            network = jObjectSerie["network"].IsNullOrEmpty() ? null : new Network(jObjectSerie["network"].ToString());
-            image = new Image(jObjectSerie["image"].ToString());
-            summary = jObjectSerie["summary"].IsNullOrEmpty() ? "Résumé non disponible" : (string)jObjectSerie["summary"];
-            updated = jObjectSerie["updated"].IsNullOrEmpty() ? 0 : (int)jObjectSerie["updated"];
-            _links = jObjectSerie["_links"].ToObject<_Links>();
+            Id = (int)jObjectSerie["id"];
+            Url = (string)jObjectSerie["url"];
+            Name = (string)jObjectSerie["name"];
+            Type = (string)jObjectSerie["type"];
+            Language = (string)jObjectSerie["language"];
+            Genres = jObjectSerie["genres"].ToObject<string[]>();
+            Status = (string)jObjectSerie["status"];
+            Premiered = (string)jObjectSerie["premiered"];
+            OfficialSite = (string)jObjectSerie["officialSite"];
+            Schedule = jObjectSerie["schedule"].IsNullOrEmpty() ? null : jObjectSerie["schedule"].ToObject<Schedule>();
+            Rating = jObjectSerie["rating"].IsNullOrEmpty() ? null : new Rating(jObjectSerie["rating"].ToString());
+            Weight = jObjectSerie["weight"].IsNullOrEmpty() ? 0 : (int) jObjectSerie["weight"];
+            Network = jObjectSerie["network"].IsNullOrEmpty() ? null : new Network(jObjectSerie["network"].ToString());
+            Image = new Image(jObjectSerie["image"].ToString());
+            Summary = jObjectSerie["summary"].IsNullOrEmpty() ? "Résumé non disponible" : (string)jObjectSerie["summary"];
+            Updated = jObjectSerie["updated"].IsNullOrEmpty() ? 0 : (int)jObjectSerie["updated"];
+            Links = jObjectSerie["_links"].ToObject<_Links>();
         }
 
-        public int id { get; }
-        public string url { get; }
-        public string name { get; }
-        public string type { get; }
-        public string language { get; }
-        public string[] genres { get; }
-        public string status { get; }
-        public int runtime { get; }
-        public string premiered { get; }
-        public string officialSite { get; }
-        public Schedule schedule { get; }
-        public Rating rating { get; }
-        public int weight { get; }
-        public Network network { get; }
-        public Image image { get; }
-        public string summary { get; }
-        public int updated { get; }
-        public _Links _links { get; }
+        public int Id { get; }
+        public string Url { get; }
+        public string Name { get; }
+        public string Type { get; }
+        public string Language { get; }
+        public string[] Genres { get; }
+        public string Status { get; }
+        public int Runtime { get; }
+        public string Premiered { get; }
+        public string OfficialSite { get; }
+        public Schedule Schedule { get; }
+        public Rating Rating { get; }
+        public int Weight { get; }
+        public Network Network { get; }
+        public Image Image { get; }
+        public string Summary { get; }
+        public int Updated { get; }
+        public _Links Links { get; }
     }
 
     public class Schedule
     {
-        public string time { get; }
-        public string[] days { get; }
+        public string Time { get; }
+        public string[] Days { get; }
     }
 
     public class Rating
@@ -76,16 +76,16 @@ namespace Series.Models
             try
             {
                 JToken network = JToken.Parse(json);
-                id = (int) network["id"];
-                name = (string) network["name"];
-                country = new Country(network["country"].ToString());
+                Id = (int) network["id"];
+                Name = (string) network["name"];
+                Country = new Country(network["country"].ToString());
             }
             catch (JsonReaderException) { }
         }
 
-        public int id { get; }
-        public string name { get; }
-        public Country country { get; }
+        public int Id { get; }
+        public string Name { get; }
+        public Country Country { get; }
     }
 
     public class Country
@@ -93,21 +93,21 @@ namespace Series.Models
         public Country(string json)
         {
             JToken country = JToken.Parse(json);
-            name = (string) country["name"];
-            code = (string) country["code"];
-            timezone = (string) country["timezone"];
+            Name = (string) country["name"];
+            Code = (string) country["code"];
+            Timezone = (string) country["timezone"];
         }
-        public string name { get; }
-        public string code { get; }
-        public string timezone { get; }
+        public string Name { get; }
+        public string Code { get; }
+        public string Timezone { get; }
     }
 
-    public class Externals
-    {
-        public int tvrage { get; }
-        public int thetvdb { get; }
-        public string imdb { get; }
-    }
+    //public class Externals
+    //{
+    //    public int tvrage { get; }
+    //    public int thetvdb { get; }
+    //    public string imdb { get; }
+    //}
 
     public class Image
     {
@@ -116,34 +116,34 @@ namespace Series.Models
             try
             {
                 JToken image = JToken.Parse(json);
-                medium = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
-                original = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
-                if ((string)image["medium"] != string.Empty) { medium = (string)image["medium"]; }
-                if ((string)image["original"] != string.Empty) { original = (string)image["original"]; }
+                Medium = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
+                Original = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
+                if ((string)image["medium"] != string.Empty) { Medium = (string)image["medium"]; }
+                if ((string)image["original"] != string.Empty) { Original = (string)image["original"]; }
             }
             catch (Exception)
             {
-                medium = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
-                original = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
+                Medium = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
+                Original = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
             }
         }
-        public string medium { get; }
-        public string original { get; }
+        public string Medium { get; }
+        public string Original { get; }
     }
 
     public class _Links
     {
-        public Self self { get; }
-        public Previousepisode previousepisode { get; }
+        public Self Self { get; }
+        public Previousepisode Previousepisode { get; }
     }
 
     public class Self
     {
-        public string href { get; }
+        public string Href { get; }
     }
 
     public class Previousepisode
     {
-        public string href { get; }
+        public string Href { get; }
     }
 }

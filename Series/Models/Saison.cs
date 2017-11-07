@@ -9,27 +9,27 @@ namespace Series.Models
         public Saison(string json)
         {
             JToken jObjectSaison = JToken.Parse(json);
-            id = (int)jObjectSaison["id"];
-            url = (string)jObjectSaison["url"];
-            name = (string)jObjectSaison["name"];
-            number = jObjectSaison["number"].IsNullOrEmpty() ? 0 : (int)jObjectSaison["number"];
-            premiereDate = (string) jObjectSaison["premiereDate"];
-            endDate = (string) jObjectSaison["endDate"];
-            image = new Image(jObjectSaison["image"].ToString());
-            summary = jObjectSaison["summary"].IsNullOrEmpty() ? "Résumé non disponible" : (string)jObjectSaison["summary"];
+            Id = (int)jObjectSaison["id"];
+            Url = (string)jObjectSaison["url"];
+            Name = (string)jObjectSaison["name"];
+            Number = jObjectSaison["number"].IsNullOrEmpty() ? 0 : (int)jObjectSaison["number"];
+            PremiereDate = (string) jObjectSaison["premiereDate"];
+            EndDate = (string) jObjectSaison["endDate"];
+            Image = new Image(jObjectSaison["image"].ToString());
+            Summary = jObjectSaison["summary"].IsNullOrEmpty() ? "Résumé non disponible" : (string)jObjectSaison["summary"];
         }
 
-        public int id { get; }
-        public string url { get; }
-        public int number { get; }
-        public string name { get; }
-        public int episodeOrder { get; }
-        public string premiereDate { get; }
-        public string endDate { get; }
-        public Network network { get; }
-        public object webChannel { get; }
-        public object image { get; }
-        public string summary { get; }
-        public _Links _links { get; }
+        public int Id { get; }
+        public string Url { get; }
+        public int Number { get; }
+        public string Name { get; }
+        public int EpisodeOrder { get; }
+        public string PremiereDate { get; }
+        public string EndDate { get; }
+        public Network Network { get; }
+        public object WebChannel { get; }
+        public object Image { get; }
+        public string Summary { get; }
+        public _Links Links { get; }
     }
 }

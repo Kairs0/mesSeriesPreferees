@@ -52,9 +52,9 @@ namespace Series
             listEpisodeTonight = Api.GetEpisodesToNight("US");
             foreach(Episode episode in listEpisodeTonight)
             {
-                if (episode.show != null && !(listSerieTonight.Select(x => x.id).Contains(episode.show.id)))
+                if (episode.Show != null && !(listSerieTonight.Select(x => x.Id).Contains(episode.Show.Id)))
                 {
-                        listSerieTonight.Add(episode.show);
+                        listSerieTonight.Add(episode.Show);
                 }
             }
             ImageGridView.ItemsSource = listSerieTonight;
@@ -97,7 +97,7 @@ namespace Series
         private void BarreRechercheAuto_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             // Set sender.Text. You can use args.SelectedItem to build your text string.
-            BarreRechercheAuto.Text = ((Models.Serie)args.SelectedItem).name;
+            BarreRechercheAuto.Text = ((Models.Serie)args.SelectedItem).Name;
 
         }
 

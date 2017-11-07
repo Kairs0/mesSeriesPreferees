@@ -34,11 +34,11 @@ namespace Series
             }
 
             Acteur = (People)e.Parameter;
-            TitrePage.Text = Acteur.name;
-            ListeSeriesJouees = Api.GetShowsForPeople(Acteur.id.ToString());
-            ActeurId = Acteur.id;
+            TitrePage.Text = Acteur.Name;
+            ListeSeriesJouees = Api.GetShowsForPeople(Acteur.Id.ToString());
+            ActeurId = Acteur.Id;
             base.OnNavigatedTo(e);
-            ImageUrl = Acteur.image.medium;
+            ImageUrl = Acteur.Image.Medium;
             ListeSeries.ItemsSource = ListeSeriesJouees;
         }
         

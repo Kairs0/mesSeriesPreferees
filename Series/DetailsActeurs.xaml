@@ -34,8 +34,8 @@
                             <ColumnDefinition Width="50"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="{Binding image.medium}" Height="80"></Image>
-                        <TextBlock Grid.Column="1" Text="{Binding name}" 
+                        <Image Source="{Binding Image.Medium}" Height="80"></Image>
+                        <TextBlock Grid.Column="1" Text="{Binding Name}" 
                            Margin="20,0,20,8"
                            FontSize="20"  
                            VerticalAlignment="Center"

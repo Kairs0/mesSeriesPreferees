@@ -43,11 +43,11 @@ namespace Series
         private static void SendAllNotifs()
         {
             //On checke les ids de alreadySent pour ne pas réenvoyer de notifications pour la même série
-            List<Serie> toNotif = GetFavoritesOnAirTonight().Where(s => _alreadySent.All(x => x.id != s.id)).ToList();
+            List<Serie> toNotif = GetFavoritesOnAirTonight().Where(s => _alreadySent.All(x => x.Id != s.Id)).ToList();
 
             foreach (var show in toNotif)
             {
-                SendNotifNewEpisodeOfShow(show.id.ToString());
+                SendNotifNewEpisodeOfShow(show.Id.ToString());
                 _alreadySent.Add(show);
             }
         }
@@ -63,9 +63,9 @@ namespace Series
             //Récupère le code pays de chacun des favoris
             foreach (var show in favorites)
             {
-                if (show.network?.country != null)
+                if (show.Network?.Country != null)
                 {
-                    allCodesCountries.Add(show.network.country.code);
+                    allCodesCountries.Add(show.Network.Country.Code);
                 }
             }
 
@@ -78,9 +78,9 @@ namespace Series
             //Depuis la liste précédente, construit la liste des séries pour lesquelles une notification va être envoyée
             foreach (var episode in onAirForAllCountriesFavorites)
             {
-                if (favorites.Select(x => x.id).Contains(episode.show.id))
+                if (favorites.Select(x => x.Id).Contains(episode.Show.Id))
                 {
-                    result.Add(episode.show);
+                    result.Add(episode.Show);
                 }
             }
             return result;
@@ -92,8 +92,8 @@ namespace Series
             var show = Api.GetShowById(idShow);
             
             //Données de la notification
-            string title = "New Episode of " + show.name + " tonight !";
-            string image = show.image.medium;
+            string title = "New Episode of " + show.Name + " tonight !";
+            string image = show.Image.Medium;
 
             //Construction Partie visuelle
             ToastVisual visual = new ToastVisual()
