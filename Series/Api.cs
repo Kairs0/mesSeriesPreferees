@@ -1,6 +1,6 @@
-﻿using System;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Series.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -10,7 +10,6 @@ namespace Series
 {
     public static class Api
     {
-
         private static readonly HttpClient Client = new HttpClient();
 
         private const string BaseUrl = "http://api.tvmaze.com/";
@@ -44,7 +43,14 @@ namespace Series
                     }
                 }
             }
-            catch (HttpRequestException) { }
+            catch (Exception ex)
+            {
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
+                {
+                    return result;
+                }
+                throw;
+            }
             return result;
         }
 
@@ -66,7 +72,14 @@ namespace Series
                     }
                 }
             }
-            catch (HttpRequestException) { }
+            catch (Exception ex)
+            {
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
+                {
+                    return result;
+                }
+                throw;
+            }
             return result;
         }
 
@@ -83,7 +96,14 @@ namespace Series
                     show = new Serie(stringResponse);
                 }
             }
-            catch (Exception) { }//TODO 
+            catch (Exception ex)
+            {
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
+                {
+                    return show;
+                }
+                throw;
+            }
             return show;
         }
 
@@ -101,7 +121,14 @@ namespace Series
                     show = new Serie(stringContent);
                 }
             }
-            catch (HttpRequestException) { }
+            catch (Exception ex)
+            {
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
+                {
+                    return show;
+                }
+                throw;
+            }
             return show;
         }
 
@@ -128,7 +155,14 @@ namespace Series
                     }
                 }
             }
-            catch (HttpRequestException) { }
+            catch (Exception ex)
+            {
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
+                {
+                    return resultSearch;
+                }
+                throw;
+            }
             return resultSearch;
         }
 
@@ -154,7 +188,14 @@ namespace Series
                     }
                 }
             }
-            catch (HttpRequestException) { }
+            catch (Exception ex)
+            {
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
+                {
+                    return resultSearch;
+                }
+                throw;
+            }
             return resultSearch;
         }
 
@@ -178,7 +219,14 @@ namespace Series
                     }
                 }
             }
-            catch (HttpRequestException) { }
+            catch (Exception ex)
+            {
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
+                {
+                    return resultSearch;
+                }
+                throw;
+            }
             return resultSearch;
         }
 
@@ -205,8 +253,15 @@ namespace Series
                     }
                 }
             }
-            catch (HttpRequestException) { }
-            
+            catch (Exception ex)
+            {
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
+                {
+                    return resultSearch;
+                }
+                throw;
+            }
+
             return resultSearch;
         }
 
@@ -232,7 +287,14 @@ namespace Series
                     }
                 }
             }
-            catch (HttpRequestException) { }
+            catch (Exception ex)
+            {
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
+                {
+                    return resultSearch;
+                }
+                throw;
+            }
             return resultSearch;
         }
     }

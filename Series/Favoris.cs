@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 
 namespace Series
 {
+    /**
+     * Classe statique pour la gestion des favoris. 
+     * Contient 4 méthodes publiques : AddToFavorite, RemoveFromFavorite, GetFavorites, CheckFavorite
+     * AddToFavorite rajoute la série (représentée par son id) à la liste des favoris de l'utilisateur
+     * RemoveFromFavorite supprime la série de la liste des favoris de l'utilisateur
+     * GetFavorites retourne la liste des favoris de l'utilisateur, sous forme d'une liste de Séries
+     * CheckFavorite retourne True si la série testée est dans les favoris de l'utilisateur, False sinon.
+     */
     public static class Favoris
     {
         private const string NameFavoriteFile = "favoris.txt";
@@ -15,6 +23,7 @@ namespace Series
         //Rajoute le favoris dans le fichier de favoris (présent dans le dossier AppData de l'user)
         public static void AddToFavorite(string idSerie)
         {
+            //Si le favoris est déjà dans la liste on ne le rajoute pas 
             if (CheckFavorite(idSerie))
             {
                 return;
@@ -42,7 +51,6 @@ namespace Series
                 var serie = Api.GetShowById(id);
                 result.Add(serie);
             }
-
             return result;
         }
 
@@ -52,6 +60,8 @@ namespace Series
             return GetFavoritesIds().Contains(idSerie);
         }
 
+        //(Private) Retourne la liste des ids des favoris de l'utilisateur
+        //Si le fichier favoris n'existe pas ou s'il est vide, renvoie une liste vide.
         private static List<string> GetFavoritesIds()
         {
             string content = string.Empty;
@@ -74,7 +84,8 @@ namespace Series
             return new List<string>();
         }
 
-
+        //(Private) Ecrase le contenu du fichier de favoris et ecrit la liste des favoris donné en paramètres
+        //Crée le fichier de favoris s'il n'existe pas 
         private static void WriteListOfFavorites(List<string> ids)
         {
             var stringToWrite = String.Join(";", ids);

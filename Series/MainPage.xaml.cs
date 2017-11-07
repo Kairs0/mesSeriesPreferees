@@ -33,7 +33,9 @@ namespace Series
     public sealed partial class MainPage : Page
     {
         private readonly List<string> ImageSource = new List<string>();
-        private List<Serie> listeFavoris;
+        private List<Serie> listeFavoris ;
+        private List<Episode> listEpisodeTonight;
+        private List<Serie> listSerieTonight = new List<Serie>();
 
 
         public MainPage()
@@ -45,12 +47,24 @@ namespace Series
 
         private void PageChargee(object sender, RoutedEventArgs args)
         {
+
+            // affiche les séries ce soir à la TV US
+            listEpisodeTonight = Api.GetEpisodesToNight("US");
+            foreach(Episode episode in listEpisodeTonight)
+            {
+                if (episode.show != null && !(listSerieTonight.Select(x => x.id).Contains(episode.show.id)))
+                {
+                        listSerieTonight.Add(episode.show);
+                }
+            }
+            ImageGridView.ItemsSource = listSerieTonight;
+
+
             if (!NetworkInterface.GetIsNetworkAvailable())
             {
                 this.Frame.Navigate(typeof(NoConnection));
             }
-            listeFavoris = Series.Favoris.GetFavorites();
-            ImageGridView.ItemsSource = listeFavoris;
+
         }
     
         private void Button_Favorites(object sender, RoutedEventArgs e)
@@ -58,6 +72,11 @@ namespace Series
             // Displays list of series from user's favorite
             listeFavoris = Series.Favoris.GetFavorites();
             ImageGridView.ItemsSource = listeFavoris;
+        }
+
+        private void Button_ShowTonight(object sender, RoutedEventArgs E)
+        {
+            ImageGridView.ItemsSource = listSerieTonight;
         }
         
 

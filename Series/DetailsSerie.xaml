@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="2" x:Name="TitrePage" Text="Titre"  HorizontalAlignment="Stretch" Margin="10,10,10,10" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="36" TextAlignment="Center" Foreground="#FFFFFDFD"/>
         <Button x:Name="BouttonRetour" Content="Précédent" Click="ClickBouttonRetour" HorizontalAlignment="Left" Height="40" Margin="10,20,0,0" VerticalAlignment="Top" Width="85" Foreground="White" Background="{ThemeResource SystemControlHighlightAltAccentBrush}"/>
-        <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="100,20,0,0" VerticalAlignment="Top" Width="85" Foreground="White" Background="{ThemeResource SystemControlHighlightAltAccentBrush}"/>
+        <Button x:Name="BouttonAccueil" Content="Accueil" Click="ClickBouttonAccueil" HorizontalAlignment="Left" Height="40" Margin="102,20,0,0" VerticalAlignment="Top" Width="85" Foreground="White" Background="{ThemeResource SystemControlHighlightAltAccentBrush}" />
         <Image Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" x:Name="PhotoPage" Source="{x:Bind Image_Url}" Margin="0,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <ScrollViewer Grid.Column="2" Grid.Row="1" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TextBlock x:Name="Resume" TextWrapping="Wrap" Text="Résumé" Foreground="#FFE0DFDF" SelectionHighlightColor="#FF0078D7"/>
@@ -134,11 +134,13 @@
                        Grid.Column="2"
                        Grid.Row="3"
             Height="50" VerticalAlignment="Top" Margin="10,85,10,0" FontSize="14" TextWrapping="Wrap" FontWeight="Bold"/>
-        <TextBlock x:Name="DetailsEpisode_Resume" 
-            HorizontalAlignment="Stretch"
+        <ScrollViewer             HorizontalAlignment="Stretch"
               VerticalAlignment="Stretch"
                    Grid.Column="2"
                    Grid.Row="3"
-            Margin="10,140,10,0" FontSize="16" TextWrapping="Wrap" Foreground="#FFE4E4E4" />
+            Margin="10,140,10,0" >
+        <TextBlock x:Name="DetailsEpisode_Resume" 
+FontSize="16" TextWrapping="Wrap" Foreground="#FFE4E4E4" />
+        </ScrollViewer>
     </Grid>
 </Page>
