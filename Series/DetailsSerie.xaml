@@ -75,7 +75,7 @@
                            Margin="10,0,6,8"
                            FontSize="20"  
                            FontWeight="SemiBold" Foreground="White" SelectionHighlightColor="#FF7C9AB2"/>
-                            <TextBlock Text="{Binding number}"
+                            <TextBlock Text="{Binding Number}"
                            Margin="0,0,20,8"
                            FontSize="20"  
                            FontWeight="SemiBold"

@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Series.Extensions;
+using System;
 
 namespace Series.Models
 {
@@ -11,25 +11,24 @@ namespace Series.Models
         public Serie(string json)
         {
 
-            JToken jObjectSerie = JToken.Parse(json);
+            JToken jObjShow = JToken.Parse(json);
             
-            Id = (int)jObjectSerie["id"];
-            Url = (string)jObjectSerie["url"];
-            Name = (string)jObjectSerie["name"];
-            Type = (string)jObjectSerie["type"];
-            Language = (string)jObjectSerie["language"];
-            Genres = jObjectSerie["genres"].ToObject<string[]>();
-            Status = (string)jObjectSerie["status"];
-            Premiered = (string)jObjectSerie["premiered"];
-            OfficialSite = (string)jObjectSerie["officialSite"];
-            Schedule = jObjectSerie["schedule"].IsNullOrEmpty() ? null : jObjectSerie["schedule"].ToObject<Schedule>();
-            Rating = jObjectSerie["rating"].IsNullOrEmpty() ? null : new Rating(jObjectSerie["rating"].ToString());
-            Weight = jObjectSerie["weight"].IsNullOrEmpty() ? 0 : (int) jObjectSerie["weight"];
-            Network = jObjectSerie["network"].IsNullOrEmpty() ? null : new Network(jObjectSerie["network"].ToString());
-            Image = new Image(jObjectSerie["image"].ToString());
-            Summary = jObjectSerie["summary"].IsNullOrEmpty() ? "Résumé non disponible" : (string)jObjectSerie["summary"];
-            Updated = jObjectSerie["updated"].IsNullOrEmpty() ? 0 : (int)jObjectSerie["updated"];
-            Links = jObjectSerie["_links"].ToObject<_Links>();
+            Id = (int)jObjShow["id"];
+            Url = (string)jObjShow["url"];
+            Name = (string)jObjShow["name"];
+            Type = (string)jObjShow["type"];
+            Language = (string)jObjShow["language"];
+            Genres = jObjShow["genres"].ToObject<string[]>();
+            Status = (string)jObjShow["status"];
+            Premiered = (string)jObjShow["premiered"];
+            OfficialSite = (string)jObjShow["officialSite"];
+            Schedule = jObjShow["schedule"].IsNullOrEmpty() ? null : new Schedule(jObjShow["schedule"].ToString());
+            Rating = jObjShow["rating"].IsNullOrEmpty() ? null : new Rating(jObjShow["rating"].ToString());
+            Weight = jObjShow["weight"].IsNullOrEmpty() ? 0 : (int) jObjShow["weight"];
+            Network = jObjShow["network"].IsNullOrEmpty() ? null : new Network(jObjShow["network"].ToString());
+            Image = new Image(jObjShow["image"].ToString());
+            Summary = jObjShow["summary"].IsNullOrEmpty() ? "Résumé non disponible" : (string)jObjShow["summary"];
+            Updated = jObjShow["updated"].IsNullOrEmpty() ? 0 : (int)jObjShow["updated"];
         }
 
         public int Id { get; }
@@ -39,7 +38,6 @@ namespace Series.Models
         public string Language { get; }
         public string[] Genres { get; }
         public string Status { get; }
-        public int Runtime { get; }
         public string Premiered { get; }
         public string OfficialSite { get; }
         public Schedule Schedule { get; }
@@ -49,11 +47,18 @@ namespace Series.Models
         public Image Image { get; }
         public string Summary { get; }
         public int Updated { get; }
-        public _Links Links { get; }
     }
 
     public class Schedule
     {
+        public Schedule(string json)
+        {
+            JToken jSched = JToken.Parse(json);
+            Time = (string)jSched["time"];
+            Days = jSched["days"].ToObject<string[]>();
+
+        }
+
         public string Time { get; }
         public string[] Days { get; }
     }
@@ -131,19 +136,13 @@ namespace Series.Models
         public string Original { get; }
     }
 
-    public class _Links
-    {
-        public Self Self { get; }
-        public Previousepisode Previousepisode { get; }
-    }
+    //public class Self
+    //{
+    //    public string Href { get; }
+    //}
 
-    public class Self
-    {
-        public string Href { get; }
-    }
-
-    public class Previousepisode
-    {
-        public string Href { get; }
-    }
+    //public class Previousepisode
+    //{
+    //    public string Href { get; }
+    //}
 }

@@ -23,13 +23,9 @@ namespace Series.Models
         public string Url { get; }
         public int Number { get; }
         public string Name { get; }
-        public int EpisodeOrder { get; }
         public string PremiereDate { get; }
         public string EndDate { get; }
-        public Network Network { get; }
-        public object WebChannel { get; }
         public object Image { get; }
         public string Summary { get; }
-        public _Links Links { get; }
     }
 }

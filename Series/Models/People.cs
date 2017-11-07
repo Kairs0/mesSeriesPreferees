@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using Series.Extensions;
 
 namespace Series.Models
 {
@@ -18,6 +17,5 @@ namespace Series.Models
         public string Url { get; }
         public string Name { get; }
         public Image Image { get; }
-        public _Links Links { get; }
     }
 }

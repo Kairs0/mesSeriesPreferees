@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 using Series.Extensions;
 
 namespace Series.Models
@@ -29,15 +28,9 @@ namespace Series.Models
         public int Number { get; }
         public string Airdate { get; }
         public string Airtime { get; }
-        public DateTime Airstamp { get; }
         public int Runtime { get; }
         public Image Image { get; }
         public string Summary { get; }
         public Serie Show { get; }
-    }
-
-    public class Nextepisode
-    {
-        public string Href { get; }
     }
 }
