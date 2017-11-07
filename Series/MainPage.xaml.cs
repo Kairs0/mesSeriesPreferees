@@ -58,6 +58,8 @@ namespace Series
                 }
             }
             ImageGridView.ItemsSource = listSerieTonight;
+
+
             if (!NetworkInterface.GetIsNetworkAvailable())
             {
                 this.Frame.Navigate(typeof(NoConnection));
@@ -70,6 +72,11 @@ namespace Series
             // Displays list of series from user's favorite
             listeFavoris = Series.Favoris.GetFavorites();
             ImageGridView.ItemsSource = listeFavoris;
+        }
+
+        private void Button_ShowTonight(object sender, RoutedEventArgs E)
+        {
+            ImageGridView.ItemsSource = listSerieTonight;
         }
         
 
