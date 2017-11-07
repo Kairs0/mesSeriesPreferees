@@ -32,7 +32,7 @@ namespace Series
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-            //d'ici on démarre la fonction de notifications
+            //On démarre la fonction de notifications
             NotificationManager.Run();
         }
 
@@ -81,34 +81,36 @@ namespace Series
             // Get the root frame
             Frame rootFrame = Window.Current.Content as Frame;
 
-            // Handle toast activation
-            if (e is ToastNotificationActivatedEventArgs)
+            try
             {
-                var toastActivationArgs = e as ToastNotificationActivatedEventArgs;
-
-                // Parse the query string (using QueryString.NET)
-                QueryString args = QueryString.Parse(toastActivationArgs.Argument);
-
-                if (!args.Any())
+                // Handle toast activation
+                if (e is ToastNotificationActivatedEventArgs toastActivationArgs)
                 {
-                    rootFrame.Navigate(typeof(MainPage));
-                }
-                else
-                {
-                    if (args["action"] == "viewShow")
+                    // Parse the query string (using QueryString.NET)
+                    QueryString args = QueryString.Parse(toastActivationArgs.Argument);
+
+                    if (!args.Any())
                     {
-                        string idShow = args["idShow"];
-                        Serie show = Api.GetShowById(idShow);
-                        rootFrame.Navigate(typeof(DetailsSerie), show);
+                        rootFrame.Navigate(typeof(MainPage));
                     }
-                }
+                    else
+                    {
+                        if (args["action"] == "viewShow")
+                        {
+                            string idShow = args["idShow"];
+                            Serie show = Api.GetShowById(idShow);
+                            rootFrame.Navigate(typeof(DetailsSerie), show);
+                        }
+                    }
 
-                // If we're loading the app for the first time, place the main page on
-                // the back stack so that user can go back after they've been
-                // navigated to the specific page
-                if (rootFrame.BackStack.Count == 0)
-                    rootFrame.BackStack.Add(new PageStackEntry(typeof(MainPage), null, null));
+                    // If we're loading the app for the first time, place the main page on
+                    // the back stack so that user can go back after they've been
+                    // navigated to the specific page
+                    if (rootFrame.BackStack.Count == 0)
+                        rootFrame.BackStack.Add(new PageStackEntry(typeof(MainPage), null, null));
+                }
             }
+            catch (System.NullReferenceException) { }
 
             // Ensure the current window is active
             Window.Current.Activate();

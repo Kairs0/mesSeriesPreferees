@@ -17,7 +17,7 @@ namespace Series
      */
     public static class Favoris
     {
-        private const string NameFavoriteFile = "favoris.txt";
+        private const string NameFavoriteFile = ".favoris";
         private static readonly Windows.Storage.StorageFolder StorageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
 
         //Rajoute le favoris dans le fichier de favoris (présent dans le dossier AppData de l'user)
