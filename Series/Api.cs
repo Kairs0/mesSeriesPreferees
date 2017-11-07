@@ -11,7 +11,7 @@ namespace Series
     public static class Api
     {
 
-        private static HttpClient client = new HttpClient();
+        private static readonly HttpClient Client = new HttpClient();
 
         private const string BaseUrl = "http://api.tvmaze.com/";
         private const string ShowSearchArg = "search/shows?q=";
@@ -32,7 +32,7 @@ namespace Series
             List<Episode> result = new List<Episode>();
             try
             {
-                var response = client.GetAsync(BaseUrl + Seasons + idSeason + EpisodesForSeasonPartTwo).Result;
+                var response = Client.GetAsync(BaseUrl + Seasons + idSeason + EpisodesForSeasonPartTwo).Result;
                 result = new List<Episode>();
                 if (response.IsSuccessStatusCode)
                 {
@@ -54,7 +54,7 @@ namespace Series
             List<Saison> result = new List<Saison>();
             try
             {
-                var response = client.GetAsync(BaseUrl + Shows + idShow + SeasonsForShowPartTwo).Result;
+                var response = Client.GetAsync(BaseUrl + Shows + idShow + SeasonsForShowPartTwo).Result;
                 result = new List<Saison>();
                 if (response.IsSuccessStatusCode)
                 {
@@ -76,7 +76,7 @@ namespace Series
             Serie show = null;
             try
             {
-                var response = client.GetAsync(BaseUrl + Shows + id).Result;
+                var response = Client.GetAsync(BaseUrl + Shows + id).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     var stringResponse = response.Content.ReadAsStringAsync().Result;
@@ -93,7 +93,7 @@ namespace Series
             Serie show = null;
             try
             {
-                var response = client.GetAsync(BaseUrl + SingleShearchArg + arg).Result;
+                var response = Client.GetAsync(BaseUrl + SingleShearchArg + arg).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = response.Content;
@@ -111,7 +111,7 @@ namespace Series
             var resultSearch = new List<Serie>();
             try
             {
-                var response = client.GetAsync(BaseUrl + ShowSearchArg + arg).Result;
+                var response = Client.GetAsync(BaseUrl + ShowSearchArg + arg).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -139,7 +139,7 @@ namespace Series
 
             try
             {
-                var response = client.GetAsync(BaseUrl + PeopleSearch + arg).Result;
+                var response = Client.GetAsync(BaseUrl + PeopleSearch + arg).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = response.Content;
@@ -164,7 +164,7 @@ namespace Series
             var resultSearch = new List<BindPersonToCharacter>();
             try
             {
-                var response = client.GetAsync(BaseUrl + Shows + idShow + ShowCastPartTwo).Result;
+                var response = Client.GetAsync(BaseUrl + Shows + idShow + ShowCastPartTwo).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     var stringContent = response.Content.ReadAsStringAsync().Result;
@@ -189,7 +189,7 @@ namespace Series
 
             try
             {
-                var response = client.GetAsync(BaseUrl + PeopleInfo + idPeople + CastCredits).Result;
+                var response = Client.GetAsync(BaseUrl + PeopleInfo + idPeople + CastCredits).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     var stringContent = response.Content.ReadAsStringAsync().Result;
@@ -218,7 +218,7 @@ namespace Series
 
             try
             {
-                var response = client.GetAsync(BaseUrl + Schedule + codePays).Result;
+                var response = Client.GetAsync(BaseUrl + Schedule + codePays).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     var responseContent = response.Content;
