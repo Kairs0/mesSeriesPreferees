@@ -116,15 +116,15 @@ namespace Series.Models
             try
             {
                 JToken image = JToken.Parse(json);
-                medium = "http://www.floridalel.org/extension/floridalel/design/challenge/images/no-image-available.png";
-                original = "http://www.floridalel.org/extension/floridalel/design/challenge/images/no-image-available.png";
+                medium = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
+                original = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
                 if ((string)image["medium"] != string.Empty) { medium = (string)image["medium"]; }
                 if ((string)image["original"] != string.Empty) { original = (string)image["original"]; }
             }
             catch (Exception)
             {
-                medium = "http://www.floridalel.org/extension/floridalel/design/challenge/images/no-image-available.png";
-                original = "http://www.floridalel.org/extension/floridalel/design/challenge/images/no-image-available.png";
+                medium = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
+                original = "https://www.vigneronsdemontpreschambord.com/squelettes/images/pasdimagehaut.png";
             }
         }
         public string medium { get; }
