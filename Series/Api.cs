@@ -45,7 +45,7 @@ namespace Series
             }
             catch (Exception ex)
             {
-                if (ex is HttpRequestException || ex is COMException)
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
                 {
                     return result;
                 }
@@ -74,7 +74,7 @@ namespace Series
             }
             catch (Exception ex)
             {
-                if (ex is HttpRequestException || ex is COMException)
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
                 {
                     return result;
                 }
@@ -98,7 +98,7 @@ namespace Series
             }
             catch (Exception ex)
             {
-                if (ex is HttpRequestException || ex is COMException)
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
                 {
                     return show;
                 }
@@ -123,7 +123,7 @@ namespace Series
             }
             catch (Exception ex)
             {
-                if (ex is HttpRequestException || ex is COMException)
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
                 {
                     return show;
                 }
@@ -157,7 +157,7 @@ namespace Series
             }
             catch (Exception ex)
             {
-                if (ex is HttpRequestException || ex is COMException)
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
                 {
                     return resultSearch;
                 }
@@ -190,7 +190,7 @@ namespace Series
             }
             catch (Exception ex)
             {
-                if (ex is HttpRequestException || ex is COMException)
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
                 {
                     return resultSearch;
                 }
@@ -221,7 +221,7 @@ namespace Series
             }
             catch (Exception ex)
             {
-                if (ex is HttpRequestException || ex is COMException)
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
                 {
                     return resultSearch;
                 }
@@ -255,7 +255,7 @@ namespace Series
             }
             catch (Exception ex)
             {
-                if (ex is HttpRequestException || ex is COMException)
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
                 {
                     return resultSearch;
                 }
@@ -289,7 +289,7 @@ namespace Series
             }
             catch (Exception ex)
             {
-                if (ex is HttpRequestException || ex is COMException)
+                if (ex is HttpRequestException || ex is COMException || ex is AggregateException)
                 {
                     return resultSearch;
                 }
