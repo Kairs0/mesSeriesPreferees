@@ -32,7 +32,7 @@ namespace Series
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-            //Arnaud: d'ici on démarre la fonction de notifications
+            //d'ici on démarre la fonction de notifications
             NotificationManager.Run();
         }
 
@@ -55,7 +55,6 @@ namespace Series
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
-                    //TODO: Load state from previously suspended application
                 }
 
                 // Place the frame in the current Window
@@ -135,7 +134,6 @@ namespace Series
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
     }
