@@ -68,14 +68,16 @@
                         Grid.Column="0"
                         TextChanged="BarreRechercheAuto_TextChanged" 
                         ItemsSource="{x:Bind seriesListAutoSuggest}"
-                        DisplayMemberPath="name"
+                        DisplayMemberPath="Name"
                         QuerySubmitted="BarreRechercheAuto_QuerySubmitted" 
                         SuggestionChosen="BarreRechercheAuto_SuggestionChosen" 
-                        PlaceholderText="Recherche de série" QueryIcon="Find" 
+                        PlaceholderText="Recherche de série" 
+                        QueryIcon="Find" 
                         HorizontalAlignment="Center" Height="32" 
                         VerticalAlignment="Top" 
                         Width="500"
-                        Margin="0,100,0,0"  />
+                        Margin="0,100,0,0">
+        </AutoSuggestBox>
     </Grid>
 </Page>
 

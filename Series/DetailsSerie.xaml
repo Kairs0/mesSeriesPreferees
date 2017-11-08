@@ -100,7 +100,7 @@
         <ListView x:Name="AffichageListeEpisodes" 
                   ItemsSource="{x:Bind ListeEpisode}"
                   Grid.Column="1"
-                      Grid.Row="3"
+                  Grid.Row="3"
                   Margin="10,10,10,10" 
                   VerticalAlignment="Stretch"
                       HorizontalAlignment="Stretch"
