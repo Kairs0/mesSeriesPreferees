@@ -5,6 +5,7 @@
     xmlns:local="using:Series.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    RequestedTheme="Dark"
     mc:Ignorable="d">
 
     <Grid BorderBrush="Black" >
@@ -33,8 +34,8 @@
         <ScrollViewer Grid.Column="2" Grid.Row="1" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <TextBlock x:Name="Resume" TextWrapping="Wrap" Text="Résumé" Foreground="#FFE0DFDF" SelectionHighlightColor="#FF0078D7"/>
         </ScrollViewer>
-        <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" Height="40" Margin="10,40,0,0" Width="175" FontFamily="Calibri Light" FontSize="16" Foreground="#FFC5C5C5" Background="#B2950505" />
-        <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" Height="40" Margin="10,40,0,0" Width="175" FontFamily="Calibri Light" FontSize="16" Foreground="#FFC5C5C5" Background="{ThemeResource IMECandidateSelectedBackgroundThemeBrush}"/>
+        <Button x:Name="AjoutFavoris" Content="Ajouter aux favoris" Click="ClickAjoutFavoris" Height="40" Margin="10,40,0,0" Width="175" FontFamily="Calibri Light" FontSize="16" Foreground="White" Background="#B2950505" />
+        <Button x:Name="RetraitFavoris" Content="Retirer des favoris" Click="ClickRetraitFavoris" Height="40" Margin="10,40,0,0" Width="175" FontFamily="Calibri Light" FontSize="16" Foreground="White" Background="{ThemeResource IMECandidateSelectedBackgroundThemeBrush}"/>
         <ListView x:Name="ListeActeurs" Grid.Column="3" Grid.Row="3" Margin="10,10,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="SelectionActeur" Foreground="#FFD6D6D6">
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

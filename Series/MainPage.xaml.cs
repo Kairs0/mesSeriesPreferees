@@ -40,6 +40,7 @@ namespace Series
 
         public MainPage()
         {
+
             this.InitializeComponent();
         }
 
@@ -78,9 +79,8 @@ namespace Series
             ImageGridView.ItemsSource = listSerieTonight;
         }
         
-
-
         List<Models.Serie> seriesListAutoSuggest;
+
         private void BarreRechercheAuto_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             string texteSaisi = BarreRechercheAuto.Text;
@@ -126,5 +126,7 @@ namespace Series
             Serie SerieSelectionne = ImageGridView.SelectedItem as Serie;
             this.Frame.Navigate(typeof(DetailsSerie), SerieSelectionne);
         }
+
+
     }
 }
