@@ -19,8 +19,8 @@
             <RowDefinition Height="200" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="ConnectionNonDispo" Text="Connection non disponible"  HorizontalAlignment="Stretch" Margin="10,10,10,10" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="48" TextAlignment="Center"/>
-        <Button Grid.Column="1" Grid.Row="2" x:Name="ReTry" Content="Réessayer" HorizontalAlignment="Left" Width="175" Margin="128,42,0,0" VerticalAlignment="Top" Height="40" Click="ReTry_OnClick" Background="#338B2F04"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="ConnectionNonDispo" Text="Connexion internet indisponible"  HorizontalAlignment="Stretch" Margin="10,10,10,10" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="48" TextAlignment="Center"/>
+        <Button Grid.Column="1" Grid.Row="2" x:Name="ReTry" Content="Réessayer" HorizontalAlignment="Center" Width="175" Margin="0,40,0,0" VerticalAlignment="Top" Height="40" Click="ReTry_OnClick" Background="#338B2F04"/>
 
     </Grid>
 </Page>
