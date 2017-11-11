@@ -12,8 +12,9 @@
         <Color x:Key="Color1">#33FF2C2C</Color>
     </Page.Resources>
 
-
+    
     <Grid BorderBrush="Black" >
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -43,7 +44,7 @@
                    RelativePanel.AlignHorizontalCenterWithPanel="True"                
                    Foreground="#FFFFFDFD"
                    FontFamily="Calibri" TextAlignment="Center" Height="27" Width="300"/>
-
+        
         <GridView x:Name="ImageGridView"
                   Margin="10,10,10,10"
                       Grid.Row="2"
@@ -56,13 +57,23 @@
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF1F1F1F" Offset="0"/>
                     <GradientStop Color="#FF3C3C3C" Offset="1"/>
-
                 </LinearGradientBrush>
             </GridView.Background>
+            
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Serie">
-                    <StackPanel Width="150" Height="225">
+                    <StackPanel Width="150" Height="210" BorderThickness="2">
                         <Image Source="{x:Bind Image.Medium}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="BorderBrush" Storyboard.TargetProperty="Color" To="Red" >
+                                            </ColorAnimation>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
                         </Image>
                     </StackPanel>
                 </DataTemplate>
