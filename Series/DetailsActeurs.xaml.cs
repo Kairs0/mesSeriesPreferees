@@ -25,7 +25,7 @@ namespace Series
         public string ImageUrl;
         public int ActeurId;
 
-
+        // Construction de la page vaec l'Acteur reçu en argument de navigation
          protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (!NetworkInterface.GetIsNetworkAvailable())
@@ -49,7 +49,7 @@ namespace Series
             this.InitializeComponent();
         }
 
-
+        // Navigation vers la série sélectionnée dans la liste
         private void SerieSelectionnee(object sender, RoutedEventArgs e)
         {
             Serie SerieSelectionne = ListeSeries.SelectedItem as Serie;

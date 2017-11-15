@@ -42,6 +42,7 @@ namespace Series
                 this.Frame.Navigate(typeof(NoConnection));
             }
 
+            // Construction de la page avec la Série reçue en paramètre de la navigation
             if (e.Parameter != null)
             {
                 Serie InfosSerie = e.Parameter as Serie; 
@@ -84,6 +85,7 @@ namespace Series
 
         }
 
+        // Selection d'un acteur depuis la liste et navigation vers sa page
         private void SelectionActeur (object sender, RoutedEventArgs e)
         {
             BindPersonToCharacter ActeurSelectionne = ListeActeurs.SelectedItem as BindPersonToCharacter;
@@ -91,6 +93,7 @@ namespace Series
             this.Frame.Navigate(typeof(DetailsActeurs),NomActeur);
         }
 
+        // Affichage de la liste des épisodes de la saison sélectionnée
         private void SelectionSaison(object sender, RoutedEventArgs e)
         {
             Saison SaisonSelectionne = AffichageListeSaisons.SelectedItem as Saison;
@@ -107,6 +110,7 @@ namespace Series
                 DetailsEpisode_Resume.Text = "";
             }
         }
+      
         private void ClickBouttonRetour(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack(); ;
@@ -131,6 +135,7 @@ namespace Series
             RetraitFavoris.Visibility = Visibility.Collapsed;
         }
 
+        //Affichage des détails de l'épisode sélectionné dans la liste
         private void AffichageListeEpisodes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
