@@ -1,5 +1,6 @@
 # Mes séries préférées
 Plateforme : Windows 10
+Visual Studio 2015 ou 2017 avec SDK et Universal Windows App Development Tools installés
 
 ## Api choisie:
 http://api.tvmaze.com/
