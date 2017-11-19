@@ -9,7 +9,7 @@ using Windows.UI.Notifications;
 
 namespace Series
 {
-    //Idée : contient une méthode asyncrhone qui va checker toutes les 5 minutes la sortie d'un épisode d'une série favorite.
+    //Idée : contient une méthode asyncrhone qui va checker toutes les 10 minutes la sortie d'un épisode d'une série favorite.
     static class NotificationManager
     {
         private static int _compteurNotifs;
@@ -17,8 +17,18 @@ namespace Series
         
         public static void Run()
         {
-            //publie les notifs toutes les dix minutes, reset les séries tous les jours.
-            TimeSpan period = TimeSpan.FromSeconds(40);
+            /*
+             * LIGNE A DECOMMENTER POUR TESTER LES NOTIFICATIONS (envoie les notifs pour les séries toutes les 30 secondes)
+             */
+            //TimeSpan period = TimeSpan.FromSeconds(30);
+
+            /*
+             * Ligne à commenter pendant le test des notification
+             */
+            TimeSpan period = TimeSpan.FromMinutes(10);
+
+
+            //publie les notifs pour les séries "non notifiées" toutes les dix minutes, reset la liste alreadySent tous les jours.
             TimeSpan periodResetSent = TimeSpan.FromDays(1);
             _alreadySent = new List<Serie>();
 
