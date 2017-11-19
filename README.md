@@ -6,7 +6,7 @@ http://api.tvmaze.com/
 
 ## Lors du premier git clone:
 - Ouvrir la solution avec Visual Studio (Series > Series.sln)
-- Dans l'onglet "Solution Platform" (habituellement situé à gauche de la commande Run), selectionner 
+- Dans l'onglet "Solution Platform" (habituellement situé à gauche de la commande Run), selectionner (x64 ou x86)
 - Dans l'explorateur de solution : click droit sur la solution -> Rebuild Solution
 - F5 (run)
 
